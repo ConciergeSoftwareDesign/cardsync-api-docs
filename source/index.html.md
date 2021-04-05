@@ -92,7 +92,7 @@ Accept: application/json
 
 ```javascript
 const inputBody = '{
-  "name": "New Merchant-{{$guid}} <name must be unique>",
+  "name": "New Merchant <name must be unique>",
   "description": "this is a new merchant that is getting set up",
   "website": "example.com",
   "phone": "5555555555",
@@ -259,7 +259,7 @@ This endpoint is used to create a new Merchant on our platform. The details prov
 
 ```json
 {
-  "name": "New Merchant-{{$guid}} <name must be unique>",
+  "name": "New Merchant <name must be unique>",
   "description": "this is a new merchant that is getting set up",
   "website": "example.com",
   "phone": "5555555555",
@@ -363,7 +363,7 @@ This endpoint is used to create a new Merchant on our platform. The details prov
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Add New Merchant - 200 OK](#schemaaddanewmerchant-200ok)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[Add New Merchant - 401 Unauthorized1](#schemaaddanewmerchant-401unauthorized1)|
+|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[Add New Merchant - 401 Unauthorized](#schemaaddanewmerchant-401unauthorized1)|
 
 ### Response Headers
 
@@ -1937,7 +1937,7 @@ Authorization
 
 ```json
 {
-  "name": "New Merchant-{{$guid}} <name must be unique>",
+  "name": "New Merchant <name must be unique>",
   "description": "this is a new merchant that is getting set up",
   "website": "example.com",
   "phone": "5555555555",
