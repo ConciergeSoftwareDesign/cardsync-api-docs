@@ -11,6 +11,17 @@
 
 <p align="center"><em>The example above was created with Slate. Check it out at <a href="https://slatedocs.github.io/slate">slatedocs.github.io/slate</a>.</em></p>
 
+CardSync API README
+------------
+
+1. Edit markdown in source/index.html.md
+
+2. Build Docker image with `docker run --rm --name slate -v $(pwd)/build:/srv/slate/build -v $(pwd)/source:/srv/slate/source slatedocs/slate`.
+
+3. Test Docker image with `docker run --rm --name slate -p 4567:4567 -v $(pwd)/source:/srv/slate/source slatedocs/slate serve`.
+
+4. Committing to main branch runs GitHub action and deploys to `https://conciergesoftwaredesign.github.io/cardsync-api-docs`.
+
 Features
 ------------
 
