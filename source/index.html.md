@@ -1909,7 +1909,7 @@ Add New Merchant
 |user|[User](#schemauser)|true|none|none|
 |accept_tos|boolean|true|none|none|
 
-<h2 id="tocS_PrimaryContact">PrimaryContact</h2>
+<h2 id="tocS_PrimaryContact">Primary Contact</h2>
 <!-- backwards compatibility -->
 <a id="schemaprimarycontact"></a>
 <a id="schema_PrimaryContact"></a>
@@ -1933,7 +1933,7 @@ Add New Merchant
 
 ```
 
-PrimaryContact
+Primary Contact
 
 ### Properties
 
@@ -1981,7 +1981,7 @@ User
 |role|string|true|none|none|
 |create_api_key|boolean|true|none|none|
 
-<h2 id="tocS_Addanewmerchant-200OK">Addanewmerchant-200OK</h2>
+<h2 id="tocS_Addanewmerchant-200OK">Add New Merchant - 200 OK</h2>
 <!-- backwards compatibility -->
 <a id="schemaaddanewmerchant-200ok"></a>
 <a id="schema_Addanewmerchant-200OK"></a>
@@ -2046,7 +2046,7 @@ User
 
 ```
 
-Addanewmerchant-200OK
+Add New Merchant - 200 OK
 
 ### Properties
 
@@ -2135,8 +2135,8 @@ Data
 |status|string|true|none|none|
 |fee_schedule_id|string|true|none|none|
 |logo_url|string|true|none|none|
-|primary_contact|[PrimaryContact1](#schemaprimarycontact1)|true|none|none|
-|billing_contact|[BillingContact](#schemabillingcontact)|true|none|none|
+|primary_contact|[Primary Contact](#schemaprimarycontact1)|true|none|none|
+|billing_contact|[Billing Contact](#schemabillingcontact)|true|none|none|
 |billing|string¦null|true|none|none|
 |api_key|string|true|none|none|
 |tos_accepted_by|string|true|none|none|
@@ -2144,7 +2144,7 @@ Data
 |created_at|string|true|none|none|
 |tos_last_accepted_at|string|true|none|none|
 
-<h2 id="tocS_PrimaryContact1">PrimaryContact1</h2>
+<h2 id="tocS_PrimaryContact1">Primary Contact</h2>
 <!-- backwards compatibility -->
 <a id="schemaprimarycontact1"></a>
 <a id="schema_PrimaryContact1"></a>
@@ -2170,7 +2170,7 @@ Data
 
 ```
 
-PrimaryContact1
+Primary Contact
 
 ### Properties
 
@@ -2190,7 +2190,7 @@ PrimaryContact1
 |fax|string|true|none|none|
 |email|string|true|none|none|
 
-<h2 id="tocS_BillingContact">BillingContact</h2>
+<h2 id="tocS_BillingContact">Billing Contact</h2>
 <!-- backwards compatibility -->
 <a id="schemabillingcontact"></a>
 <a id="schema_BillingContact"></a>
@@ -2216,7 +2216,7 @@ PrimaryContact1
 
 ```
 
-BillingContact
+Billing Contact
 
 ### Properties
 
