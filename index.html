@@ -357,7 +357,7 @@
             <a href="#schemas" class="toc-h1 toc-link" data-title="Schemas">Schemas</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#tocS_AddanewmerchantRequest" class="toc-h2 toc-link" data-title="AddanewmerchantRequest">AddanewmerchantRequest</a>
+                    <a href="#tocS_AddanewmerchantRequest" class="toc-h2 toc-link" data-title="Add New Merchant">Add New Merchant</a>
                   </li>
                   <li>
                     <a href="#tocS_PrimaryContact" class="toc-h2 toc-link" data-title="PrimaryContact">PrimaryContact</a>
@@ -800,12 +800,6 @@ curl <span class="nt">-X</span> POST https://sandbox.cardsync.io/api/merchant <s
 <td>OK</td>
 <td><a href="#schemaaddanewmerchant-200ok">Add New Merchant - 200 OK</a></td>
 </tr>
-<tr>
-<td>401</td>
-<td><a href="https://tools.ietf.org/html/rfc7235#section-3.1">Unauthorized</a></td>
-<td>Unauthorized</td>
-<td><a href="#schemaaddanewmerchant-401unauthorized1">Add New Merchant - 401 Unauthorized</a></td>
-</tr>
 </tbody></table>
 
 <aside class="warning">
@@ -1011,108 +1005,6 @@ curl <span class="nt">-X</span> POST https://sandbox.cardsync.io/api/accept-tos 
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>OK</td>
 <td><a href="#schemaaccepttermsofservice-200ok">Accept  Terms of Service - 200 OK</a></td>
-</tr>
-</tbody></table>
-<h3 id='response-headers'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Date</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Content-Length</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Connection</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Set-Cookie</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Cache-Control</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Strict-Transport-Security</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>CF-Cache-Status</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>cf-request-id</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Expect-CT</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>X-Content-Type-Options</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Server</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>CF-RAY</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>alt-svc</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -1363,38 +1255,6 @@ curl <span class="nt">-X</span> POST https://sandbox.cardsync.io/api/cardsync/en
 <td><a href="#schemarequestenrollment-200okactive">Request Enrollment - 200 OK Active</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-2'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Content-Length</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Date</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Connection</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-</tbody></table>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1573,38 +1433,6 @@ curl <span class="nt">-X</span> GET https://sandbox.cardsync.io/api/cardsync/enr
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>OK</td>
 <td><a href="#schemaretrieveenrollmentstatus-200ok">Retrieve Enrollment Status - 200 OK</a></td>
-</tr>
-</tbody></table>
-<h3 id='response-headers-3'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Content-Length</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Date</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Connection</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
 </tr>
 </tbody></table>
 
@@ -2032,38 +1860,6 @@ curl <span class="nt">-X</span> POST https://sandbox.cardsync.io/api/cardsync/ba
 <td><a href="#schemacreatesabatchofcardsforupdates-200ok">Create Batch of Cards for Update - 200 OK</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-4'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Content-Length</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Date</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Connection</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-</tbody></table>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -2268,59 +2064,6 @@ curl <span class="nt">-X</span> GET https://sandbox.cardsync.io/api/cardsync/bat
 </tbody></table>
 
 <h3 id="retrieves-the-status-of-a-batch-responseschema">Response Schema</h3>
-<h3 id='response-headers-5'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Content-Length</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Date</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Connection</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Content-Length</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Date</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Connection</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-</tbody></table>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -2525,45 +2268,13 @@ curl <span class="nt">-X</span> GET https://sandbox.cardsync.io/api/cardsync/bat
 <td><a href="#schemaretrievebatchresults-200ok">Retrieve Batch Results - 200 OK</a></td>
 </tr>
 </tbody></table>
-<h3 id='response-headers-6'>Response Headers</h3>
-<table><thead>
-<tr>
-<th>Status</th>
-<th>Header</th>
-<th>Type</th>
-<th>Format</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>200</td>
-<td>Content-Length</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Date</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-<tr>
-<td>200</td>
-<td>Connection</td>
-<td>undefined</td>
-<td></td>
-<td>none</td>
-</tr>
-</tbody></table>
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 Authorization
 </aside>
 <h1 id='schemas'>Schemas</h1>
-<h2 id="tocS_AddanewmerchantRequest">AddanewmerchantRequest</h2>
+<h2 id="tocS_AddanewmerchantRequest">Add New Merchant</h2>
 
 <!-- backwards compatibility -->
 
@@ -2604,7 +2315,7 @@ Authorization
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>AddanewmerchantRequest</p>
+<p>Add New Merchant</p>
 <h3 id='properties'>Properties</h3>
 <table><thead>
 <tr>
@@ -2619,7 +2330,7 @@ Authorization
 <td>name</td>
 <td>string</td>
 <td>true</td>
-<td>none</td>
+<td>must be globally unique</td>
 <td>none</td>
 </tr>
 <tr>
