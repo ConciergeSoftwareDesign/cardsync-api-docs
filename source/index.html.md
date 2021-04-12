@@ -363,7 +363,6 @@ This endpoint is used to create a new Merchant on our platform. The details prov
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Add New Merchant - 200 OK](#schemaaddanewmerchant-200ok)|
-|401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[Add New Merchant - 401 Unauthorized](#schemaaddanewmerchant-401unauthorized1)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -570,24 +569,6 @@ During merchant creation, an enrollment_url is provided which provides the CardS
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Accept  Terms of Service - 200 OK](#schemaaccepttermsofservice-200ok)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|Date|undefined||none|
-|200|Content-Length|undefined||none|
-|200|Connection|undefined||none|
-|200|Set-Cookie|undefined||none|
-|200|Cache-Control|undefined||none|
-|200|Strict-Transport-Security|undefined||none|
-|200|CF-Cache-Status|undefined||none|
-|200|cf-request-id|undefined||none|
-|200|Expect-CT|undefined||none|
-|200|X-Content-Type-Options|undefined||none|
-|200|Server|undefined||none|
-|200|CF-RAY|undefined||none|
-|200|alt-svc|undefined||none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -837,14 +818,6 @@ Once the Card Brands have confirmed a Merchant has been approved and enrolled fo
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Request Enrollment - 200 OK Active](#schemarequestenrollment-200okactive)|
 
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|Content-Length|undefined||none|
-|200|Date|undefined||none|
-|200|Connection|undefined||none|
-
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 Authorization
@@ -1037,14 +1010,6 @@ Returns the current status of the Merchant's requested enrollment. This will let
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Retrieve Enrollment Status - 200 OK](#schemaretrieveenrollmentstatus-200ok)|
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|Content-Length|undefined||none|
-|200|Date|undefined||none|
-|200|Connection|undefined||none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1476,14 +1441,6 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Create Batch of Cards for Update - 200 OK](#schemacreatesabatchofcardsforupdates-200ok)|
 
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|Content-Length|undefined||none|
-|200|Date|undefined||none|
-|200|Connection|undefined||none|
-
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 Authorization
@@ -1681,17 +1638,6 @@ Retrieve the status of a batch. Batches in the sandbox will be completed within 
 |404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
 
 <h3 id="retrieves-the-status-of-a-batch-responseschema">Response Schema</h3>
-
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|Content-Length|undefined||none|
-|200|Date|undefined||none|
-|200|Connection|undefined||none|
-|404|Content-Length|undefined||none|
-|404|Date|undefined||none|
-|404|Connection|undefined||none|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1896,14 +1842,6 @@ Retrieves a completed batch. Included with the batch results is the statistical 
 |---|---|---|---|
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Retrieve Batch Results - 200 OK](#schemaretrievebatchresults-200ok)|
 
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|Content-Length|undefined||none|
-|200|Date|undefined||none|
-|200|Connection|undefined||none|
-
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 Authorization
@@ -1911,7 +1849,7 @@ Authorization
 
 # Schemas
 
-<h2 id="tocS_AddanewmerchantRequest">AddanewmerchantRequest</h2>
+<h2 id="tocS_AddanewmerchantRequest">Add New Merchant</h2>
 <!-- backwards compatibility -->
 <a id="schemaaddanewmerchantrequest"></a>
 <a id="schema_AddanewmerchantRequest"></a>
@@ -1953,13 +1891,13 @@ Authorization
 
 ```
 
-AddanewmerchantRequest
+Add New Merchant
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|name|string|true|none|none|
+|name|string|true|must be globally unique|none|
 |description|string|true|none|none|
 |website|string|true|none|none|
 |phone|string|true|none|none|
