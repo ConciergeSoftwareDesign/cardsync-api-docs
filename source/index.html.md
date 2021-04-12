@@ -365,23 +365,6 @@ This endpoint is used to create a new Merchant on our platform. The details prov
 |200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Add New Merchant - 200 OK](#schemaaddanewmerchant-200ok)|
 |401|[Unauthorized](https://tools.ietf.org/html/rfc7235#section-3.1)|Unauthorized|[Add New Merchant - 401 Unauthorized](#schemaaddanewmerchant-401unauthorized1)|
 
-### Response Headers
-
-|Status|Header|Type|Format|Description|
-|---|---|---|---|---|
-|200|Vary|undefined||none|
-|200|Content-Encoding|undefined||none|
-|200|Date|undefined||none|
-|200|Content-Length|undefined||none|
-|200|Connection|undefined||none|
-|401|Date|undefined||none|
-|401|Content-Length|undefined||none|
-|401|Connection|undefined||none|
-|401|Cache-Control|undefined||none|
-|401|Strict-Transport-Security|undefined||none|
-|401|X-Content-Type-Options|undefined||none|
-|401|X-XSS-Protection|undefined||none|
-
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 Authorization
