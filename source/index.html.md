@@ -2236,31 +2236,7 @@ Billing Contact
 |fax|string|true|none|none|
 |email|string|true|none|none|
 
-<h2 id="tocS_Addanewmerchant-401Unauthorized1">Addanewmerchant-401Unauthorized1</h2>
-<!-- backwards compatibility -->
-<a id="schemaaddanewmerchant-401unauthorized1"></a>
-<a id="schema_Addanewmerchant-401Unauthorized1"></a>
-<a id="tocSaddanewmerchant-401unauthorized1"></a>
-<a id="tocsaddanewmerchant-401unauthorized1"></a>
-
-```json
-{
-  "status": "failed",
-  "msg": "unauthorized"
-}
-
-```
-
-Addanewmerchant-401Unauthorized1
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|status|string|true|none|none|
-|msg|string|true|none|none|
-
-<h2 id="tocS_AcceptTermsofServiceRequest">AcceptTermsofServiceRequest</h2>
+<h2 id="tocS_AcceptTermsofServiceRequest">Accept Terms of Service</h2>
 <!-- backwards compatibility -->
 <a id="schemaaccepttermsofservicerequest"></a>
 <a id="schema_AcceptTermsofServiceRequest"></a>
@@ -2279,7 +2255,7 @@ Addanewmerchant-401Unauthorized1
 
 ```
 
-AcceptTermsofServiceRequest
+Accept Terms of Service
 
 ### Properties
 
@@ -2292,31 +2268,7 @@ AcceptTermsofServiceRequest
 |type|string|true|none|none|
 |version|integer(int32)|true|none|none|
 
-<h2 id="tocS_AcceptTermsofService-200OK">AcceptTermsofService-200OK</h2>
-<!-- backwards compatibility -->
-<a id="schemaaccepttermsofservice-200ok"></a>
-<a id="schema_AcceptTermsofService-200OK"></a>
-<a id="tocSaccepttermsofservice-200ok"></a>
-<a id="tocsaccepttermsofservice-200ok"></a>
-
-```json
-{
-  "status": "success",
-  "msg": "success"
-}
-
-```
-
-AcceptTermsofService-200OK
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|status|string|true|none|none|
-|msg|string|true|none|none|
-
-<h2 id="tocS_RequestEnrollmentRequest">RequestEnrollmentRequest</h2>
+<h2 id="tocS_RequestEnrollmentRequest">Request Enrollment</h2>
 <!-- backwards compatibility -->
 <a id="schemarequestenrollmentrequest"></a>
 <a id="schema_RequestEnrollmentRequest"></a>
@@ -2338,7 +2290,7 @@ AcceptTermsofService-200OK
 
 ```
 
-RequestEnrollmentRequest
+Request Enrollment
 
 ### Properties
 
@@ -2353,97 +2305,6 @@ RequestEnrollmentRequest
 |number_of_amex|integer(int32)|true|none|none|
 |delivery_frequency|string|true|none|none|
 |mcc|string|true|none|none|
-
-<h2 id="tocS_RequestEnrollment-200OKActive">RequestEnrollment-200OKActive</h2>
-<!-- backwards compatibility -->
-<a id="schemarequestenrollment-200okactive"></a>
-<a id="schema_RequestEnrollment-200OKActive"></a>
-<a id="tocSrequestenrollment-200okactive"></a>
-<a id="tocsrequestenrollment-200okactive"></a>
-
-```json
-{
-  "status": "success",
-  "msg": "success",
-  "data": {
-    "id": "bqgbm86g10l2fm2bv7n1",
-    "type": "cardsync",
-    "details": {
-      "legal_business_name": "Full Legal Name of Merchant",
-      "type_of_biller": "both",
-      "total_number_of_records": 400,
-      "number_of_visa": 100,
-      "number_of_mastercard": 100,
-      "number_of_discover": 100,
-      "number_of_amex": 100,
-      "delivery_frequency": "monthly",
-      "mcc": "5968"
-    },
-    "status": "active",
-    "created_at": "2020-04-22T21:46:08.448148Z",
-    "updated_at": "2020-04-22T21:46:08.448148Z",
-    "activated_at": null,
-    "deactivated_at": null
-  }
-}
-
-```
-
-RequestEnrollment-200OKActive
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|status|string|true|none|none|
-|msg|string|true|none|none|
-|data|[Data1](#schemadata1)|true|none|none|
-
-<h2 id="tocS_Data1">Data1</h2>
-<!-- backwards compatibility -->
-<a id="schemadata1"></a>
-<a id="schema_Data1"></a>
-<a id="tocSdata1"></a>
-<a id="tocsdata1"></a>
-
-```json
-{
-  "id": "bqgbm86g10l2fm2bv7n1",
-  "type": "cardsync",
-  "details": {
-    "legal_business_name": "Full Legal Name of Merchant",
-    "type_of_biller": "both",
-    "total_number_of_records": 400,
-    "number_of_visa": 100,
-    "number_of_mastercard": 100,
-    "number_of_discover": 100,
-    "number_of_amex": 100,
-    "delivery_frequency": "monthly",
-    "mcc": "5968"
-  },
-  "status": "active",
-  "created_at": "2020-04-22T21:46:08.448148Z",
-  "updated_at": "2020-04-22T21:46:08.448148Z",
-  "activated_at": null,
-  "deactivated_at": null
-}
-
-```
-
-Data1
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|id|string|true|none|none|
-|type|string|true|none|none|
-|details|[Details](#schemadetails)|true|none|none|
-|status|string|true|none|none|
-|created_at|string|true|none|none|
-|updated_at|string|true|none|none|
-|activated_at|string¦null|true|none|none|
-|deactivated_at|string¦null|true|none|none|
 
 <h2 id="tocS_Details">Details</h2>
 <!-- backwards compatibility -->
@@ -2482,142 +2343,6 @@ Details
 |number_of_amex|integer(int32)|true|none|none|
 |delivery_frequency|string|true|none|none|
 |mcc|string|true|none|none|
-
-<h2 id="tocS_RequestEnrollment-200OKPending_Activation">RequestEnrollment-200OKPending_Activation</h2>
-<!-- backwards compatibility -->
-<a id="schemarequestenrollment-200okpending_activation"></a>
-<a id="schema_RequestEnrollment-200OKPending_Activation"></a>
-<a id="tocSrequestenrollment-200okpending_activation"></a>
-<a id="tocsrequestenrollment-200okpending_activation"></a>
-
-```json
-{
-  "status": "success",
-  "msg": "success",
-  "data": {
-    "id": "bqgbm86g10l2fm2bv7n1",
-    "type": "cardsync",
-    "details": {
-      "legal_business_name": "Full Legal Name of Merchant",
-      "type_of_biller": "both",
-      "total_number_of_records": 400,
-      "number_of_visa": 100,
-      "number_of_mastercard": 100,
-      "number_of_discover": 100,
-      "number_of_amex": 100,
-      "delivery_frequency": "monthly",
-      "mcc": "5968"
-    },
-    "status": "pending_activation",
-    "created_at": "2020-04-22T21:46:08.448148Z",
-    "updated_at": "2020-04-22T21:46:08.448148Z",
-    "activated_at": null,
-    "deactivated_at": null
-  }
-}
-
-```
-
-RequestEnrollment-200OKPending_Activation
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|status|string|true|none|none|
-|msg|string|true|none|none|
-|data|[Data1](#schemadata1)|true|none|none|
-
-<h2 id="tocS_RetrieveEnrollmentstatus-200OK">RetrieveEnrollmentstatus-200OK</h2>
-<!-- backwards compatibility -->
-<a id="schemaretrieveenrollmentstatus-200ok"></a>
-<a id="schema_RetrieveEnrollmentstatus-200OK"></a>
-<a id="tocSretrieveenrollmentstatus-200ok"></a>
-<a id="tocsretrieveenrollmentstatus-200ok"></a>
-
-```json
-{
-  "status": "success",
-  "msg": "success",
-  "data": {
-    "id": "bqgbm86g10l2fm2bv7n1",
-    "type": "cardsync",
-    "details": {
-      "legal_business_name": "test merchant inc",
-      "type_of_biller": "both",
-      "total_number_of_records": 400,
-      "number_of_visa": 100,
-      "number_of_mastercard": 100,
-      "number_of_discover": 100,
-      "number_of_amex": 100,
-      "delivery_frequency": "monthly",
-      "mcc": "5968"
-    },
-    "status": "active",
-    "created_at": "2020-04-22T21:46:08.448148Z",
-    "updated_at": "2020-04-22T21:46:08.448148Z",
-    "activated_at": "2020-04-22T21:46:08.448148Z",
-    "deactivated_at": null
-  }
-}
-
-```
-
-RetrieveEnrollmentstatus-200OK
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|status|string|true|none|none|
-|msg|string|true|none|none|
-|data|[Data3](#schemadata3)|true|none|none|
-
-<h2 id="tocS_Data3">Data3</h2>
-<!-- backwards compatibility -->
-<a id="schemadata3"></a>
-<a id="schema_Data3"></a>
-<a id="tocSdata3"></a>
-<a id="tocsdata3"></a>
-
-```json
-{
-  "id": "bqgbm86g10l2fm2bv7n1",
-  "type": "cardsync",
-  "details": {
-    "legal_business_name": "test merchant inc",
-    "type_of_biller": "both",
-    "total_number_of_records": 400,
-    "number_of_visa": 100,
-    "number_of_mastercard": 100,
-    "number_of_discover": 100,
-    "number_of_amex": 100,
-    "delivery_frequency": "monthly",
-    "mcc": "5968"
-  },
-  "status": "active",
-  "created_at": "2020-04-22T21:46:08.448148Z",
-  "updated_at": "2020-04-22T21:46:08.448148Z",
-  "activated_at": "2020-04-22T21:46:08.448148Z",
-  "deactivated_at": null
-}
-
-```
-
-Data3
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|id|string|true|none|none|
-|type|string|true|none|none|
-|details|[Details](#schemadetails)|true|none|none|
-|status|string|true|none|none|
-|created_at|string|true|none|none|
-|updated_at|string|true|none|none|
-|activated_at|string|true|none|none|
-|deactivated_at|string¦null|true|none|none|
 
 <h2 id="tocS_CreatesbatchofcardsforupdatesRequest">CreatesbatchofcardsforupdatesRequest</h2>
 <!-- backwards compatibility -->
