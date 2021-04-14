@@ -2344,7 +2344,7 @@ Details
 |delivery_frequency|string|true|none|none|
 |mcc|string|true|none|none|
 
-<h2 id="tocS_CreatesbatchofcardsforupdatesRequest">CreatesbatchofcardsforupdatesRequest</h2>
+<h2 id="tocS_CreatesbatchofcardsforupdatesRequest">Create Batch for Updates</h2>
 <!-- backwards compatibility -->
 <a id="schemacreatesbatchofcardsforupdatesrequest"></a>
 <a id="schema_CreatesbatchofcardsforupdatesRequest"></a>
@@ -2449,7 +2449,7 @@ Details
 
 ```
 
-CreatesbatchofcardsforupdatesRequest
+Create Batch for Updates
 
 ### Properties
 
@@ -2482,47 +2482,6 @@ Card
 |id|string|true|none|none|
 |card|string|true|none|none|
 |exp|string|true|none|none|
-
-<h2 id="tocS_Createsabatchofcardsforupdates-200OK">Createsabatchofcardsforupdates-200OK</h2>
-<!-- backwards compatibility -->
-<a id="schemacreatesabatchofcardsforupdates-200ok"></a>
-<a id="schema_Createsabatchofcardsforupdates-200OK"></a>
-<a id="tocScreatesabatchofcardsforupdates-200ok"></a>
-<a id="tocscreatesabatchofcardsforupdates-200ok"></a>
-
-```json
-{
-  "status": "success",
-  "msg": "success",
-  "data": {
-    "batch_id": "bqgbm86g10l2fm2bv7n0",
-    "status": "pending",
-    "stats": {
-      "number_submitted": 0,
-      "no_change": 0,
-      "updated_card": 0,
-      "updated_expiry": 0,
-      "no_match": 0,
-      "valid": 0,
-      "contact": 0,
-      "contact_closed": 0
-    },
-    "created_at": "2020-04-22T21:46:08.448148Z",
-    "updated_at": "2020-04-22T21:46:08.448148Z"
-  }
-}
-
-```
-
-Createsabatchofcardsforupdates-200OK
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|status|string|true|none|none|
-|msg|string|true|none|none|
-|data|[Data4](#schemadata4)|true|none|none|
 
 <h2 id="tocS_Data4">Data4</h2>
 <!-- backwards compatibility -->
