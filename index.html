@@ -318,7 +318,7 @@
             <a href="#cardsync-universal-account-updater-merchant" class="toc-h1 toc-link" data-title="Merchant">Merchant</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#add-a-new-merchant" class="toc-h2 toc-link" data-title="Add a new merchant">Add a new merchant</a>
+                    <a href="#add-new-merchant" class="toc-h2 toc-link" data-title="Add New Merchant">Add New Merchant</a>
                   </li>
                   <li>
                     <a href="#accept-terms-of-service" class="toc-h2 toc-link" data-title="Accept Terms of Service">Accept Terms of Service</a>
@@ -364,9 +364,6 @@
                   </li>
                   <li>
                     <a href="#tocS_User" class="toc-h2 toc-link" data-title="User">User</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_Addanewmerchant-200OK" class="toc-h2 toc-link" data-title="Add New Merchant - 200 OK">Add New Merchant - 200 OK</a>
                   </li>
                   <li>
                     <a href="#tocS_Data" class="toc-h2 toc-link" data-title="Data">Data</a>
@@ -477,7 +474,7 @@
 <p>During the merchant creation process, you can optionally display Terms of Service (TOS) for the merchant to accept. If the TOS has already been incorporated into your agreement with the merchant, you may skip this step.</p>
 
 <p>If you want the TOS, please set the &quot;accept_tos&quot; flag to &quot;false&quot; when calling the /merchant POST. If you set it to true, the merchant creation will happen immediately. If you set accept_tos to false, you can then call /accept-tos after the merchant has accepted the TOS.</p>
-<h2 id='add-a-new-merchant'>Add a new merchant</h2>
+<h2 id='add-new-merchant'>Add New Merchant</h2>
 <p><a id="opIdAddanewmerchant"></a></p>
 
 <blockquote>
@@ -1784,7 +1781,7 @@ curl <span class="nt">-X</span> POST https://sandbox.cardsync.io/api/cardsync/ba
 <tr>
 <td>body</td>
 <td>body</td>
-<td><a href="#schemacreatesbatchofcardsforupdatesrequest">Create Batch of Cards for Update</a></td>
+<td><a href="#schemacreatesbatchofcardsforupdatesrequest">Create Card Batch</a></td>
 <td>true</td>
 <td>none</td>
 </tr>
@@ -2556,104 +2553,6 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Addanewmerchant-200OK">Add New Merchant - 200 OK</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemaaddanewmerchant-200ok"></a>
-<a id="schema_Addanewmerchant-200OK"></a>
-<a id="tocSaddanewmerchant-200ok"></a>
-<a id="tocsaddanewmerchant-200ok"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"success"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bqgbm86g10l2fm2bv7n0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"partner_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bqgblveg10l2b5dhg0ig"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Merchant"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is a new merchant that is getting setup"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555555555"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"phone_ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"receipt_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fee_schedule_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bqgblveg10l2b5dhg0l0"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"logo_url"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"primary_contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Camille"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bauch"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schaefer, Lakin and Heathcote"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"188 Turnpikefort"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Langoshfort"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VI"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31018"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7177546366"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phone_ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"fax"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"billing_contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Camille"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bauch"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schaefer, Lakin and Heathcote"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"188 Turnpikefort"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Langoshfort"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VI"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31018"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7177546366"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"phone_ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"fax"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="w">
-    </span><span class="p">},</span><span class="w">
-    </span><span class="nl">"billing"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api_1auidmDFdMslUz2R5PSwVFSEfmP"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tos_accepted_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Partner / Test Partner"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tos_accepted_by_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test_partner"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-22T21:46:08.448148Z"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"tos_last_accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-22T21:46:08Z"</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div>
-<p>Add New Merchant - 200 OK</p>
-<h3 id='properties-4'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>msg</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>data</td>
-<td><a href="#schemadata">Data</a></td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
 <h2 id="tocS_Data">Data</h2>
 
 <!-- backwards compatibility -->
@@ -2715,7 +2614,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Data</p>
-<h3 id='properties-5'>Properties</h3>
+<h3 id='properties-4'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2893,7 +2792,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Primary Contact</p>
-<h3 id='properties-6'>Properties</h3>
+<h3 id='properties-5'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3022,7 +2921,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Billing Contact</p>
-<h3 id='properties-7'>Properties</h3>
+<h3 id='properties-6'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3144,7 +3043,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Accept Terms of Service</p>
-<h3 id='properties-8'>Properties</h3>
+<h3 id='properties-7'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3220,7 +3119,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Request Enrollment</p>
-<h3 id='properties-9'>Properties</h3>
+<h3 id='properties-8'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3317,7 +3216,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Details</p>
-<h3 id='properties-10'>Properties</h3>
+<h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3496,8 +3395,8 @@ Authorization
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>Create Batch for Updates</p>
-<h3 id='properties-11'>Properties</h3>
+<p>Create Card Batch</p>
+<h3 id='properties-10'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3532,7 +3431,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Card</p>
-<h3 id='properties-12'>Properties</h3>
+<h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3586,7 +3485,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Stats</p>
-<h3 id='properties-13'>Properties</h3>
+<h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3685,7 +3584,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Retrievesthestatusofabatch-200OK</p>
-<h3 id='properties-14'>Properties</h3>
+<h3 id='properties-13'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3733,7 +3632,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Retrievesbatchstatus-200OK-InvalidID</p>
-<h3 id='properties-15'>Properties</h3>
+<h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3798,7 +3697,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Retrievebatchresults-200OK</p>
-<h3 id='properties-16'>Properties</h3>
+<h3 id='properties-15'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3866,7 +3765,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Data6</p>
-<h3 id='properties-17'>Properties</h3>
+<h3 id='properties-16'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3937,7 +3836,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Card1</p>
-<h3 id='properties-18'>Properties</h3>
+<h3 id='properties-17'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
