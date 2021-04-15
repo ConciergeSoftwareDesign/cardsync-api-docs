@@ -2483,45 +2483,6 @@ Card
 |card|string|true|none|none|
 |exp|string|true|none|none|
 
-<h2 id="tocS_Data4">Data4</h2>
-<!-- backwards compatibility -->
-<a id="schemadata4"></a>
-<a id="schema_Data4"></a>
-<a id="tocSdata4"></a>
-<a id="tocsdata4"></a>
-
-```json
-{
-  "batch_id": "bqgbm86g10l2fm2bv7n0",
-  "status": "pending",
-  "stats": {
-    "number_submitted": 0,
-    "no_change": 0,
-    "updated_card": 0,
-    "updated_expiry": 0,
-    "no_match": 0,
-    "valid": 0,
-    "contact": 0,
-    "contact_closed": 0
-  },
-  "created_at": "2020-04-22T21:46:08.448148Z",
-  "updated_at": "2020-04-22T21:46:08.448148Z"
-}
-
-```
-
-Data4
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|batch_id|string|true|none|none|
-|status|string|true|none|none|
-|stats|[Stats](#schemastats)|true|none|none|
-|created_at|string|true|none|none|
-|updated_at|string|true|none|none|
-
 <h2 id="tocS_Stats">Stats</h2>
 <!-- backwards compatibility -->
 <a id="schemastats"></a>
