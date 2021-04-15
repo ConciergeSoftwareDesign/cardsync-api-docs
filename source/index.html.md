@@ -67,7 +67,7 @@ During the merchant creation process, you can optionally display Terms of Servic
 
 If you want the TOS, please set the "accept_tos" flag to "false" when calling the /merchant POST. If you set it to true, the merchant creation will happen immediately. If you set accept_tos to false, you can then call /accept-tos after the merchant has accepted the TOS.
 
-## Add a new merchant
+## Add New Merchant
 
 <a id="opIdAddanewmerchant"></a>
 
@@ -1406,7 +1406,7 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[Create Batch of Cards for Update](#schemacreatesbatchofcardsforupdatesrequest)|true|none|
+|body|body|[Create Card Batch](#schemacreatesbatchofcardsforupdatesrequest)|true|none|
 
 > Example responses
 
@@ -1981,81 +1981,6 @@ User
 |role|string|true|none|none|
 |create_api_key|boolean|true|none|none|
 
-<h2 id="tocS_Addanewmerchant-200OK">Add New Merchant - 200 OK</h2>
-<!-- backwards compatibility -->
-<a id="schemaaddanewmerchant-200ok"></a>
-<a id="schema_Addanewmerchant-200OK"></a>
-<a id="tocSaddanewmerchant-200ok"></a>
-<a id="tocsaddanewmerchant-200ok"></a>
-
-```json
-{
-  "status": "success",
-  "msg": "success",
-  "data": {
-    "id": "bqgbm86g10l2fm2bv7n0",
-    "partner_id": "bqgblveg10l2b5dhg0ig",
-    "name": "New Merchant",
-    "description": "this is a new merchant that is getting setup",
-    "website": "example.com",
-    "phone": "5555555555",
-    "phone_ext": "",
-    "receipt_email": "test@example.com",
-    "timezone": "UTC",
-    "status": "active",
-    "fee_schedule_id": "bqgblveg10l2b5dhg0l0",
-    "logo_url": "",
-    "primary_contact": {
-      "first_name": "Camille",
-      "last_name": "Bauch",
-      "company": "Schaefer, Lakin and Heathcote",
-      "address_line_1": "188 Turnpikefort",
-      "address_line_2": "",
-      "city": "Langoshfort",
-      "state": "VI",
-      "postal_code": "31018",
-      "country": "US",
-      "phone": "7177546366",
-      "phone_ext": "",
-      "fax": "",
-      "email": "test@example.com"
-    },
-    "billing_contact": {
-      "first_name": "Camille",
-      "last_name": "Bauch",
-      "company": "Schaefer, Lakin and Heathcote",
-      "address_line_1": "188 Turnpikefort",
-      "address_line_2": "",
-      "city": "Langoshfort",
-      "state": "VI",
-      "postal_code": "31018",
-      "country": "US",
-      "phone": "7177546366",
-      "phone_ext": "",
-      "fax": "",
-      "email": "test@example.com"
-    },
-    "billing": null,
-    "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
-    "tos_accepted_by": "Test Partner / Test Partner",
-    "tos_accepted_by_username": "test_partner",
-    "created_at": "2020-04-22T21:46:08.448148Z",
-    "tos_last_accepted_at": "2020-04-22T21:46:08Z"
-  }
-}
-
-```
-
-Add New Merchant - 200 OK
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|status|string|true|none|none|
-|msg|string|true|none|none|
-|data|[Data](#schemadata)|true|none|none|
-
 <h2 id="tocS_Data">Data</h2>
 <!-- backwards compatibility -->
 <a id="schemadata"></a>
@@ -2449,7 +2374,7 @@ Details
 
 ```
 
-Create Batch for Updates
+Create Card Batch
 
 ### Properties
 
