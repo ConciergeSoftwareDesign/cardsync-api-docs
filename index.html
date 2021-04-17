@@ -340,16 +340,16 @@
             <a href="#cardsync-universal-account-updater-batch" class="toc-h1 toc-link" data-title="Batch">Batch</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#creates-batch-of-cards-for-updates" class="toc-h2 toc-link" data-title="Creates batch of cards for updates">Creates batch of cards for updates</a>
+                    <a href="#create-card-batch" class="toc-h2 toc-link" data-title="Create Card Batch">Create Card Batch</a>
                   </li>
                   <li>
-                    <a href="#test-data" class="toc-h2 toc-link" data-title="Test Data">Test Data</a>
+                    <a href="#test-data-sandbox-only" class="toc-h2 toc-link" data-title="Test Data (Sandbox only)">Test Data (Sandbox only)</a>
                   </li>
                   <li>
-                    <a href="#retrieves-the-status-of-a-batch" class="toc-h2 toc-link" data-title="Retrieves the status of a batch">Retrieves the status of a batch</a>
+                    <a href="#retrieve-batch-status" class="toc-h2 toc-link" data-title="Retrieve Batch Status">Retrieve Batch Status</a>
                   </li>
                   <li>
-                    <a href="#retrieve-batch-results" class="toc-h2 toc-link" data-title="Retrieve batch results">Retrieve batch results</a>
+                    <a href="#retrieve-batch-results" class="toc-h2 toc-link" data-title="Retrieve Batch Results">Retrieve Batch Results</a>
                   </li>
               </ul>
           </li>
@@ -369,9 +369,6 @@
                     <a href="#tocS_Data" class="toc-h2 toc-link" data-title="Data">Data</a>
                   </li>
                   <li>
-                    <a href="#tocS_PrimaryContact1" class="toc-h2 toc-link" data-title="Primary Contact">Primary Contact</a>
-                  </li>
-                  <li>
                     <a href="#tocS_BillingContact" class="toc-h2 toc-link" data-title="Billing Contact">Billing Contact</a>
                   </li>
                   <li>
@@ -384,7 +381,7 @@
                     <a href="#tocS_Details" class="toc-h2 toc-link" data-title="Details">Details</a>
                   </li>
                   <li>
-                    <a href="#tocS_CreatesbatchofcardsforupdatesRequest" class="toc-h2 toc-link" data-title="Create Batch for Updates">Create Batch for Updates</a>
+                    <a href="#tocS_CreatesbatchofcardsforupdatesRequest" class="toc-h2 toc-link" data-title="Create Card Batch">Create Card Batch</a>
                   </li>
                   <li>
                     <a href="#tocS_Card" class="toc-h2 toc-link" data-title="Card">Card</a>
@@ -393,19 +390,10 @@
                     <a href="#tocS_Stats" class="toc-h2 toc-link" data-title="Stats">Stats</a>
                   </li>
                   <li>
-                    <a href="#tocS_Retrievesthestatusofabatch-200OK" class="toc-h2 toc-link" data-title="Retrievesthestatusofabatch-200OK">Retrievesthestatusofabatch-200OK</a>
+                    <a href="#tocS_Retrievesthestatusofabatch-200OK" class="toc-h2 toc-link" data-title="Retrieve Batch Status">Retrieve Batch Status</a>
                   </li>
                   <li>
-                    <a href="#tocS_Retrievesbatchstatus-200OK-InvalidID" class="toc-h2 toc-link" data-title="Retrievesbatchstatus-200OK-InvalidID">Retrievesbatchstatus-200OK-InvalidID</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_Retrievebatchresults-200OK" class="toc-h2 toc-link" data-title="Retrievebatchresults-200OK">Retrievebatchresults-200OK</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_Data6" class="toc-h2 toc-link" data-title="Data6">Data6</a>
-                  </li>
-                  <li>
-                    <a href="#tocS_Card1" class="toc-h2 toc-link" data-title="Card1">Card1</a>
+                    <a href="#tocS_Retrievebatchresults-200OK" class="toc-h2 toc-link" data-title="Batch Results">Batch Results</a>
                   </li>
               </ul>
           </li>
@@ -1418,7 +1406,7 @@ Authorization
 <p>Best practice for recurring billing (e.g. subscriptions) is to submit on a daily or weekly basis any cards being billed in the next one to two weeks. For Merchants with payment data on file, we recommend submitting those based on your average time between transactions.</p>
 
 <p>Once submitted, the Card Issuers will start to return updates. In sandbox, all results (updates and/or status responses) are completed within one hour. In production, it will take 3-5 calendar days for a batch to complete. </p>
-<h2 id='creates-batch-of-cards-for-updates'>Creates batch of cards for updates</h2>
+<h2 id='create-card-batch'>Create Card Batch</h2>
 <p><a id="opIdCreatesbatchofcardsforupdates"></a></p>
 
 <blockquote>
@@ -1644,8 +1632,8 @@ curl <span class="nt">-X</span> POST https://sandbox.cardsync.io/api/cardsync/ba
 </code></pre></div>
 <p><code>POST /cardsync/batch</code></p>
 
-<p>This endpoint requests updates for batches of card information. </p>
-<h2 id='test-data'>Test Data</h2>
+<p>This endpoint requests updates for card batches. </p>
+<h2 id='test-data-sandbox-only'>Test Data (Sandbox only)</h2>
 <p>You can supply any Luhn10 valid card number, but to trigger specific responses, please use the following test card numbers in the sandbox environment.</p>
 <h3 id='visa-test-cards'>Visa Test Cards</h3>
 <p>4012000000000016 - updated_card<br>
@@ -1827,7 +1815,7 @@ curl <span class="nt">-X</span> POST https://sandbox.cardsync.io/api/cardsync/ba
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>OK</td>
-<td><a href="#schemacreatesabatchofcardsforupdates-200ok">Create Batch of Cards for Update - 200 OK</a></td>
+<td><a href="#schemacreatesabatchofcardsforupdates-200ok">Create Card Batch</a></td>
 </tr>
 </tbody></table>
 
@@ -1835,7 +1823,7 @@ curl <span class="nt">-X</span> POST https://sandbox.cardsync.io/api/cardsync/ba
 To perform this operation, you must be authenticated by means of one of the following methods:
 Authorization
 </aside>
-<h2 id='retrieves-the-status-of-a-batch'>Retrieves the status of a batch</h2>
+<h2 id='retrieve-batch-status'>Retrieve Batch Status</h2>
 <p><a id="opIdRetrievesthestatusofabatch"></a></p>
 
 <blockquote>
@@ -2039,7 +2027,7 @@ curl <span class="nt">-X</span> GET https://sandbox.cardsync.io/api/cardsync/bat
 To perform this operation, you must be authenticated by means of one of the following methods:
 Authorization
 </aside>
-<h2 id='retrieve-batch-results'>Retrieve batch results</h2>
+<h2 id='retrieve-batch-results'>Retrieve Batch Results</h2>
 <p><a id="opIdRetrievebatchresults"></a></p>
 
 <blockquote>
@@ -2766,135 +2754,6 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_PrimaryContact1">Primary Contact</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemaprimarycontact1"></a>
-<a id="schema_PrimaryContact1"></a>
-<a id="tocSprimarycontact1"></a>
-<a id="tocsprimarycontact1"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Camille"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bauch"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schaefer, Lakin and Heathcote"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"188 Turnpikefort"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Langoshfort"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VI"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31018"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7177546366"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"phone_ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fax"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div>
-<p>Primary Contact</p>
-<h3 id='properties-5'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>first_name</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>last_name</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>company</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>address_line_1</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>address_line_2</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>city</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>state</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>postal_code</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>country</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>phone_ext</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>fax</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>email</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
 <h2 id="tocS_BillingContact">Billing Contact</h2>
 
 <!-- backwards compatibility -->
@@ -2921,7 +2780,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Billing Contact</p>
-<h3 id='properties-6'>Properties</h3>
+<h3 id='properties-5'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3043,7 +2902,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Accept Terms of Service</p>
-<h3 id='properties-7'>Properties</h3>
+<h3 id='properties-6'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3119,7 +2978,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Request Enrollment</p>
-<h3 id='properties-8'>Properties</h3>
+<h3 id='properties-7'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3216,7 +3075,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Details</p>
-<h3 id='properties-9'>Properties</h3>
+<h3 id='properties-8'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3291,7 +3150,7 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_CreatesbatchofcardsforupdatesRequest">Create Batch for Updates</h2>
+<h2 id="tocS_CreatesbatchofcardsforupdatesRequest">Create Card Batch</h2>
 
 <!-- backwards compatibility -->
 
@@ -3396,7 +3255,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Create Card Batch</p>
-<h3 id='properties-10'>Properties</h3>
+<h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3431,7 +3290,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Card</p>
-<h3 id='properties-11'>Properties</h3>
+<h3 id='properties-10'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3485,7 +3344,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Stats</p>
-<h3 id='properties-12'>Properties</h3>
+<h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3553,7 +3412,7 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Retrievesthestatusofabatch-200OK">Retrievesthestatusofabatch-200OK</h2>
+<h2 id="tocS_Retrievesthestatusofabatch-200OK">Retrieve Batch Status</h2>
 
 <!-- backwards compatibility -->
 
@@ -3583,8 +3442,8 @@ Authorization
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>Retrievesthestatusofabatch-200OK</p>
-<h3 id='properties-13'>Properties</h3>
+<p>Retrieve Batch Status</p>
+<h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3617,48 +3476,7 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Retrievesbatchstatus-200OK-InvalidID">Retrievesbatchstatus-200OK-InvalidID</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemaretrievesbatchstatus-200ok-invalidid"></a>
-<a id="schema_Retrievesbatchstatus-200OK-InvalidID"></a>
-<a id="tocSretrievesbatchstatus-200ok-invalidid"></a>
-<a id="tocsretrievesbatchstatus-200ok-invalidid"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"msg"</span><span class="p">:</span><span class="w"> </span><span class="s2">"failure"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div>
-<p>Retrievesbatchstatus-200OK-InvalidID</p>
-<h3 id='properties-14'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>msg</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocS_Retrievebatchresults-200OK">Retrievebatchresults-200OK</h2>
+<h2 id="tocS_Retrievebatchresults-200OK">Batch Results</h2>
 
 <!-- backwards compatibility -->
 
@@ -3697,7 +3515,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Retrievebatchresults-200OK</p>
-<h3 id='properties-15'>Properties</h3>
+<h3 id='properties-13'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3724,152 +3542,6 @@ Authorization
 <tr>
 <td>data</td>
 <td><a href="#schemadata6">Data6</a></td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocS_Data6">Data6</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemadata6"></a>
-<a id="schema_Data6"></a>
-<a id="tocSdata6"></a>
-<a id="tocsdata6"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"batch_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bqgbm86g10l2fm2bv7n1"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"completed"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cards"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
-    </span><span class="p">{</span><span class="w">
-      </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaaaaaaaaa"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4111111111111111"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/24"</span><span class="p">,</span><span class="w">
-      </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated_card"</span><span class="w">
-    </span><span class="p">}</span><span class="w">
-  </span><span class="p">],</span><span class="w">
-  </span><span class="nl">"stats"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"number_submitted"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"no_change"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_card"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"updated_expiry"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"no_match"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"valid"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"contact"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"contact_closed"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-22T21:46:08.448148Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"updated_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-22T21:46:08.448148Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div>
-<p>Data6</p>
-<h3 id='properties-16'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>batch_id</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>status</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>cards</td>
-<td>[<a href="#schemacard1">Card1</a>]</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>stats</td>
-<td><a href="#schemastats">Stats</a></td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>created_at</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>updated_at</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
-<h2 id="tocS_Card1">Card1</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemacard1"></a>
-<a id="schema_Card1"></a>
-<a id="tocScard1"></a>
-<a id="tocscard1"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"aaaaaaaaaa"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"card"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4111111111111111"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"exp"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/24"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"updated_card"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div>
-<p>Card1</p>
-<h3 id='properties-17'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>id</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>card</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>exp</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>status</td>
-<td>string</td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
