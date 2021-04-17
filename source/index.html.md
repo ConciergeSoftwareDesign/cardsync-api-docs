@@ -2460,7 +2460,48 @@ Retrieve Batch Status
 |---|---|---|---|---|
 |status|string|true|none|none|
 |msg|string|true|none|none|
-|data|[Data4](#schemadata4)|true|none|none|
+|data|[Data](#schemadata4)|true|none|none|
+
+<h2 id="tocS_Retrievesthestatusofabatch-200OK">Batch Status Data</h2>
+<!-- backwards compatibility -->
+<a id="schemaretrievesthestatusofabatch-200ok"></a>
+<a id="schema_Retrievesthestatusofabatch-200OK"></a>
+<a id="tocSretrievesthestatusofabatch-200ok"></a>
+<a id="tocsretrievesthestatusofabatch-200ok"></a>
+
+```json
+{
+  "status": "success",
+  "msg": "success",
+  "data": {
+    "batch_id": "bqgbm86g10l2fm2bv7n1",
+    "status": "completed",
+    "stats": {
+      "number_submitted": 1,
+      "no_change": 0,
+      "updated_card": 1,
+      "updated_expiry": 0,
+      "no_match": 0,
+      "valid": 0,
+      "contact": 0,
+      "contact_closed": 0
+    },
+    "created_at": "2020-04-22T21:46:08.448148Z",
+    "updated_at": "2020-04-22T21:46:08.448148Z"
+  }
+}
+
+```
+
+Batch Status Data
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|status|string|true|none|none|
+|msg|string|true|none|none|
+|data|[Data](#schemadata4)|true|none|none|
 
 <h2 id="tocS_Retrievebatchresults-200OK">Batch Results</h2>
 <!-- backwards compatibility -->
@@ -2509,5 +2550,57 @@ Batch Results
 |---|---|---|---|---|
 |status|string|true|none|none|
 |msg|string|true|none|none|
-|data|[Data6](#schemadata6)|true|none|none|
+|data|[Data](#tocS_Retrievebatchresultsdata-200OK)|true|none|none|
+|stats|[Stats](#tocS_Stats)|true|none|none|
 
+<h2 id="tocS_Retrievebatchresultsdata-200OK">Batch Results Data</h2>
+<!-- backwards compatibility -->
+<a id="schemaretrievebatchresultsdata-200ok"></a>
+<a id="schema_Retrievebatchresultsdata-200OK"></a>
+<a id="tocSretrievebatchresultsdata-200ok"></a>
+<a id="tocsretrievebatchresultsdata-200ok"></a>
+
+```json
+{
+  "status": "success",
+  "msg": "success",
+  "data": {
+    "batch_id": "bqgbm86g10l2fm2bv7n1",
+    "status": "completed",
+    "cards": [
+      {
+        "id": "aaaaaaaaaa",
+        "card": "4111111111111111",
+        "exp": "12/24",
+        "status": "updated_card"
+      }
+    ],
+    "stats": {
+      "number_submitted": 1,
+      "no_change": 0,
+      "updated_card": 1,
+      "updated_expiry": 0,
+      "no_match": 0,
+      "valid": 0,
+      "contact": 0,
+      "contact_closed": 0
+    },
+    "created_at": "2020-04-22T21:46:08.448148Z",
+    "updated_at": "2020-04-22T21:46:08.448148Z"
+  }
+}
+
+```
+
+Batch Results Data
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|batch_id|string|true|none|none|
+|status|string|true|none|none|
+|cards|[Card]|true|none|none|
+|stats|[Stats]|true|none|none|
+|created_at|string|true|none|none|
+|updated_at|string|true|none|none|
