@@ -779,7 +779,7 @@ Once the Card Brands have confirmed a Merchant has been approved and enrolled fo
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[Request Enrollment](#schemarequestenrollmentrequest)|true|none|
+|body|body|[Enrollment](#schemarequestenrollmentrequest)|true|none|
 
 > Example responses
 
@@ -2460,14 +2460,14 @@ Retrieve Batch Status
 |---|---|---|---|---|
 |status|string|true|none|none|
 |msg|string|true|none|none|
-|data|[Data](#schemadata4)|true|none|none|
+|data|[Data](#tocS_Retrievesthestatusofabatchdata-200OK)|true|none|none|
 
-<h2 id="tocS_Retrievesthestatusofabatch-200OK">Batch Status Data</h2>
+<h2 id="tocS_Retrievesthestatusofabatchdata-200OK">Batch Status Data</h2>
 <!-- backwards compatibility -->
-<a id="schemaretrievesthestatusofabatch-200ok"></a>
-<a id="schema_Retrievesthestatusofabatch-200OK"></a>
-<a id="tocSretrievesthestatusofabatch-200ok"></a>
-<a id="tocsretrievesthestatusofabatch-200ok"></a>
+<a id="schemaretrievesthestatusofabatchdata-200ok"></a>
+<a id="schema_Retrievesthestatusofabatchdata-200OK"></a>
+<a id="tocSretrievesthestatusofabatchdata-200ok"></a>
+<a id="tocsretrievesthestatusofabatchdata-200ok"></a>
 
 ```json
 {
