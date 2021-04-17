@@ -378,10 +378,10 @@
                     <a href="#tocS_AcceptTermsofServiceResponse" class="toc-h2 toc-link" data-title="Terms of Service Response">Terms of Service Response</a>
                   </li>
                   <li>
-                    <a href="#tocS_RequestEnrollmentRequest" class="toc-h2 toc-link" data-title="Request Enrollment">Request Enrollment</a>
+                    <a href="#tocS_RequestEnrollmentRequest" class="toc-h2 toc-link" data-title="Enrollment">Enrollment</a>
                   </li>
                   <li>
-                    <a href="#tocS_Details" class="toc-h2 toc-link" data-title="Details">Details</a>
+                    <a href="#tocS_Details" class="toc-h2 toc-link" data-title="Enrollment Response">Enrollment Response</a>
                   </li>
                   <li>
                     <a href="#tocS_CreatesbatchofcardsforupdatesRequest" class="toc-h2 toc-link" data-title="Create Card Batch">Create Card Batch</a>
@@ -393,7 +393,7 @@
                     <a href="#tocS_Stats" class="toc-h2 toc-link" data-title="Stats">Stats</a>
                   </li>
                   <li>
-                    <a href="#tocS_Retrievesthestatusofabatch-200OK" class="toc-h2 toc-link" data-title="Retrieve Batch Status">Retrieve Batch Status</a>
+                    <a href="#tocS_Retrievesthestatusofabatch-200OK" class="toc-h2 toc-link" data-title="Batch Status">Batch Status</a>
                   </li>
                   <li>
                     <a href="#tocS_Retrievebatchresults-200OK" class="toc-h2 toc-link" data-title="Batch Results">Batch Results</a>
@@ -965,7 +965,7 @@ curl <span class="nt">-X</span> POST https://sandbox.cardsync.io/api/accept-tos 
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>OK</td>
-<td><a href="#schemaaccepttermsofservice-200ok">Accept  Terms of Service - 200 OK</a></td>
+<td><a href="#schemaaccepttermsofservice-200ok">Terms of Service</a></td>
 </tr>
 </tbody></table>
 
@@ -1213,7 +1213,7 @@ curl <span class="nt">-X</span> POST https://sandbox.cardsync.io/api/cardsync/en
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>OK</td>
-<td><a href="#schemarequestenrollment-200okactive">Request Enrollment - 200 OK Active</a></td>
+<td><a href="#schemarequestenrollment-200okactive">Enrollment</a></td>
 </tr>
 </tbody></table>
 
@@ -1393,7 +1393,7 @@ curl <span class="nt">-X</span> GET https://sandbox.cardsync.io/api/cardsync/enr
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>OK</td>
-<td><a href="#schemaretrieveenrollmentstatus-200ok">Retrieve Enrollment Status - 200 OK</a></td>
+<td><a href="#schemaretrieveenrollmentstatus-200ok">Enrollment Status</a></td>
 </tr>
 </tbody></table>
 
@@ -2014,13 +2014,7 @@ curl <span class="nt">-X</span> GET https://sandbox.cardsync.io/api/cardsync/bat
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>OK</td>
-<td><a href="#schemaretrievesthestatusofabatch-200ok">Retrieve Batch Status - 200 OK</a></td>
-</tr>
-<tr>
-<td>404</td>
-<td><a href="https://tools.ietf.org/html/rfc7231#section-6.5.4">Not Found</a></td>
-<td>Not Found</td>
-<td>None</td>
+<td><a href="#schemaretrievesthestatusofabatch-200ok">Batch Status</a></td>
 </tr>
 </tbody></table>
 
@@ -2226,7 +2220,7 @@ curl <span class="nt">-X</span> GET https://sandbox.cardsync.io/api/cardsync/bat
 <td>200</td>
 <td><a href="https://tools.ietf.org/html/rfc7231#section-6.3.1">OK</a></td>
 <td>OK</td>
-<td><a href="#schemaretrievebatchresults-200ok">Retrieve Batch Results - 200 OK</a></td>
+<td><a href="#schemaretrievebatchresults-200ok">Batch Results</a></td>
 </tr>
 </tbody></table>
 
@@ -3000,7 +2994,7 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_RequestEnrollmentRequest">Request Enrollment</h2>
+<h2 id="tocS_RequestEnrollmentRequest">Enrollment</h2>
 
 <!-- backwards compatibility -->
 
@@ -3021,7 +3015,7 @@ Authorization
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>Request Enrollment</p>
+<p>Enrollment</p>
 <h3 id='properties-8'>Properties</h3>
 <table><thead>
 <tr>
@@ -3097,7 +3091,7 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Details">Details</h2>
+<h2 id="tocS_Details">Enrollment Response</h2>
 
 <!-- backwards compatibility -->
 
@@ -3118,7 +3112,7 @@ Authorization
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>Details</p>
+<p>Enrollment Response</p>
 <h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
@@ -3456,7 +3450,7 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Retrievesthestatusofabatch-200OK">Retrieve Batch Status</h2>
+<h2 id="tocS_Retrievesthestatusofabatch-200OK">Batch Status</h2>
 
 <!-- backwards compatibility -->
 
@@ -3558,7 +3552,7 @@ Authorization
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>Retrievebatchresults-200OK</p>
+<p>Batch Results</p>
 <h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
