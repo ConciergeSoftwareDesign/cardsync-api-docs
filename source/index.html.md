@@ -362,7 +362,7 @@ This endpoint is used to create a new Merchant on our platform. The details prov
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[MerchantResponse](#schemaaddanewmerchantresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Merchant Response](#schemaaddanewmerchantresponse)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -551,7 +551,7 @@ During merchant creation, an enrollment_url is provided which provides the CardS
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[Accept Terms of Service](#schemaaccepttermsofservicerequest)|true|none|
+|body|body|[Terms of Service](#schemaaccepttermsofservicerequest)|true|none|
 
 > Example responses
 
@@ -568,7 +568,7 @@ During merchant creation, an enrollment_url is provided which provides the CardS
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Terms of Service](#schemaaccepttermsofservice-200ok)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Terms of Service Response](#schemaaccepttermsofservice-200ok)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -816,7 +816,7 @@ Once the Card Brands have confirmed a Merchant has been approved and enrolled fo
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Enrollment](#schemarequestenrollment-200okactive)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Enrollment Response](#schemarequestenrollment-200okactive)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1406,7 +1406,7 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[Create Card Batch](#schemacreatesbatchofcardsforupdatesrequest)|true|none|
+|body|body|[Card Batch](#schemacreatesbatchofcardsforupdatesrequest)|true|none|
 
 > Example responses
 
@@ -1439,7 +1439,7 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Create Card Batch](#schemacreatesabatchofcardsforupdates-200ok)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Card Batch Response](#schemacreatesabatchofcardsforupdates-200ok)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -2246,7 +2246,7 @@ Enrollment Response
 |delivery_frequency|string|true|none|none|
 |mcc|string|true|none|none|
 
-<h2 id="tocS_CreatesbatchofcardsforupdatesRequest">Create Card Batch</h2>
+<h2 id="tocS_CreatesbatchofcardsforupdatesRequest">Card Batch</h2>
 <!-- backwards compatibility -->
 <a id="schemacreatesbatchofcardsforupdatesrequest"></a>
 <a id="schema_CreatesbatchofcardsforupdatesRequest"></a>
@@ -2351,7 +2351,7 @@ Enrollment Response
 
 ```
 
-Create Card Batch
+Card Batch
 
 ### Properties
 
