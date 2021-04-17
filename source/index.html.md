@@ -1909,76 +1909,6 @@ Merchant
 |user|[User](#schemauser)|true|none|none|
 |accept_tos|boolean|true|none|none|
 
-<h2 id="tocS_AddanewmerchantResponse">Merchant Response</h2>
-<!-- backwards compatibility -->
-<a id="schemaaddanewmerchantresponse"></a>
-<a id="schema_AddanewmerchantResponse"></a>
-<a id="tocSaddanewmerchantresponse"></a>
-<a id="tocsaddanewmerchantresponse"></a>
-
-```json
-{
-  "name": "New Merchant <name must be unique>",
-  "description": "this is a new merchant that is getting set up",
-  "website": "example.com",
-  "phone": "5555555555",
-  "phone_ext": "1234",
-  "receipt_email": "test@example.com",
-  "timezone": "UTC",
-  "fee_schedule_id": "bqoa026g10l0v8o62315",
-  "primary_contact": {
-    "first_name": "Camille",
-    "last_name": "Bauch",
-    "company": "Schaefer, Lakin and Heathcote",
-    "address_line_1": "188 Turnpikefort",
-    "address_line_2": "",
-    "city": "Langoshfort",
-    "state": "VI",
-    "postal_code": "31018",
-    "country": "US",
-    "phone": "5555555555",
-    "email": "test@example.com"
-  },
-  "user": {
-    "username": "somerandomuser20210219c",
-    "email": "test@example.com",
-    "status": "active",
-    "role": "admin",
-    "create_api_key": true
-  },
-  "accept_tos": true,
-  "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
-  "tos_accepted_by": "Test Partner / Test Partner",
-  "tos_accepted_by_username": "test_partner",
-  "created_at": "2020-04-22T21:46:08.448148Z",
-  "tos_last_accepted_at": "2020-04-22T21:46:08Z"
-}
-
-```
-
-Merchant Response
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|name|string|true|must be globally unique|none|
-|description|string|true|none|none|
-|website|string|true|none|none|
-|phone|string|true|none|none|
-|phone_ext|string|true|none|none|
-|receipt_email|string|true|none|none|
-|timezone|string|true|none|none|
-|fee_schedule_id|string|true|none|none|
-|primary_contact|[PrimaryContact](#schemaprimarycontact)|true|none|none|
-|user|[User](#schemauser)|true|none|none|
-|accept_tos|boolean|true|none|none|
-|api_key|string|true|none|none|
-|tos_accepted_by|string|true|none|none|
-|tos_accepted_by_username|string|true|none|none|
-|created_at|string|true|none|none|
-|tos_last_accepted_at|string|true|none|none|
-
 <h2 id="tocS_PrimaryContact">Primary Contact</h2>
 <!-- backwards compatibility -->
 <a id="schemaprimarycontact"></a>
@@ -2051,7 +1981,7 @@ User
 |role|string|true|none|none|
 |create_api_key|boolean|true|none|none|
 
-<h2 id="tocS_Data">Data</h2>
+<h2 id="tocS_Data">Merchant Response</h2>
 <!-- backwards compatibility -->
 <a id="schemadata"></a>
 <a id="schema_Data"></a>
@@ -2112,7 +2042,7 @@ User
 
 ```
 
-Data
+Merchant Response
 
 ### Properties
 
@@ -2130,7 +2060,7 @@ Data
 |status|string|true|none|none|
 |fee_schedule_id|string|true|none|none|
 |logo_url|string|true|none|none|
-|primary_contact|[Primary Contact](#schemaprimarycontact1)|true|none|none|
+|primary_contact|[Primary Contact](#schemaprimarycontact)|true|none|none|
 |billing_contact|[Billing Contact](#schemabillingcontact)|true|none|none|
 |billing|string¦null|true|none|none|
 |api_key|string|true|none|none|
