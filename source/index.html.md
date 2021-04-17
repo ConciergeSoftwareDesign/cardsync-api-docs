@@ -1024,7 +1024,7 @@ Best practice for recurring billing (e.g. subscriptions) is to submit on a daily
 
 Once submitted, the Card Issuers will start to return updates. In sandbox, all results (updates and/or status responses) are completed within one hour. In production, it will take 3-5 calendar days for a batch to complete. 
 
-## Creates batch of cards for updates
+## Create Card Batch
 
 <a id="opIdCreatesbatchofcardsforupdates"></a>
 
@@ -1273,9 +1273,9 @@ func main() {
 
 `POST /cardsync/batch`
 
-This endpoint requests updates for batches of card information. 
+This endpoint requests updates for card batches. 
 
-## Test Data
+## Test Data (Sandbox only)
 
 You can supply any Luhn10 valid card number, but to trigger specific responses, please use the following test card numbers in the sandbox environment.
 
@@ -1439,14 +1439,14 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Create Batch of Cards for Update - 200 OK](#schemacreatesabatchofcardsforupdates-200ok)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Create Card Batch](#schemacreatesabatchofcardsforupdates-200ok)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
 Authorization
 </aside>
 
-## Retrieves the status of a batch
+## Retrieve Batch Status
 
 <a id="opIdRetrievesthestatusofabatch"></a>
 
@@ -1644,7 +1644,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Authorization
 </aside>
 
-## Retrieve batch results
+## Retrieve Batch Results
 
 <a id="opIdRetrievebatchresults"></a>
 
@@ -2069,52 +2069,6 @@ Data
 |created_at|string|true|none|none|
 |tos_last_accepted_at|string|true|none|none|
 
-<h2 id="tocS_PrimaryContact1">Primary Contact</h2>
-<!-- backwards compatibility -->
-<a id="schemaprimarycontact1"></a>
-<a id="schema_PrimaryContact1"></a>
-<a id="tocSprimarycontact1"></a>
-<a id="tocsprimarycontact1"></a>
-
-```json
-{
-  "first_name": "Camille",
-  "last_name": "Bauch",
-  "company": "Schaefer, Lakin and Heathcote",
-  "address_line_1": "188 Turnpikefort",
-  "address_line_2": "",
-  "city": "Langoshfort",
-  "state": "VI",
-  "postal_code": "31018",
-  "country": "US",
-  "phone": "7177546366",
-  "phone_ext": "",
-  "fax": "",
-  "email": "test@example.com"
-}
-
-```
-
-Primary Contact
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|first_name|string|true|none|none|
-|last_name|string|true|none|none|
-|company|string|true|none|none|
-|address_line_1|string|true|none|none|
-|address_line_2|string|true|none|none|
-|city|string|true|none|none|
-|state|string|true|none|none|
-|postal_code|string|true|none|none|
-|country|string|true|none|none|
-|phone|string|true|none|none|
-|phone_ext|string|true|none|none|
-|fax|string|true|none|none|
-|email|string|true|none|none|
-
 <h2 id="tocS_BillingContact">Billing Contact</h2>
 <!-- backwards compatibility -->
 <a id="schemabillingcontact"></a>
@@ -2269,7 +2223,7 @@ Details
 |delivery_frequency|string|true|none|none|
 |mcc|string|true|none|none|
 
-<h2 id="tocS_CreatesbatchofcardsforupdatesRequest">Create Batch for Updates</h2>
+<h2 id="tocS_CreatesbatchofcardsforupdatesRequest">Create Card Batch</h2>
 <!-- backwards compatibility -->
 <a id="schemacreatesbatchofcardsforupdatesrequest"></a>
 <a id="schema_CreatesbatchofcardsforupdatesRequest"></a>
@@ -2444,7 +2398,7 @@ Stats
 |contact|integer(int32)|true|none|none|
 |contact_closed|integer(int32)|true|none|none|
 
-<h2 id="tocS_Retrievesthestatusofabatch-200OK">Retrievesthestatusofabatch-200OK</h2>
+<h2 id="tocS_Retrievesthestatusofabatch-200OK">Retrieve Batch Status</h2>
 <!-- backwards compatibility -->
 <a id="schemaretrievesthestatusofabatch-200ok"></a>
 <a id="schema_Retrievesthestatusofabatch-200OK"></a>
@@ -2475,7 +2429,7 @@ Stats
 
 ```
 
-Retrievesthestatusofabatch-200OK
+Retrieve Batch Status
 
 ### Properties
 
@@ -2485,31 +2439,7 @@ Retrievesthestatusofabatch-200OK
 |msg|string|true|none|none|
 |data|[Data4](#schemadata4)|true|none|none|
 
-<h2 id="tocS_Retrievesbatchstatus-200OK-InvalidID">Retrievesbatchstatus-200OK-InvalidID</h2>
-<!-- backwards compatibility -->
-<a id="schemaretrievesbatchstatus-200ok-invalidid"></a>
-<a id="schema_Retrievesbatchstatus-200OK-InvalidID"></a>
-<a id="tocSretrievesbatchstatus-200ok-invalidid"></a>
-<a id="tocsretrievesbatchstatus-200ok-invalidid"></a>
-
-```json
-{
-  "status": "failure",
-  "msg": "failure"
-}
-
-```
-
-Retrievesbatchstatus-200OK-InvalidID
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|status|string|true|none|none|
-|msg|string|true|none|none|
-
-<h2 id="tocS_Retrievebatchresults-200OK">Retrievebatchresults-200OK</h2>
+<h2 id="tocS_Retrievebatchresults-200OK">Batch Results</h2>
 <!-- backwards compatibility -->
 <a id="schemaretrievebatchresults-200ok"></a>
 <a id="schema_Retrievebatchresults-200OK"></a>
@@ -2557,80 +2487,4 @@ Retrievebatchresults-200OK
 |status|string|true|none|none|
 |msg|string|true|none|none|
 |data|[Data6](#schemadata6)|true|none|none|
-
-<h2 id="tocS_Data6">Data6</h2>
-<!-- backwards compatibility -->
-<a id="schemadata6"></a>
-<a id="schema_Data6"></a>
-<a id="tocSdata6"></a>
-<a id="tocsdata6"></a>
-
-```json
-{
-  "batch_id": "bqgbm86g10l2fm2bv7n1",
-  "status": "completed",
-  "cards": [
-    {
-      "id": "aaaaaaaaaa",
-      "card": "4111111111111111",
-      "exp": "12/24",
-      "status": "updated_card"
-    }
-  ],
-  "stats": {
-    "number_submitted": 1,
-    "no_change": 0,
-    "updated_card": 1,
-    "updated_expiry": 0,
-    "no_match": 0,
-    "valid": 0,
-    "contact": 0,
-    "contact_closed": 0
-  },
-  "created_at": "2020-04-22T21:46:08.448148Z",
-  "updated_at": "2020-04-22T21:46:08.448148Z"
-}
-
-```
-
-Data6
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|batch_id|string|true|none|none|
-|status|string|true|none|none|
-|cards|[[Card1](#schemacard1)]|true|none|none|
-|stats|[Stats](#schemastats)|true|none|none|
-|created_at|string|true|none|none|
-|updated_at|string|true|none|none|
-
-<h2 id="tocS_Card1">Card1</h2>
-<!-- backwards compatibility -->
-<a id="schemacard1"></a>
-<a id="schema_Card1"></a>
-<a id="tocScard1"></a>
-<a id="tocscard1"></a>
-
-```json
-{
-  "id": "aaaaaaaaaa",
-  "card": "4111111111111111",
-  "exp": "12/24",
-  "status": "updated_card"
-}
-
-```
-
-Card1
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|id|string|true|none|none|
-|card|string|true|none|none|
-|exp|string|true|none|none|
-|status|string|true|none|none|
 
