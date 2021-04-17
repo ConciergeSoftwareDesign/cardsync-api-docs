@@ -360,22 +360,19 @@
                     <a href="#tocS_AddanewmerchantRequest" class="toc-h2 toc-link" data-title="Merchant">Merchant</a>
                   </li>
                   <li>
-                    <a href="#tocS_AddanewmerchantResponse" class="toc-h2 toc-link" data-title="Merchant Response">Merchant Response</a>
-                  </li>
-                  <li>
                     <a href="#tocS_PrimaryContact" class="toc-h2 toc-link" data-title="Primary Contact">Primary Contact</a>
                   </li>
                   <li>
                     <a href="#tocS_User" class="toc-h2 toc-link" data-title="User">User</a>
                   </li>
                   <li>
-                    <a href="#tocS_Data" class="toc-h2 toc-link" data-title="Data">Data</a>
+                    <a href="#tocS_Data" class="toc-h2 toc-link" data-title="Merchant Response">Merchant Response</a>
                   </li>
                   <li>
                     <a href="#tocS_BillingContact" class="toc-h2 toc-link" data-title="Billing Contact">Billing Contact</a>
                   </li>
                   <li>
-                    <a href="#tocS_AcceptTermsofServiceRequest" class="toc-h2 toc-link" data-title="Accept Terms of Service">Accept Terms of Service</a>
+                    <a href="#tocS_AcceptTermsofServiceRequest" class="toc-h2 toc-link" data-title="Terms of Service">Terms of Service</a>
                   </li>
                   <li>
                     <a href="#tocS_AcceptTermsofServiceResponse" class="toc-h2 toc-link" data-title="Terms of Service Response">Terms of Service Response</a>
@@ -2369,177 +2366,6 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_AddanewmerchantResponse">Merchant Response</h2>
-
-<!-- backwards compatibility -->
-
-<p><a id="schemaaddanewmerchantresponse"></a>
-<a id="schema_AddanewmerchantResponse"></a>
-<a id="tocSaddanewmerchantresponse"></a>
-<a id="tocsaddanewmerchantresponse"></a></p>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"New Merchant &lt;name must be unique&gt;"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"this is a new merchant that is getting set up"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"website"</span><span class="p">:</span><span class="w"> </span><span class="s2">"example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555555555"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"phone_ext"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1234"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"receipt_email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"timezone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"UTC"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fee_schedule_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bqoa026g10l0v8o62315"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"primary_contact"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"first_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Camille"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"last_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Bauch"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Schaefer, Lakin and Heathcote"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address_line_1"</span><span class="p">:</span><span class="w"> </span><span class="s2">"188 Turnpikefort"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"address_line_2"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"city"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Langoshfort"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"state"</span><span class="p">:</span><span class="w"> </span><span class="s2">"VI"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"postal_code"</span><span class="p">:</span><span class="w"> </span><span class="s2">"31018"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"country"</span><span class="p">:</span><span class="w"> </span><span class="s2">"US"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5555555555"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"user"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"somerandomuser20210219c"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test@example.com"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"active"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"role"</span><span class="p">:</span><span class="w"> </span><span class="s2">"admin"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"create_api_key"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="nl">"accept_tos"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"api_key"</span><span class="p">:</span><span class="w"> </span><span class="s2">"api_1auidmDFdMslUz2R5PSwVFSEfmP"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tos_accepted_by"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Test Partner / Test Partner"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tos_accepted_by_username"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test_partner"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"created_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-22T21:46:08.448148Z"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"tos_last_accepted_at"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2020-04-22T21:46:08Z"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-
-</span></code></pre></div>
-<p>Merchant Response</p>
-<h3 id='properties-2'>Properties</h3>
-<table><thead>
-<tr>
-<th>Name</th>
-<th>Type</th>
-<th>Required</th>
-<th>Restrictions</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>string</td>
-<td>true</td>
-<td>must be globally unique</td>
-<td>none</td>
-</tr>
-<tr>
-<td>description</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>website</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>phone</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>phone_ext</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>receipt_email</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>timezone</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>fee_schedule_id</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>primary_contact</td>
-<td><a href="#schemaprimarycontact">PrimaryContact</a></td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>user</td>
-<td><a href="#schemauser">User</a></td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>accept_tos</td>
-<td>boolean</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>api_key</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>tos_accepted_by</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>tos_accepted_by_username</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>created_at</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-<tr>
-<td>tos_last_accepted_at</td>
-<td>string</td>
-<td>true</td>
-<td>none</td>
-<td>none</td>
-</tr>
-</tbody></table>
-
 <h2 id="tocS_PrimaryContact">Primary Contact</h2>
 
 <!-- backwards compatibility -->
@@ -2564,7 +2390,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Primary Contact</p>
-<h3 id='properties-3'>Properties</h3>
+<h3 id='properties-2'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2671,7 +2497,7 @@ Authorization
 
 </span></code></pre></div>
 <p>User</p>
-<h3 id='properties-4'>Properties</h3>
+<h3 id='properties-3'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2718,7 +2544,7 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_Data">Data</h2>
+<h2 id="tocS_Data">Merchant Response</h2>
 
 <!-- backwards compatibility -->
 
@@ -2778,8 +2604,8 @@ Authorization
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>Data</p>
-<h3 id='properties-5'>Properties</h3>
+<p>Merchant Response</p>
+<h3 id='properties-4'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -2875,7 +2701,7 @@ Authorization
 </tr>
 <tr>
 <td>primary_contact</td>
-<td><a href="#schemaprimarycontact1">Primary Contact</a></td>
+<td><a href="#schemaprimarycontact">Primary Contact</a></td>
 <td>true</td>
 <td>none</td>
 <td>none</td>
@@ -2957,7 +2783,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Billing Contact</p>
-<h3 id='properties-6'>Properties</h3>
+<h3 id='properties-5'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3060,7 +2886,7 @@ Authorization
 </tr>
 </tbody></table>
 
-<h2 id="tocS_AcceptTermsofServiceRequest">Accept Terms of Service</h2>
+<h2 id="tocS_AcceptTermsofServiceRequest">Terms of Service</h2>
 
 <!-- backwards compatibility -->
 
@@ -3078,8 +2904,8 @@ Authorization
 </span><span class="p">}</span><span class="w">
 
 </span></code></pre></div>
-<p>Accept Terms of Service</p>
-<h3 id='properties-7'>Properties</h3>
+<p>Terms of Service</p>
+<h3 id='properties-6'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3148,7 +2974,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Terms of Service Response</p>
-<h3 id='properties-8'>Properties</h3>
+<h3 id='properties-7'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3196,7 +3022,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Request Enrollment</p>
-<h3 id='properties-9'>Properties</h3>
+<h3 id='properties-8'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3293,7 +3119,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Details</p>
-<h3 id='properties-10'>Properties</h3>
+<h3 id='properties-9'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3473,7 +3299,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Create Card Batch</p>
-<h3 id='properties-11'>Properties</h3>
+<h3 id='properties-10'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3508,7 +3334,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Card</p>
-<h3 id='properties-12'>Properties</h3>
+<h3 id='properties-11'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3562,7 +3388,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Stats</p>
-<h3 id='properties-13'>Properties</h3>
+<h3 id='properties-12'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3661,7 +3487,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Retrieve Batch Status</p>
-<h3 id='properties-14'>Properties</h3>
+<h3 id='properties-13'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
@@ -3733,7 +3559,7 @@ Authorization
 
 </span></code></pre></div>
 <p>Retrievebatchresults-200OK</p>
-<h3 id='properties-15'>Properties</h3>
+<h3 id='properties-14'>Properties</h3>
 <table><thead>
 <tr>
 <th>Name</th>
