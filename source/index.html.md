@@ -295,7 +295,7 @@ This endpoint is used to create a new Merchant on our platform. The details prov
 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
-|body|body|[Add New Merchant](#schemaaddanewmerchantrequest)|true|none|
+|body|body|[Merchant](#schemaaddanewmerchantrequest)|true|none|
 
 > Example responses
 
@@ -362,7 +362,7 @@ This endpoint is used to create a new Merchant on our platform. The details prov
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Add New Merchant - 200 OK](#schemaaddanewmerchant-200ok)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Merchant](#schemaaddanewmerchant-200ok)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -823,7 +823,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Authorization
 </aside>
 
-## Retrieve Enrollment status
+## Retrieve Enrollment Status
 
 <a id="opIdRetrieveEnrollmentstatus"></a>
 
@@ -1849,7 +1849,7 @@ Authorization
 
 # Schemas
 
-<h2 id="tocS_AddanewmerchantRequest">Add New Merchant</h2>
+<h2 id="tocS_AddanewmerchantRequest">Merchant</h2>
 <!-- backwards compatibility -->
 <a id="schemaaddanewmerchantrequest"></a>
 <a id="schema_AddanewmerchantRequest"></a>
@@ -1891,7 +1891,7 @@ Authorization
 
 ```
 
-Add New Merchant
+Merchant
 
 ### Properties
 
