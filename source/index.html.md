@@ -568,7 +568,7 @@ During merchant creation, an enrollment_url is provided which provides the CardS
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Accept  Terms of Service - 200 OK](#schemaaccepttermsofservice-200ok)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Terms of Service](#schemaaccepttermsofservice-200ok)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -816,7 +816,7 @@ Once the Card Brands have confirmed a Merchant has been approved and enrolled fo
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Request Enrollment - 200 OK Active](#schemarequestenrollment-200okactive)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Enrollment](#schemarequestenrollment-200okactive)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1009,7 +1009,7 @@ Returns the current status of the Merchant's requested enrollment. This will let
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Retrieve Enrollment Status - 200 OK](#schemaretrieveenrollmentstatus-200ok)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Enrollment Status](#schemaretrieveenrollmentstatus-200ok)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1634,8 +1634,7 @@ Retrieve the status of a batch. Batches in the sandbox will be completed within 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Retrieve Batch Status - 200 OK](#schemaretrievesthestatusofabatch-200ok)|
-|404|[Not Found](https://tools.ietf.org/html/rfc7231#section-6.5.4)|Not Found|None|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Batch Status](#schemaretrievesthestatusofabatch-200ok)|
 
 <h3 id="retrieves-the-status-of-a-batch-responseschema">Response Schema</h3>
 
@@ -1840,7 +1839,7 @@ Retrieves a completed batch. Included with the batch results is the statistical 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Retrieve Batch Results - 200 OK](#schemaretrievebatchresults-200ok)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Batch Results](#schemaretrievebatchresults-200ok)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -2171,7 +2170,7 @@ Terms of Service Response
 |status|string|true|none|none|
 |msg|string|true|none|none|
 
-<h2 id="tocS_RequestEnrollmentRequest">Request Enrollment</h2>
+<h2 id="tocS_RequestEnrollmentRequest">Enrollment</h2>
 <!-- backwards compatibility -->
 <a id="schemarequestenrollmentrequest"></a>
 <a id="schema_RequestEnrollmentRequest"></a>
@@ -2193,7 +2192,7 @@ Terms of Service Response
 
 ```
 
-Request Enrollment
+Enrollment
 
 ### Properties
 
@@ -2209,7 +2208,7 @@ Request Enrollment
 |delivery_frequency|string|true|none|none|
 |mcc|string|true|none|none|
 
-<h2 id="tocS_Details">Details</h2>
+<h2 id="tocS_Details">Enrollment Response</h2>
 <!-- backwards compatibility -->
 <a id="schemadetails"></a>
 <a id="schema_Details"></a>
@@ -2231,7 +2230,7 @@ Request Enrollment
 
 ```
 
-Details
+Enrollment Response
 
 ### Properties
 
@@ -2422,7 +2421,7 @@ Stats
 |contact|integer(int32)|true|none|none|
 |contact_closed|integer(int32)|true|none|none|
 
-<h2 id="tocS_Retrievesthestatusofabatch-200OK">Retrieve Batch Status</h2>
+<h2 id="tocS_Retrievesthestatusofabatch-200OK">Batch Status</h2>
 <!-- backwards compatibility -->
 <a id="schemaretrievesthestatusofabatch-200ok"></a>
 <a id="schema_Retrievesthestatusofabatch-200OK"></a>
@@ -2502,7 +2501,7 @@ Retrieve Batch Status
 
 ```
 
-Retrievebatchresults-200OK
+Batch Results
 
 ### Properties
 
