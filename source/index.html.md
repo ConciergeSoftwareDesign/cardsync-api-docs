@@ -2185,7 +2185,7 @@ Billing Contact
 |fax|string|true|none|none|
 |email|string|true|none|none|
 
-<h2 id="tocS_AcceptTermsofServiceRequest">Accept Terms of Service</h2>
+<h2 id="tocS_AcceptTermsofServiceRequest">Terms of Service</h2>
 <!-- backwards compatibility -->
 <a id="schemaaccepttermsofservicerequest"></a>
 <a id="schema_AcceptTermsofServiceRequest"></a>
@@ -2204,7 +2204,7 @@ Billing Contact
 
 ```
 
-Accept Terms of Service
+Terms of Service
 
 ### Properties
 
