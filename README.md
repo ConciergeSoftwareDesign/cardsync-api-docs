@@ -90,3 +90,27 @@ Thanks to the following people who have submitted major pull requests:
 - [@cvkef](https://github.com/cvkef)
 
 Also, thanks to [Sauce Labs](http://saucelabs.com) for sponsoring the development of the responsive styles.
+
+Paylani specific info
+--------------------
+
+There are currently 2 APIs in this repo: CardSync and eVoke.
+
+The CardSync docs are hand-generated in markdown (legacy issue).
+
+The eVoke docs are generated from the code.
+
+Both use Slate to convert the markdown to a static HTML website.
+
+For eVoke, though, we must convert the Postman collection to markdown using docgen.
+
+Build Steps
+
+1. Install docgen (https://github.com/thedevsaddam/docgen).
+
+2. Copy the output of docgen to this repo/source/index.html.md. (You can also update the logo in repo/source/images/logo.png.)
+
+3. Run repo/build.sh [evoke-api || cardsync-api].
+
+4. The output of step #3 is either repo/evoke-api.zip or repo/cardsync.api.zip which is the static website to deploy to S3 or Azure.
+
