@@ -1,4 +1,4 @@
-# Usasge -- build.sh [api-name], e.g. build.sh evoke-api or cardsync-api
+# Usasge -- build.sh [api-name], e.g. build.sh evoke-api or cardsync-api or evoke-partner-api
 #!/usr/bin/env bash
 set -o errexit #abort if any command fails
 docker pull slatedocs/slate

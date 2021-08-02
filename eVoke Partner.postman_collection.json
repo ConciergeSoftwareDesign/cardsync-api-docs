@@ -1,0 +1,442 @@
+{
+	"info": {
+		"_postman_id": "744582cd-b07b-440b-9fcd-24d868c0fefe",
+		"name": "eVoke Partner",
+		"description": "The eVoke API allows you to invoke a credit card charge on a PAX device from another system.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Transactions",
+			"item": [
+				{
+					"name": "Charge",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"SaleId\",JSON.parse(responseBody)[\"id\"]);\r",
+									"postman.setEnvironmentVariable(\"TransactionId\",JSON.parse(responseBody)[\"transactionId\"]);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ApplicationToken",
+								"value": "{{ApplicationToken}}",
+								"type": "text"
+							},
+							{
+								"key": "TerminalSerialNumber",
+								"value": "{{TerminalSerialNumber}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"LineItems\":[\r\n        {\r\n            \"ImageUrl\":\"https://www.aberdeenskitchen.com/wp-content/uploads/2016/07/Chorizo-Breakfast-Burritos-8.jpg\",\r\n            \"Name\":\"Breakfast Burrito\",\r\n            \"Quantity\":1,\r\n            \"Cost\":9.99,\r\n            \"Sum\":9.99\r\n        },\r\n        {\r\n            \"ImageUrl\":\"https://www.fortunefrenzy.co.uk/wp-content/uploads/2016/11/steak-dinner.jpg\",\r\n            \"Name\":\"Steak Dinner\",\r\n            \"Quantity\":3,\r\n            \"Cost\":24.99,\r\n            \"Sum\":74.97\r\n        }\r\n    ],\r\n    \"AmountItems\":[\r\n        {\r\n            \"Name\":\"Subtotal\",\r\n            \"Amount\": 84.96\r\n        },\r\n        {\r\n            \"Name\":\"Tax (10%)\",\r\n            \"Amount\": 8.50\r\n        },\r\n        {\r\n            \"Name\":\"Tip\",\r\n            \"Amount\": 5.0\r\n        },\r\n        {\r\n            \"Name\":\"Delivery Fee\",\r\n            \"Amount\": 3.00\r\n        }\r\n    ],\r\n    \"Total\": 101.46,\r\n    \"PartnerSaleId\":\"MyOptionalSaleId-{{$randomUUID}}\",\r\n    \"PartnerMerchantLocationId\":\"MyOptionalMerchantLocationId-{{$randomUUID}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eVokeUrl}}/charge",
+							"host": [
+								"{{eVokeUrl}}"
+							],
+							"path": [
+								"charge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Customer Token Charge",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"SaleId\",JSON.parse(responseBody)[\"id\"]);\r",
+									"postman.setEnvironmentVariable(\"TransactionId\",JSON.parse(responseBody)[\"transactionId\"]);"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ApplicationToken",
+								"value": "{{ApplicationToken}}",
+								"type": "text"
+							},
+							{
+								"key": "TerminalSerialNumber",
+								"value": "{{TerminalSerialNumber}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"LineItems\":[\r\n        {\r\n            \"ImageUrl\":\"https://www.aberdeenskitchen.com/wp-content/uploads/2016/07/Chorizo-Breakfast-Burritos-8.jpg\",\r\n            \"Name\":\"Breakfast Burrito\",\r\n            \"Quantity\":1,\r\n            \"Cost\":9.99,\r\n            \"Sum\":9.99\r\n        },\r\n        {\r\n            \"ImageUrl\":\"https://www.fortunefrenzy.co.uk/wp-content/uploads/2016/11/steak-dinner.jpg\",\r\n            \"Name\":\"Steak Dinner\",\r\n            \"Quantity\":3,\r\n            \"Cost\":24.99,\r\n            \"Sum\":74.97\r\n        }\r\n    ],\r\n    \"AmountItems\":[\r\n        {\r\n            \"Name\":\"Subtotal\",\r\n            \"Amount\": 84.96\r\n        },\r\n        {\r\n            \"Name\":\"Tax (10%)\",\r\n            \"Amount\": 8.50\r\n        },\r\n        {\r\n            \"Name\":\"Tip\",\r\n            \"Amount\": 5.0\r\n        },\r\n        {\r\n            \"Name\":\"Delivery Fee\",\r\n            \"Amount\": 3.00\r\n        }\r\n    ],\r\n    \"Total\": 101.46,\r\n    \"PartnerCustomerId\":\"MyOptionalCustomerId-{{$randomUUID}}\",\r\n    \"PartnerSaleId\":\"MyOptionalSaleId-{{$randomUUID}}\",\r\n    \"PartnerMerchantLocationId\":\"MyOptionalMerchantLocationId-{{$randomUUID}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eVokeUrl}}/charge",
+							"host": [
+								"{{eVokeUrl}}"
+							],
+							"path": [
+								"charge"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ApplicationToken",
+								"value": "{{ApplicationToken}}",
+								"type": "text"
+							},
+							{
+								"key": "TerminalSerialNumber",
+								"value": "{{TerminalSerialNumber}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"TerminalSerialNumber\":\"{{TerminalSerialNumber}}\"}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eVokeUrl}}/sale/{{SaleId}}/cancel",
+							"host": [
+								"{{eVokeUrl}}"
+							],
+							"path": [
+								"sale",
+								"{{SaleId}}",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refund",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ApplicationToken",
+								"value": "{{ApplicationToken}}",
+								"type": "text"
+							},
+							{
+								"key": "TerminalSerialNumber",
+								"value": "{{TerminalSerialNumber}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Amount\": 50.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eVokeUrl}}/sale/{{SaleId}}/refund",
+							"host": [
+								"{{eVokeUrl}}"
+							],
+							"path": [
+								"sale",
+								"{{SaleId}}",
+								"refund"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sale Receipt",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eVokeUrl}}/partners/{{partnerId}}/sales/{{saleId}}/receipt",
+							"host": [
+								"{{eVokeUrl}}"
+							],
+							"path": [
+								"partners",
+								"{{partnerId}}",
+								"sales",
+								"{{saleId}}",
+								"receipt"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Transaction Receipt",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eVokeUrl}}/transactions/{{transactionId}}/receipt",
+							"host": [
+								"{{eVokeUrl}}"
+							],
+							"path": [
+								"transactions",
+								"{{transactionId}}",
+								"receipt"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Miscellaneous",
+			"item": [
+				{
+					"name": "Signature",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"postman.setEnvironmentVariable(\"SignatureId\",JSON.parse(responseBody)[\"signatureId\"]);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "ApplicationToken",
+								"value": "{{ApplicationToken}}",
+								"type": "text"
+							},
+							{
+								"key": "TerminalSerialNumber",
+								"value": "{{TerminalSerialNumber}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"TerminalSerialNumber\":\"{{TerminalSerialNumber}}\",\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eVokeUrl}}/signatures",
+							"host": [
+								"{{eVokeUrl}}"
+							],
+							"path": [
+								"signatures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Terminals",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ApplicationToken",
+								"value": "{{ApplicationToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eVokeUrl}}/terminals",
+							"host": [
+								"{{eVokeUrl}}"
+							],
+							"path": [
+								"terminals"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reporting",
+			"item": [
+				{
+					"name": "Get Merchant Sales",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ApplicationToken",
+								"value": "{{ApplicationToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eVokeUrl}}/merchants/{{merchantId}}/sales",
+							"host": [
+								"{{eVokeUrl}}"
+							],
+							"path": [
+								"merchants",
+								"{{merchantId}}",
+								"sales"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Location Sales",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "ApplicationToken",
+								"value": "{{ApplicationToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{eVokeUrl}}/merchants/{{merchantId}}/locations/{{LocationId}}/sales",
+							"host": [
+								"{{eVokeUrl}}"
+							],
+							"path": [
+								"merchants",
+								"{{merchantId}}",
+								"locations",
+								"{{LocationId}}",
+								"sales"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -94,13 +94,15 @@ Also, thanks to [Sauce Labs](http://saucelabs.com) for sponsoring the developmen
 Paylani specific info
 --------------------
 
-There are currently 2 APIs in this repo: CardSync and eVoke.
+First: each API is on its own branch and needs a logo in source/images/logo.png.
+
+There are currently 3 APIs in this repo: CardSync, eVoke, and eVoke partner.
 
 The CardSync docs are hand-generated in markdown (legacy issue).
 
 The eVoke docs are generated from the code.
 
-Both use Slate to convert the markdown to a static HTML website.
+All use Slate to convert the markdown to a static HTML website.
 
 For eVoke, though, we must convert the Postman collection to markdown using docgen.
 
@@ -108,7 +110,7 @@ Build Steps
 
 1. Install docgen (https://github.com/thedevsaddam/docgen).
 
-2. Copy the output of docgen to this repo/source/index.html.md. (You can also update the logo in repo/source/images/logo.png.)
+2. Run `docgen --md --in [collection] --out source/index.html.md`.
 
 3. Run repo/build.sh [evoke-api || cardsync-api].
 
