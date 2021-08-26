@@ -9,15 +9,25 @@ The eVoke API allows you to remotely invoke a credit card transaction on a PAX d
 During the onboarding process, your partner account will be given an application token, merchant Id(s), and Merchant Location Id(s).
 
 Please substitute these values with the api documentation variables as follows:
+
 **{{PartnerId}}** = your eVoke assigned partner id
-**{{MerchantId}}** = The eVoke assigned merchant id.
-**{{MerchantLocationId}}** = The eVoke assigned merchant location id.
+
+**{{MerchantId}}** = The eVoke assigned merchant id
+
+**{{MerchantLocationId}}** = The eVoke assigned merchant location id
+
 **{{TerminalSerialNumber}}** = The Pax terminal serial number (usually found on the back of your pax device)
+
 **{{SaleId}}** = The eVoke assigned sale id (generated after initiating a charge transaction)
+
 **{{TransactionId}}** = The eVoke assigned transaction id (generated after initiating any transaction)
+
 **{{ApplicationToken}}** = Your eVoke assigned partner application token
+
 **{{eVokeUrl}}** = The environment specific api url:
+
 * **Development: https://evokeapi-dev.azurewebsites.net/api**
+
 * **Production: https://evokeapi.azurewebsites.net/api**
 
 **The postman collection representing this api documentation can be found here: https://www.getpostman.com/collections/8ad516d3327e4c7ad32a**
@@ -432,4 +442,4 @@ URL: {{eVokeUrl}}/sale/{{SaleId}}/refund
 
 ---
 [Back to top](#evoke-partner)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2021-08-18 13:06:46 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2021-08-25 20:23:41 by [docgen](https://github.com/thedevsaddam/docgen)
