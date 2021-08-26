@@ -1,7 +1,77 @@
 
 # eVoke Partner
 
-The eVoke API allows you to invoke a credit card charge on a PAX device from another system.
+# eVoke Api Documentation
+
+### Overview
+The eVoke API allows you to remotely invoke a credit card transaction on a PAX device from another system.  If you have not already, please contact the Paylani team to become an onboarded partner.
+
+During the onboarding process, your partner account will be given an application token, merchant Id(s), and Merchant Location Id(s).
+
+Please substitute these values with the api documentation variables as follows:
+**{{PartnerId}}** = your eVoke assigned partner id
+**{{MerchantId}}** = The eVoke assigned merchant id.
+**{{MerchantLocationId}}** = The eVoke assigned merchant location id.
+**{{TerminalSerialNumber}}** = The Pax terminal serial number (usually found on the back of your pax device)
+**{{SaleId}}** = The eVoke assigned sale id (generated after initiating a charge transaction)
+**{{TransactionId}}** = The eVoke assigned transaction id (generated after initiating any transaction)
+**{{ApplicationToken}}** = Your eVoke assigned partner application token
+**{{eVokeUrl}}** = The environment specific api url:
+* **Development: https://evokeapi-dev.azurewebsites.net/api**
+* **Production: https://evokeapi.azurewebsites.net/api**
+
+**The postman collection representing this api documentation can be found here: https://www.getpostman.com/collections/8ad516d3327e4c7ad32a**
+
+#### Headers
+All endpoints require the ApplicationToken header key and corresponding {{ApplicationToken}} value.
+The Charge, Cancel, Refund, and Signature endpoints require the TerminalSerialNumber header key and corresponding {{TerminalSerialNumber}} value.
+
+#### Sales and Transactions
+Sales are composed of many transactions, with contextual details from the starting charge transaction.
+
+
+------------
+
+
+### Charging a card (Charge endpoint)
+#### Instructions:
+To initiate a card charge transaction, call the {{evokeUrl}}/charge endpoint.  If you would like to include basic information to enhance the user experience in the pax terminal, you may optionally include line items and/or amount items.
+
+**The only required field to initiate a charge is the "Total" field**
+
+#### Custom associated values
+These values will be associated with the sale lifecycle, for tracking or associating a partner specific internal identifier.
+
+If you would like to track the contextual sale using an internal partner specific id association, you may optionally set the "PartnerSaleId" variable to your custom identifier.  
+
+To track the associated merchant location id, you may optionally set the "PartnerMerchantLocationId"
+
+#### Customer Card Tokenization
+Similar to the custom associated values above, if you would like to store the customer's card as a token, which will not require a card to be used, and instead will operate on the tokenized card, include the partner specific internal customer id in the "PartnerCustomerId" field.
+
+### Refunding a previous charge (POST Refund endpoint)
+Specify the {{SaleId}} in the url, and the amount to refund in the body.
+
+### Cancelling a previous charge (POST Cancel endpoint)
+Specify the {{SaleId}} in the url to cancel the sale (a void or refund will be used depending if the transaction has already been processed on the specified terminal)
+
+### Requesting a signature (POST Signature endpoint)
+Use this endpoint if you would only like to request a signature and nothing else.
+
+### GET Terminals endpoint
+Returns the current onboarded terminals, and their connection status
+
+### GET Merchant Sales endpoint
+Returns merchant sales
+
+### GET location Sales endpoint
+Returns location sales
+
+### GET Sale Receipt endpoint
+Returns html sale receipt
+
+### GET Transaction Receipt endpoint
+Returns html transaction receipt
 
 ## Indices
 
@@ -78,9 +148,7 @@ URL: {{eVokeUrl}}/signatures
 ***Body:***
 
 ```js        
-{
-    "TerminalSerialNumber":"{{TerminalSerialNumber}}",
-}
+{}
 ```
 
 
@@ -160,7 +228,7 @@ URL: {{eVokeUrl}}/sale/{{SaleId}}/cancel
 ***Body:***
 
 ```js        
-{"TerminalSerialNumber":"{{TerminalSerialNumber}}"}
+{}
 ```
 
 
@@ -364,4 +432,4 @@ URL: {{eVokeUrl}}/sale/{{SaleId}}/refund
 
 ---
 [Back to top](#evoke-partner)
-> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2021-08-02 06:33:53 by [docgen](https://github.com/thedevsaddam/docgen)
+> Made with &#9829; by [thedevsaddam](https://github.com/thedevsaddam) | Generated at: 2021-08-18 13:06:46 by [docgen](https://github.com/thedevsaddam/docgen)
