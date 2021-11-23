@@ -1,5 +1,5 @@
 ---
-title: CardSync Universal Account Updater
+title: CardSync Amex Card Account Updater 
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -19,7 +19,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="cardsync-universal-account-updater">CardSync Universal Account Updater</h1>
+<h1 id="cardsync-amex-card-account-updater">CardSync Amex Card Account Updater</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -57,7 +57,7 @@ Base URLs:
 * API Key (Authorization)
     - Parameter Name: **Authorization**, in: header. 
 
-<h1 id="cardsync-universal-account-updater-merchant">Merchant</h1>
+<h1 id="cardsync-amex-card-account-updater-merchant">Merchant</h1>
 
 Merchants are top level entities that must be created for Universal Account Updater enrollment by the respective Card Brands. Use the master api_key provided to you during your account creation for this call.
 
@@ -575,7 +575,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Authorization
 </aside>
 
-<h1 id="cardsync-universal-account-updater-enrollment">Enrollment</h1>
+<h1 id="cardsync-amex-card-account-updater-enrollment">Enrollment</h1>
 
 Once a Merchant has been created, you can initiate the Card Brand Enrollment process using the endpoints below. 
 
@@ -1016,7 +1016,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Authorization
 </aside>
 
-<h1 id="cardsync-universal-account-updater-batch">Batch</h1>
+<h1 id="cardsync-amex-card-account-updater-batch">Batch</h1>
 
 A batch is a set of up to 10,000 credit card numbers and expiration dates being submitted for updates by the respective Card Issuers. If you need to send inquiries on more than 10,000 cards at once, you may submit multiple batches simultaneously.
 
