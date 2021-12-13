@@ -1,5 +1,5 @@
 ---
-title: CardSync Amex Card Account Updater 
+title: CardSync American Express Account Updater 
 language_tabs:
   - shell: Shell
   - http: HTTP
@@ -19,7 +19,7 @@ headingLevel: 2
 
 <!-- Generator: Widdershins v4.0.1 -->
 
-<h1 id="cardsync-amex-card-account-updater">CardSync Amex Card Account Updater</h1>
+<h1 id="cardsync-american-express-account-updater">CardSync American Express Account Updater</h1>
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
@@ -29,7 +29,7 @@ After signing up as a CardSync Partner, you will be able to use this API in sand
 
 This API allows Partners to enroll Merchants and submit inquiry batches of credit card numbers and expiration dates to obtain card status (including updates to card numbers and/or expiration dates) or status updates.
 
-Here are the set of steps needed to enroll a merchant and submit card batches for inquiry:
+Here are the set of steps needed to enroll a merchant and obtain card number updates:
 
 1. (Optional) Set up webhooks to be called when merchant enrollment and batches are completed.
 2. Enroll merchant with /merchant POST.
@@ -554,7 +554,7 @@ This endpoint is used to enroll a Merchant on our platform. Merchants must have 
     },
     "billing": null,
     "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
-    "created_at": "2020-04-22T21:46:08.448148Z",
+    "created_at": "2020-04-22T21:46:08.448148Z"
   }
 }
 ```
@@ -570,7 +570,13 @@ To perform this operation, you must be authenticated by means of one of the foll
 Authorization
 </aside>
 
-<h1 id="cardsync-amex-card-account-updater-batches">Batches</h1>
+<h1 id="cardsync-universal-account-updater-batch">Batch</h1>
+
+A batch is a set of up to 10,000 credit card numbers and expiration dates being submitted for updates by the respective Card Issuers. If you need to send inquiries on more than 10,000 cards at once, you may submit multiple batches simultaneously.
+
+Best practice for recurring billing (e.g. subscriptions) is to submit on a daily or weekly basis any cards being billed in the next one to two weeks. For Merchants with payment data on file, we recommend submitting those based on your average time between transactions.
+
+Once submitted, the Card Issuers will start to return updates. In sandbox, all results (updates and/or status responses) are completed within one hour. In production, it will take 3-5 calendar days for a batch to complete. 
 
 ## Create Card Batch
 
@@ -1650,7 +1656,7 @@ Card Info
   },
   "billing": null,
   "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
-  "created_at": "2020-04-22T21:46:08.448148Z",
+  "created_at": "2020-04-22T21:46:08.448148Z"
 }
 
 ```
