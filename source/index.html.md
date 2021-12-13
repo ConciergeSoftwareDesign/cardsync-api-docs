@@ -27,15 +27,16 @@ This is the API for the CardSync Universal Account service.
 
 After signing up as a CardSync Partner, you will be able to use this API in sandbox and production. You will be provided with an API key and a Partner Billing Identifier.
 
-This API allows Partners to create and enroll Merchants and submit inquiry batches of credit card numbers and expiration dates to obtain card status (including updates to card numbers and/or expiration dates) or status updates.
+This API allows Partners to enroll Merchants and submit inquiry batches of credit card numbers and expiration dates to obtain card status (including updates to card numbers and/or expiration dates) or status updates.
 
-Here are the set of steps needed to create and enroll a merchant:
+Here are the set of steps needed to enroll a merchant and submit card batches for inquiry:
 
-1. Create merchant with /merchant POST. 
-2. Retrieve and save provided "id" and "api_key".
-3. After the merchant is created, batches can be submitted via the /batch POST. Save the provided "batch_id".
-4. Check batch status with GET /batch/{batch_id}.
-5. When the batch status is complete, retrieve the results with GET /batch/{batch_id}/results. Batches take approximately 5 business days to complete.
+1. (Optional) Set up webhooks to be called when merchant enrollment and batches are completed.
+2. Enroll merchant with /merchant POST.
+3. Retrieve and save provided "id" and "api_key".
+4. After merchant enrollment is completed (up to five business days), batches can be submitted via the /batch POST. Save the provided "batch_id".
+5. Check batch status with GET /batch/{batch_id} or wait for the callback that the batch has been completed.
+6. When the batch status is complete, retrieve the results with GET /batch/{batch_id}/results. Batches take approximately 5 business days to complete.
 
 Each batch may consist of up to 10,000 card numbers. There is no limit on the number of consecutive batch submissions. Inquiries may return one of six responses: updated_card, updated_expiry, no_match, valid, contact, or contact_closed. If the response is updated_card or updated_expiry, the updated card information is returned. Otherwise, one of the other four status types is returned. Some card inquiries do not result in any status type. This generally means the card is valid.
 
@@ -51,15 +52,206 @@ Base URLs:
 # Authentication
 
 * API Key (Authorization)
-    - Parameter Name: **Authorization**, in: header. 
+  - Parameter Name: **Authorization**, in: header.
 
-<h1 id="cardsync-amex-card-account-updater-merchant">Merchant</h1>
+# Webhooks
 
-Merchants are top level entities that must be created for Universal Account Updater enrollment by the respective Card Brands. Use the master api_key provided to you during your account creation for this call.
+Webhooks are used for three reasons:
 
-This call will return a new, merchant-level api_key. This new api_key should be used for all future requests associated with the newly created merchant.
+1. Confirmation that a merchant has been enrolled.
+2. Confirmation that a batch has been completed.
+3. Whenever one or more American Express cards previously submitted via batch have been updated.
 
-## Add New Merchant
+## Set Up Webhooks
+
+`POST /webhooks`
+
+This endpoint is used to set up the webhooks that are called when various events occur on the platform.
+
+> Body parameter
+
+```json
+{
+  merchant_enrollment_webhook: "URL to be invoked when a merchant enrollment has been completed",
+  batch_completion_webhook: "URL to be invoked when a batch has been completed",
+  amex_update_webhook: "URL to be invoked when previously enrolled card(s) has/have an update"
+}
+```
+
+<h3 id="add-webhooks-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|body|body|[Webhooks](#schemawebhooks)|true|none|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+Authorization
+</aside>
+
+<a id="opIdSetupwebhooks"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://sandbox.cardsync.io/api/webhooks \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: API_KEY'
+
+```
+
+```http
+POST https://sandbox.cardsync.io/api/webhooks HTTP/1.1
+Host: sandbox.cardsync.io
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  merchant_enrollment_webhook: "URL to be invoked when a merchant enrollment has been completed",
+  batch_completion_webhook: "URL to be invoked when a batch has been completed",
+  amex_update_webhook: "URL to be invoked when previously enrolled card(s) has/have an update"
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'Authorization':'API_KEY'
+};
+
+fetch('https://sandbox.cardsync.io/api/webhooks',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'Authorization' => 'API_KEY'
+}
+
+result = RestClient.post 'https://sandbox.cardsync.io/api/webhooks',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'API_KEY'
+}
+
+r = requests.post('https://sandbox.cardsync.io/api/webhooks', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+    'Authorization' => 'API_KEY',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','https://sandbox.cardsync.io/api/webhooks', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://sandbox.cardsync.io/api/webhooks");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+        "Authorization": []string{"API_KEY"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://sandbox.cardsync.io/api/webhooks", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+# Merchants
+
+Merchants are top level entities that must be enrolled for Universal Account Updater by the respective Card Brands. Use the master api_key provided to you during your account creation for this call.
+
+This call will return a new, merchant-level api_key. This new api_key should be used for all future requests associated with the newly enrolled merchant.
+
+## Enroll Merchant
 
 <a id="opIdAddanewmerchant"></a>
 
@@ -84,6 +276,7 @@ Accept: application/json
 
 ```javascript
 const inputBody = '{
+  "legal_business_name": "Offical Corporate Legal Name",
   "name": "New Merchant <name must be unique>",
   "description": "this is a new merchant that is getting set up",
   "website": "example.com",
@@ -112,7 +305,16 @@ const inputBody = '{
     "role": "admin",
     "create_api_key": true
   },
-  "accept_tos": true
+  "card_info": {
+    "type_of_biller": "both",
+    "total_number_of_records": 400,
+    "number_of_visa": 100,
+    "number_of_mastercard": 100,
+    "number_of_discover": 100,
+    "number_of_amex": 100,
+    "delivery_frequency": "monthly",
+    "mcc": "5968"
+  } 
 }';
 const headers = {
   'Content-Type':'application/json',
@@ -245,12 +447,13 @@ func main() {
 
 `POST /merchant`
 
-This endpoint is used to create a new Merchant on our platform. Merchants must have a unique name. The fee_schedule_id will be provided to you during your Partner creation and will be the same for all Merchants you create.
+This endpoint is used to enroll a Merchant on our platform. Merchants must have a unique name. The fee_schedule_id will be provided to you during your Partner creation and will be the same for all Merchants you create.
 
 > Body parameter
 
 ```json
 {
+  "legal_business_name": "Offical Corporate Legal Name",
   "name": "New Merchant <name must be unique>",
   "description": "this is a new merchant that is getting set up",
   "website": "example.com",
@@ -279,7 +482,16 @@ This endpoint is used to create a new Merchant on our platform. Merchants must h
     "role": "admin",
     "create_api_key": true
   },
-  "accept_tos": true
+  "card_info": {
+    "type_of_biller": "both",
+    "total_number_of_records": 400,
+    "number_of_visa": 100,
+    "number_of_mastercard": 100,
+    "number_of_discover": 100,
+    "number_of_amex": 100,
+    "delivery_frequency": "monthly",
+    "mcc": "5968"
+  } 
 }
 ```
 
@@ -290,7 +502,6 @@ This endpoint is used to create a new Merchant on our platform. Merchants must h
 |body|body|[Merchant](#schemaaddanewmerchantrequest)|true|none|
 
 > Example responses
-
 > 200 Response
 
 ```json
@@ -300,6 +511,7 @@ This endpoint is used to create a new Merchant on our platform. Merchants must h
   "data": {
     "id": "bqgbm86g10l2fm2bv7n0",
     "partner_id": "bqgblveg10l2b5dhg0ig",
+    "legal_business_name": "Offical Corporate Legal Name",
     "name": "New Merchant",
     "description": "this is a new merchant that is getting setup",
     "website": "example.com",
@@ -342,10 +554,7 @@ This endpoint is used to create a new Merchant on our platform. Merchants must h
     },
     "billing": null,
     "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
-    "tos_accepted_by": "Test Partner / Test Partner",
-    "tos_accepted_by_username": "test_partner",
     "created_at": "2020-04-22T21:46:08.448148Z",
-    "tos_last_accepted_at": "2020-04-22T21:46:08Z"
   }
 }
 ```
@@ -612,13 +821,14 @@ func main() {
 
 `POST /cardsync/batch`
 
-This endpoint requests updates for card batches. 
+This endpoint requests updates for card batches.
 
 ## Test Data (Sandbox only)
 
 You can supply any Luhn10 valid card number, but to trigger specific responses, please use the following test card numbers in the sandbox environment.
 
 ### Visa Test Cards
+
 4012000000000016 - updated_card  
 4012000000000024 - updated_expiry  
 4012000000000032 - no_match  
@@ -627,16 +837,18 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 4012000000000065 - contact_closed  
 
 ### MC Test Cards
+
 5442980000000016 - updated_card  
 5442980000000024 - updated_expiry  
-5442980000000032 - no_match   
+5442980000000032 - no_match
 5442980000000040 - valid  
 5442980000000057 - contact  
 5442980000000065 - contact_closed  
 
 ### Discover Test Cards
+
 6011000000000012 - updated_card  
-6011000000000020 - updated_expiry   
+6011000000000020 - updated_expiry
 6011000000000038 - no_match  
 6011000000000046 - valid  
 6011000000000053 - contact  
@@ -748,7 +960,6 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 |body|body|[Card Batch](#schemacreatesbatchofcardsforupdatesrequest)|true|none|
 
 > Example responses
-
 > 200 Response
 
 ```json
@@ -943,7 +1154,6 @@ Retrieve the status of a batch. Batches in the sandbox will be completed within 
 |BATCH_ID|path|string|true|none|
 
 > Example responses
-
 > 200 Response
 
 ```json
@@ -1140,7 +1350,6 @@ Retrieves a completed batch. Included with the batch results is the statistical 
 |BATCH_ID|path|string|true|none|
 
 > Example responses
-
 > 200 Response
 
 ```json
@@ -1187,6 +1396,29 @@ Authorization
 
 # Schemas
 
+<h2 id="tocS_Addwebhooks">Webhooks</h2>
+<!-- backwards compatibility -->
+<a id="schemawebhooks"></a>
+<a id="schema_Webhooks"></a>
+<a id="tocSwebhooks"></a>
+<a id="tocswebhooks"></a>
+
+```json
+{
+  
+}
+```
+
+Webhooks
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|merchant_enrollment_webhook|string|true|none|none|
+|batch_completion_webhook|string|true|none|none|
+|amex_update_webhook|string|true|none|none|
+
 <h2 id="tocS_AddanewmerchantRequest">Merchant</h2>
 <!-- backwards compatibility -->
 <a id="schemaaddanewmerchantrequest"></a>
@@ -1196,6 +1428,7 @@ Authorization
 
 ```json
 {
+  "legal_business_name": "Offical Corporate Legal Name",
   "name": "New Merchant <name must be unique>",
   "description": "this is a new merchant that is getting set up",
   "website": "example.com",
@@ -1224,9 +1457,17 @@ Authorization
     "role": "admin",
     "create_api_key": true
   },
-  "accept_tos": true
+  "card_info": {
+    "type_of_biller": "both",
+    "total_number_of_records": 400,
+    "number_of_visa": 100,
+    "number_of_mastercard": 100,
+    "number_of_discover": 100,
+    "number_of_amex": 100,
+    "delivery_frequency": "monthly",
+    "mcc": "5968"
+  }
 }
-
 ```
 
 Merchant
@@ -1235,6 +1476,7 @@ Merchant
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
+|legal_business_name|string|true|none|none|
 |name|string|true|must be globally unique|none|
 |description|string|true|none|none|
 |website|string|true|none|none|
@@ -1245,7 +1487,7 @@ Merchant
 |fee_schedule_id|string|true|none|none|
 |primary_contact|[PrimaryContact](#schemaprimarycontact)|true|none|none|
 |user|[User](#schemauser)|true|none|none|
-|accept_tos|boolean|true|none|none|
+|card_info|[CardInfo](#cardinfo)|true|none|none|
 
 <h2 id="tocS_PrimaryContact">Primary Contact</h2>
 <!-- backwards compatibility -->
@@ -1319,6 +1561,41 @@ User
 |role|string|true|none|none|
 |create_api_key|boolean|true|none|none|
 
+<h2 id="tocS_cardinfo">Card Info</h2>
+<!-- backwards compatibility -->
+<a id="schemacardinfo"></a>
+<a id="schema_CardInfo"></a>
+<a id="tocScardinfo"></a>
+<a id="tocscardinfo"></a>
+
+```json
+{
+  "type_of_biller": "both",
+  "total_number_of_records": 400,
+  "number_of_visa": 100,
+  "number_of_mastercard": 100,
+  "number_of_discover": 100,
+  "number_of_amex": 100,
+  "delivery_frequency": "monthly",
+  "mcc": "5968"
+}
+```
+
+Card Info
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|type_of_biller|string|true|none|none|
+|total_number_of_records|integer(int32)|true|none|none|
+|number_of_visa|integer(int32)|true|none|none|
+|number_of_mastercard|integer(int32)|true|none|none|
+|number_of_discover|integer(int32)|true|none|none|
+|number_of_amex|integer(int32)|true|none|none|
+|delivery_frequency|string|true|none|none|
+|mcc|string|true|none|none|
+
 <h2 id="tocS_Data">Merchant Response</h2>
 <!-- backwards compatibility -->
 <a id="schemadata"></a>
@@ -1330,6 +1607,7 @@ User
 {
   "id": "bqgbm86g10l2fm2bv7n0",
   "partner_id": "bqgblveg10l2b5dhg0ig",
+  "legal_business_name": "Offical Corporate Legal Name",
   "name": "New Merchant",
   "description": "this is a new merchant that is getting setup",
   "website": "example.com",
@@ -1372,10 +1650,7 @@ User
   },
   "billing": null,
   "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
-  "tos_accepted_by": "Test Partner / Test Partner",
-  "tos_accepted_by_username": "test_partner",
   "created_at": "2020-04-22T21:46:08.448148Z",
-  "tos_last_accepted_at": "2020-04-22T21:46:08Z"
 }
 
 ```
@@ -1402,10 +1677,7 @@ Merchant Response
 |billing_contact|[Billing Contact](#schemabillingcontact)|true|none|none|
 |billing|string¦null|true|none|none|
 |api_key|string|true|none|none|
-|tos_accepted_by|string|true|none|none|
-|tos_accepted_by_username|string|true|none|none|
 |created_at|string|true|none|none|
-|tos_last_accepted_at|string|true|none|none|
 
 <h2 id="tocS_BillingContact">Billing Contact</h2>
 <!-- backwards compatibility -->
