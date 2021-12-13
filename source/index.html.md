@@ -308,10 +308,11 @@ const inputBody = '{
   "card_info": {
     "type_of_biller": "both",
     "total_number_of_records": 400,
-    "number_of_visa": 100,
-    "number_of_mastercard": 100,
-    "number_of_discover": 100,
-    "number_of_amex": 100,
+    "number_of_visa": 0,
+    "number_of_mastercard": 0,
+    "number_of_discover": 0,
+    "number_of_amex": 400,
+    "amex_se_number": "1234567890",
     "delivery_frequency": "monthly",
     "mcc": "5968"
   } 
@@ -484,11 +485,12 @@ This endpoint is used to enroll a Merchant on our platform. Merchants must have 
   },
   "card_info": {
     "type_of_biller": "both",
-    "total_number_of_records": 400,
+    "total_number_of_records": 300,
     "number_of_visa": 100,
     "number_of_mastercard": 100,
     "number_of_discover": 100,
-    "number_of_amex": 100,
+    "number_of_amex": 0,
+    "amex_se_number": "",
     "delivery_frequency": "monthly",
     "mcc": "5968"
   } 
@@ -1465,11 +1467,12 @@ Webhooks
   },
   "card_info": {
     "type_of_biller": "both",
-    "total_number_of_records": 400,
+    "total_number_of_records": 300,
     "number_of_visa": 100,
     "number_of_mastercard": 100,
     "number_of_discover": 100,
-    "number_of_amex": 100,
+    "number_of_amex": 0,
+    "amex_se_number": "",
     "delivery_frequency": "monthly",
     "mcc": "5968"
   }
@@ -1582,6 +1585,7 @@ User
   "number_of_mastercard": 100,
   "number_of_discover": 100,
   "number_of_amex": 100,
+  "amex_se_number": "1234567890",
   "delivery_frequency": "monthly",
   "mcc": "5968"
 }
@@ -1599,6 +1603,7 @@ Card Info
 |number_of_mastercard|integer(int32)|true|none|none|
 |number_of_discover|integer(int32)|true|none|none|
 |number_of_amex|integer(int32)|true|none|none|
+|amex_se_number|string|true|none|empty string if none|
 |delivery_frequency|string|true|none|none|
 |mcc|string|true|none|none|
 
