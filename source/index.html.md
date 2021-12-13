@@ -72,9 +72,9 @@ This endpoint is used to set up the webhooks that are called when various events
 
 ```json
 {
-  merchant_enrollment_webhook: "URL to be invoked when a merchant enrollment has been completed",
-  batch_completion_webhook: "URL to be invoked when a batch has been completed",
-  amex_update_webhook: "URL to be invoked when previously enrolled card(s) has/have an update"
+  "merchant_enrollment_webhook": "URL to be invoked when a merchant enrollment has been completed",
+  "batch_completion_webhook": "URL to be invoked when a batch has been completed",
+  "amex_update_webhook": "URL to be invoked when previously enrolled card(s) has/have an update"
 }
 ```
 
@@ -112,9 +112,9 @@ Accept: application/json
 
 ```javascript
 const inputBody = '{
-  merchant_enrollment_webhook: "URL to be invoked when a merchant enrollment has been completed",
-  batch_completion_webhook: "URL to be invoked when a batch has been completed",
-  amex_update_webhook: "URL to be invoked when previously enrolled card(s) has/have an update"
+  "merchant_enrollment_webhook": "URL to be invoked when a merchant enrollment has been completed",
+  "batch_completion_webhook": "URL to be invoked when a batch has been completed",
+  "amex_update_webhook": "URL to be invoked when previously enrolled card(s) has/have an update"
 }';
 const headers = {
   'Content-Type':'application/json',
