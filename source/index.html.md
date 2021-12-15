@@ -100,7 +100,7 @@ Authorization
 
 ```shell
 # You can also use wget
-curl -X POST https://sandbox.cardsync.io/api/webhooks \
+curl -X POST https://sandbox.cardsync.io/v2/webhooks \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: API_KEY'
@@ -108,7 +108,7 @@ curl -X POST https://sandbox.cardsync.io/api/webhooks \
 ```
 
 ```http
-POST https://sandbox.cardsync.io/api/webhooks HTTP/1.1
+POST https://sandbox.cardsync.io/v2/webhooks HTTP/1.1
 Host: sandbox.cardsync.io
 Content-Type: application/json
 Accept: application/json
@@ -128,7 +128,7 @@ const headers = {
   'Authorization':'API_KEY'
 };
 
-fetch('https://sandbox.cardsync.io/api/webhooks',
+fetch('https://sandbox.cardsync.io/v2/webhooks',
 {
   method: 'POST',
   body: inputBody,
@@ -152,7 +152,7 @@ headers = {
   'Authorization' => 'API_KEY'
 }
 
-result = RestClient.post 'https://sandbox.cardsync.io/api/webhooks',
+result = RestClient.post 'https://sandbox.cardsync.io/v2/webhooks',
   params: {
   }, headers: headers
 
@@ -168,7 +168,7 @@ headers = {
   'Authorization': 'API_KEY'
 }
 
-r = requests.post('https://sandbox.cardsync.io/api/webhooks', headers = headers)
+r = requests.post('https://sandbox.cardsync.io/v2/webhooks', headers = headers)
 
 print(r.json())
 
@@ -191,7 +191,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://sandbox.cardsync.io/api/webhooks', array(
+    $response = $client->request('POST','https://sandbox.cardsync.io/v2/webhooks', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -207,7 +207,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://sandbox.cardsync.io/api/webhooks");
+URL obj = new URL("https://sandbox.cardsync.io/v2/webhooks");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -240,7 +240,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://sandbox.cardsync.io/api/webhooks", data)
+    req, err := http.NewRequest("POST", "https://sandbox.cardsync.io/v2/webhooks", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -279,7 +279,7 @@ This call will return a new, merchant-level api_key. This new api_key should be 
 
 ```shell
 # You can also use wget
-curl -X POST https://sandbox.cardsync.io/api/merchant \
+curl -X POST https://sandbox.cardsync.io/v2/merchant \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: API_KEY'
@@ -287,7 +287,7 @@ curl -X POST https://sandbox.cardsync.io/api/merchant \
 ```
 
 ```http
-POST https://sandbox.cardsync.io/api/merchant HTTP/1.1
+POST https://sandbox.cardsync.io/v2/merchant HTTP/1.1
 Host: sandbox.cardsync.io
 Content-Type: application/json
 Accept: application/json
@@ -343,7 +343,7 @@ const headers = {
   'Authorization':'API_KEY'
 };
 
-fetch('https://sandbox.cardsync.io/api/merchant',
+fetch('https://sandbox.cardsync.io/v2/merchant',
 {
   method: 'POST',
   body: inputBody,
@@ -367,7 +367,7 @@ headers = {
   'Authorization' => 'API_KEY'
 }
 
-result = RestClient.post 'https://sandbox.cardsync.io/api/merchant',
+result = RestClient.post 'https://sandbox.cardsync.io/v2/merchant',
   params: {
   }, headers: headers
 
@@ -383,7 +383,7 @@ headers = {
   'Authorization': 'API_KEY'
 }
 
-r = requests.post('https://sandbox.cardsync.io/api/merchant', headers = headers)
+r = requests.post('https://sandbox.cardsync.io/v2/merchant', headers = headers)
 
 print(r.json())
 
@@ -406,7 +406,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://sandbox.cardsync.io/api/merchant', array(
+    $response = $client->request('POST','https://sandbox.cardsync.io/v2/merchant', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -423,7 +423,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://sandbox.cardsync.io/api/merchant");
+URL obj = new URL("https://sandbox.cardsync.io/v2/merchant");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -455,7 +455,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://sandbox.cardsync.io/api/merchant", data)
+    req, err := http.NewRequest("POST", "https://sandbox.cardsync.io/v2/merchant", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -465,7 +465,7 @@ func main() {
 
 ```
 
-`POST v2/merchant`
+`POST /v2/merchant`
 
 This endpoint is used to enroll a Merchant on the platform. The fee_schedule_id will be provided to you during your Partner creation and will be the same for all Merchants you create.
 
@@ -915,7 +915,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('POST','https://sandbox.cardsync.io/batch', array(
+    $response = $client->request('POST','https://sandbox.cardsync.io/v2/batch', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -965,7 +965,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("POST", "https://sandbox.cardsync.io/batch", data)
+    req, err := http.NewRequest("POST", "https://sandbox.cardsync.io/v2/batch", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -2238,7 +2238,7 @@ Enroll Merchant Webhook
 |---|---|---|---|---|
 |status|string|true|none|none|
 |message|string|true|none|none|
-|id|string|true|none|merchant id from the POST /merchant call|
+|id|string|true|none|merchant id from the POST /v2/merchant call|
 
 <h2 id="tocS_BatchCompletionWebhook">Batch Completion Webhook</h2>
 <!-- backwards compatibility -->
