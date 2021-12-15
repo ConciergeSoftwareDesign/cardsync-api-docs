@@ -32,11 +32,12 @@ This API allows Partners to enroll Merchants and submit inquiry batches of credi
 Here are the set of steps needed to enroll a merchant and obtain card number updates:
 
 1. (Optional) Set up webhooks to be called when merchant enrollment and batches are completed.
-2. Enroll merchant with /merchant POST.
+2. Enroll merchant with /v2/merchant POST.
 3. Retrieve and save provided "id" and "api_key".
-4. After merchant enrollment is completed (up to five business days), batches can be submitted via the /batch POST. Save the provided "batch_id".
-5. Check batch status with GET /batch/{batch_id} or wait for the callback that the batch has been completed.
-6. When the batch status is complete, retrieve the results with GET /batch/{batch_id}/results. Batches take approximately 5 business days to complete.
+4. You may check on the status of the enrollment by calling GET /v2/merchant?id={ID} or wait for the webhook to be called.
+5. After merchant enrollment is completed (up to five business days), batches can be submitted via the /v2/batch POST. Save the provided "batch_id".
+6. Check batch status with GET /batch?batch_id={BATCH_ID} or wait for the callback that the batch has been completed. The webhook call will provide an "event_id".
+7. When the batch status is complete, retrieve the results with GET /batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}. Batches take approximately 5 business days to complete. You may omit the event_id if you are polling for results and are calling this API after the batch status is completed.
 
 Each batch may consist of up to 10,000 card numbers. There is no limit on the number of consecutive batch submissions. Inquiries may return one of six responses: updated_card, updated_expiry, no_match, valid, contact, or contact_closed. If the response is updated_card or updated_expiry, the updated card information is returned. Otherwise, one of the other four status types is returned. Some card inquiries do not result in any status type. This generally means the card is valid.
 
@@ -44,6 +45,8 @@ For more information, visit https://cardsync.io.
 
 Contact Support:  
     Email: help@cardsync.io
+
+This document describes the CardSync v2 documentation. For the previous v1 API, please visit https://api.cardsync.io/v1.
 
 Base URLs:
 
@@ -56,15 +59,16 @@ Base URLs:
 
 # Webhooks
 
-Webhooks are used for three reasons:
+Webhooks are used for four reasons:
 
 1. Confirmation that a merchant has been enrolled.
 2. Confirmation that a batch has been completed.
-3. Whenever one or more American Express cards previously submitted via batch have been updated.
+3. Providing information on a batch that has an error.
+4. Whenever one or more American Express cards previously submitted via batch have been updated.
 
 ## Set Up Webhooks
 
-`POST /webhooks`
+`POST /v2/webhooks`
 
 This endpoint is used to set up the webhooks that are called when various events occur on the platform.
 
@@ -74,6 +78,7 @@ This endpoint is used to set up the webhooks that are called when various events
 {
   "merchant_enrollment_webhook": "URL to be invoked when a merchant enrollment has been completed",
   "batch_completion_webhook": "URL to be invoked when a batch has been completed",
+  "batch_error_webhook": "URL to be invoked when a batch has an error",
   "amex_update_webhook": "URL to be invoked when previously enrolled card(s) has/have an update"
 }
 ```
@@ -114,6 +119,7 @@ Accept: application/json
 const inputBody = '{
   "merchant_enrollment_webhook": "URL to be invoked when a merchant enrollment has been completed",
   "batch_completion_webhook": "URL to be invoked when a batch has been completed",
+  "batch_error_webhook": "URL to be invoked when a batch has an error",
   "amex_update_webhook": "URL to be invoked when previously enrolled card(s) has/have an update"
 }';
 const headers = {
@@ -198,7 +204,6 @@ try {
  }
 
  // ...
-
 ```
 
 ```java
@@ -431,7 +436,6 @@ while ((inputLine = in.readLine()) != null) {
 }
 in.close();
 System.out.println(response.toString());
-
 ```
 
 ```go
@@ -461,7 +465,7 @@ func main() {
 
 ```
 
-`POST /merchant`
+`POST v2/merchant`
 
 This endpoint is used to enroll a Merchant on the platform. The fee_schedule_id will be provided to you during your Partner creation and will be the same for all Merchants you create.
 
@@ -691,7 +695,7 @@ func main() {
 
 ```
 
-`GET /merchant/{MERCHANT_ID}`
+`GET /v2/merchant?id={ID}`
 
 Returns the current status of the Merchant's requested enrollment. This will let you know when you may start submitting card inquiries on their behalf.
 
@@ -971,7 +975,7 @@ func main() {
 
 ```
 
-`POST /cardsync/batch`
+`POST /v2/batch`
 
 This endpoint requests updates for card batches.
 
@@ -1295,7 +1299,7 @@ func main() {
 
 ```
 
-`GET /cardsync/batch/{BATCH_ID}`
+`GET /v2/batch?batch_id={BATCH_ID}`
 
 Retrieve the status of a batch. Batches in the sandbox will be completed within one hour. Batches in production will take 3-5 calendar days to complete.
 
@@ -1491,7 +1495,7 @@ func main() {
 
 ```
 
-`GET /cardsync/batch/{BATCH_ID}/results`
+`GET /v2/batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}`
 
 Retrieves a completed batch. Included with the batch results is the statistical breakdown of each update and/or response that was received. Results will include status updates as well as updated card information. The total number of results may be less than the number of cards submitted. Batch results will remain available for 10 calendar days after the batch completes, after which they are purged from the platform.
 
@@ -1559,6 +1563,7 @@ Authorization
 {
   "merchant_enrollment_webhook": "URL to be invoked when a merchant enrollment has been completed",
   "batch_completion_webhook": "URL to be invoked when a batch has been completed",
+  "batch_error_webhook": "URL to be invoked when a batch has an error",
   "amex_update_webhook": "URL to be invoked when previously enrolled card(s) has/have an update"
 }
 ```
@@ -1571,6 +1576,7 @@ Webhooks
 |---|---|---|---|---|
 |merchant_enrollment_webhook|string|true|none|none|
 |batch_completion_webhook|string|true|none|none|
+|batch_error_webhook|string|true|none|none|
 |amex_update_webhook|string|true|empty string if no amex|none|
 
 <h2 id="tocS_AddanewmerchantRequest">Merchant</h2>
@@ -2224,7 +2230,7 @@ Batch Results Data
 }
 ```
 
-Enrollment Merchant Webhook
+Enroll Merchant Webhook
 
 ### Properties
 
@@ -2243,30 +2249,30 @@ Enrollment Merchant Webhook
 
 ```json
 {
-	"batch_id": "b9ec0c1776655524350",
-	"card_stats": {
-		"visa": 0,
-		"mastercard": 8,
-		"discover": 0,
-		"american_express": 0
-	},
-	"stats": {
-		"updated_expiry": 1,
-		"updated_card": 1,
-		"no_change": 2,
-		"no_match": 3,
-		"valid": 0,
-		"contact": 0,
-		"closed": 0,
-		"number_submitted": 8,
-		"contact_closed": 1
-	},
-	"id": "60d7a065-1795-4e98-88af-a8b98db9ec0c",
-	"trigger_id": 20,
-	"trigger_date": "2021-12-08T21:39:00.349754Z",
-	"event_id": "c7a8da62-473d-4153-91d6-d6fddd3d7252",
-	"message": "",
-	"expires": "2021-12-09T21:39:00.349475Z"
+  "batch_id": "b9ec0c1776655524350",  
+  "card_stats": {
+    "visa": 0,
+    "mastercard": 8,
+    "discover": 0,
+    "american_express": 0
+  },
+  "stats": {
+    "updated_expiry": 1,
+    "updated_card": 1,
+    "no_change": 2,
+    "no_match": 3,
+    "valid": 0,
+    "contact": 0,
+    "closed": 0,
+    "number_submitted": 8,
+    "contact_closed": 1
+  },
+  "id": "60d7a065-1795-4e98-88af-a8b98db9ec0c",
+  "trigger_id": 20,
+  "trigger_date": "2021-12-08T21:39:00.349754Z",
+  "event_id": "c7a8da62-473d-4153-91d6-d6fddd3d7252",
+  "message": "",
+  "expires": "2021-12-09T21:39:00.349475Z"
 }
 ```
 
@@ -2295,23 +2301,23 @@ Batch Completion Webhook
 
 ```json
 {
-	"stats": {
-		"updated_expiry": 1,
-		"updated_card": 1,
-		"no_change": 2,
-		"no_match": 3,
-		"valid": 0,
-		"contact": 0,
-		"closed": 0,
-		"number_submitted": 8,
-		"contact_closed": 1
-	},
-	"id": "045b35f5-aed8-4c75-97f9-942de0fc0c32",
-	"trigger_id": 20,
-	"trigger_date": "2021-12-08T21:39:00.349754Z",
-	"event_id": "46d91344-cc41-4922-b00f-c40226b548a4",
-	"message": "",
-	"expires": "2021-12-09T21:39:00.349475Z"
+  "stats": {
+    "updated_expiry": 1,
+    "updated_card": 1,
+    "no_change": 2,
+    "no_match": 3,
+    "valid": 0,
+    "contact": 0,
+    "closed": 0,
+    "number_submitted": 8,
+    "contact_closed": 1
+  },
+  "id": "045b35f5-aed8-4c75-97f9-942de0fc0c32",
+  "trigger_id": 20,
+  "trigger_date": "2021-12-08T21:39:00.349754Z",
+  "event_id": "46d91344-cc41-4922-b00f-c40226b548a4",
+  "message": "",
+  "expires": "2021-12-09T21:39:00.349475Z"
 }
 ```
 
@@ -2328,3 +2334,38 @@ Amex Update Webhook
 |event_id|string|true|none|none|
 |message|string|true|none|none|
 |expires|string|true|none|none|
+
+<h2 id="tocS_BatchErrorWebhook">Batch Error Webhook</h2>
+<!-- backwards compatibility -->
+<a id="schemabatcherrorwebhook"></a>
+<a id="schema_Batcherrorwebhook"></a>
+<a id="tocSbatcherrorwebhook"></a>
+<a id="tocsbatcherrorwebhook"></a>
+
+```json
+{
+  "batch_id": "b9ec0c1776655524350",  
+  "id": "60d7a065-1795-4e98-88af-a8b98db9ec0c",
+  "trigger_id": 20,
+  "trigger_date": "2021-12-08T21:39:00.349754Z",
+  "event_id": "c7a8da62-473d-4153-91d6-d6fddd3d7252",
+  "source": "Validation",
+  "message": "3 errors occurred in during the batch validation process",
+  "error_count": 3
+}
+```
+
+Batch Error Webhook
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|batch_id|string|true|none|none|
+|id|string|true|none|none|
+|trigger_id|string|true|none|none|
+|trigger_date|string|true|none|none|
+|event_id|string|true|none|none|
+|source|string|true|none|none|
+|message|string|true|none|none|
+|error_count|integer(int32)|true|none|none|
