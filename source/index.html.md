@@ -33,24 +33,26 @@ Here are the set of steps needed to enroll a merchant and obtain card number upd
 
 1. (Optional) Set up webhooks to be called when merchant enrollment and batches are completed.
 2. Enroll merchant with /v2/merchant POST.
-3. Retrieve and save provided "id" and "api_key".
-4. You may check on the status of the enrollment by calling GET /v2/merchant?id={ID} or wait for the webhook to be called.
+3. Retrieve and save provided "merchant_id" and "api_key".
+4. You may check on the status of the enrollment by calling GET /v2/merchant?merchant_id={MERCHANT_ID} or wait for the webhook to be called.
 5. After merchant enrollment is completed (up to five business days), batches can be submitted via the /v2/batch POST. Save the provided "batch_id".
 6. Check batch status with GET /batch?batch_id={BATCH_ID} or wait for the callback that the batch has been completed. The webhook call will provide an "event_id".
-7. When the batch status is complete, retrieve the results with GET /batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}. Batches take approximately 5 business days to complete. You may omit the event_id if you are polling for results and are calling this API after the batch status is completed.
+7. When the batch status is complete, retrieve the results with GET /batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}. Batches take approximately 5 business days to complete. You may omit the "event_id" if you are polling for results and are calling this API after the batch status is completed.
 
 Each batch may consist of up to 10,000 card numbers. There is no limit on the number of consecutive batch submissions. Inquiries may return one of six responses: updated_card, updated_expiry, no_match, valid, contact, or contact_closed. If the response is updated_card or updated_expiry, the updated card information is returned. Otherwise, one of the other four status types is returned. Some card inquiries do not result in any status type. This generally means the card is valid.
 
-For more information, visit https://cardsync.io.
+Note: American Express cards must be submitted separately from all other card types. With those batches, the merchant's SE number must be provided. If a merchant has more than one SE number, please submit one batch per SE number. The reason American Express cards are submitted separately is that the American Express cards are enrolled in a subscription for future updates. Any time that an American Express card has an update, you will be notified via webhook to retrieve the new card information.
+
+For more information, visit <a href="https://cardsync.io">https://cardsync.io</a>.
 
 Contact Support:  
     Email: help@cardsync.io
 
-This document describes the CardSync v2 documentation. For the previous v1 API, please visit https://api.cardsync.io/v1.
+This document describes the CardSync v2 documentation. For the previous v1 API, please visit <a href="https://api.cardsync.io/v1/index.html">https://api.cardsync.io/v1/index.html</a>.
 
 Base URLs:
 
-* <a href="https://sandbox.cardsync.io/api">https://sandbox.cardsync.io/api</a>
+* <a href="https://sandbox.cardsync.io/">https://sandbox.cardsync.io/</a>
 
 # Authentication
 
@@ -332,7 +334,7 @@ const inputBody = '{
     "number_of_mastercard": 0,
     "number_of_discover": 0,
     "number_of_amex": 400,
-    "amex_se_number": "1234567890 <optional only used in Amem batch>",
+    "amex_se_number": "1234567890 <optional only used in Amex batch>",
     "delivery_frequency": "monthly",
     "mcc": "5968"
   } 
@@ -509,7 +511,7 @@ This endpoint is used to enroll a Merchant on the platform. The fee_schedule_id 
     "number_of_mastercard": 100,
     "number_of_discover": 100,
     "number_of_amex": 0,
-    "amex_se_number": "1234567890 <optional only used in Amem batch>",
+    "amex_se_number": "1234567890 <optional only used in Amex batch>",
     "delivery_frequency": "monthly",
     "mcc": "5968"
   } 
@@ -530,7 +532,7 @@ This endpoint is used to enroll a Merchant on the platform. The fee_schedule_id 
   "status": "success",
   "msg": "success",
   "data": {
-    "id": "bqgbm86g10l2fm2bv7n0",
+    "merchant_id": "bqgbm86g10l2fm2bv7n0",
     "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
     "created_at": "2020-04-22T21:46:08.448148Z"
   }
@@ -556,14 +558,14 @@ Authorization
 
 ```shell
 # You can also use wget
-curl -X GET https://sandbox.cardsync.io/merchant/{MERCHANT_ID} \
+curl -X GET https://sandbox.cardsync.io/v2/merchant?merchant_id={MERCHANT_ID} \
   -H 'Accept: application/json' \
   -H 'Authorization: API_KEY'
 
 ```
 
 ```http
-GET https://sandbox.cardsync.io/merchant/{MERCHANT_ID} HTTP/1.1
+GET https://sandbox.cardsync.io/v2/merchant?merchant_id={MERCHANT_ID} HTTP/1.1
 Host: sandbox.cardsync.io
 Accept: application/json
 
@@ -576,7 +578,7 @@ const headers = {
   'Authorization':'API_KEY'
 };
 
-fetch('https://sandbox.cardsync.io/merchant/{MERCHANT_ID}',
+fetch('https://sandbox.cardsync.io/v2/merchant?merchant_id={MERCHANT_ID}',
 {
   method: 'GET',
 
@@ -599,7 +601,7 @@ headers = {
   'Authorization' => 'API_KEY'
 }
 
-result = RestClient.get 'https://sandbox.cardsync.io/merchant/{MERCHANT_ID}',
+result = RestClient.get 'https://sandbox.cardsync.io/v2/merchant?merchant_id={MERCHANT_ID}',
   params: {
   }, headers: headers
 
@@ -614,7 +616,7 @@ headers = {
   'Authorization': 'API_KEY'
 }
 
-r = requests.get('https://sandbox.cardsync.io/merchant/{MERCHANT_ID}', headers = headers)
+r = requests.get('https://sandbox.cardsync.io/v2/merchant?merchant_id={MERCHANT_ID}', headers = headers)
 
 print(r.json())
 
@@ -636,7 +638,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','https://sandbox.cardsync.io/merchant/{MERCHANT_ID}', array(
+    $response = $client->request('GET','https://sandbox.cardsync.io/v2/merchant?merchant_id={MERCHANT_ID}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -653,7 +655,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://sandbox.cardsync.io/merchant/{MERCHANT_ID}");
+URL obj = new URL("https://sandbox.cardsync.io/v2/merchant?merchant_id={MERCHANT_ID}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -685,7 +687,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://sandbox.cardsync.io/merchant/{MERCHANT_ID}", data)
+    req, err := http.NewRequest("GET", "https://sandbox.cardsync.io/v2/merchant?merchant_id={MERCHANT_ID}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -695,7 +697,7 @@ func main() {
 
 ```
 
-`GET /v2/merchant?id={ID}`
+`GET /v2/merchant?merchant_id={MERCHANT_ID}`
 
 Returns the current status of the Merchant's requested enrollment. This will let you know when you may start submitting card inquiries on their behalf.
 
@@ -736,7 +738,7 @@ Once submitted, the Card Issuers will start to return updates. In sandbox, all r
 
 ```shell
 # You can also use wget
-curl -X POST https://sandbox.cardsync.io/batch \
+curl -X POST https://sandbox.cardsync.io/v2/batch \
   -H 'Content-Type: application/json' \
   -H 'Accept: application/json' \
   -H 'Authorization: API_KEY'
@@ -744,7 +746,7 @@ curl -X POST https://sandbox.cardsync.io/batch \
 ```
 
 ```http
-POST https://sandbox.cardsync.io/batch HTTP/1.1
+POST https://sandbox.cardsync.io/v2/batch HTTP/1.1
 Host: sandbox.cardsync.io
 Content-Type: application/json
 Accept: application/json
@@ -852,7 +854,7 @@ const headers = {
   'Authorization':'API_KEY'
 };
 
-fetch('https://sandbox.cardsync.io/batch',
+fetch('https://sandbox.cardsync.io/v2/batch',
 {
   method: 'POST',
   body: inputBody,
@@ -876,7 +878,7 @@ headers = {
   'Authorization' => 'API_KEY'
 }
 
-result = RestClient.post 'https://sandbox.cardsync.io/batch',
+result = RestClient.post 'https://sandbox.cardsync.io/v2/batch',
   params: {
   }, headers: headers
 
@@ -892,7 +894,7 @@ headers = {
   'Authorization': 'API_KEY'
 }
 
-r = requests.post('https://sandbox.cardsync.io/batch', headers = headers)
+r = requests.post('https://sandbox.cardsync.io/v2/batch', headers = headers)
 
 print(r.json())
 
@@ -932,7 +934,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://sandbox.cardsync.io/batch");
+URL obj = new URL("https://sandbox.cardsync.io/v2/batch");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("POST");
 int responseCode = con.getResponseCode();
@@ -1160,14 +1162,14 @@ Authorization
 
 ```shell
 # You can also use wget
-curl -X GET https://sandbox.cardsync.io/batch/{BATCH_ID} \
+curl -X GET https://sandbox.cardsync.io/v2/batch?batch_id={BATCH_ID} \
   -H 'Accept: application/json' \
   -H 'Authorization: API_KEY'
 
 ```
 
 ```http
-GET https://sandbox.cardsync.io/batch/{BATCH_ID} HTTP/1.1
+GET https://sandbox.cardsync.io/v2/batch?batch_id={BATCH_ID} HTTP/1.1
 Host: sandbox.cardsync.io
 Accept: application/json
 
@@ -1180,7 +1182,7 @@ const headers = {
   'Authorization':'API_KEY'
 };
 
-fetch('https://sandbox.cardsync.io/batch/{BATCH_ID}',
+fetch('https://sandbox.cardsync.io/v2/batch?batch_id={BATCH_ID}',
 {
   method: 'GET',
 
@@ -1203,7 +1205,7 @@ headers = {
   'Authorization' => 'API_KEY'
 }
 
-result = RestClient.get 'https://sandbox.cardsync.io/batch/{BATCH_ID}',
+result = RestClient.get 'https://sandbox.cardsync.io/v2/batch?batch_id={BATCH_ID}',
   params: {
   }, headers: headers
 
@@ -1218,7 +1220,7 @@ headers = {
   'Authorization': 'API_KEY'
 }
 
-r = requests.get('https://sandbox.cardsync.io/batch/{BATCH_ID}', headers = headers)
+r = requests.get('https://sandbox.cardsync.io/v2/batch?batch_id={BATCH_ID}', headers = headers)
 
 print(r.json())
 
@@ -1240,7 +1242,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','https://sandbox.cardsync.io/batch/{BATCH_ID}', array(
+    $response = $client->request('GET','https://sandbox.cardsync.io/v2/batch?batch_id={BATCH_ID}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -1257,7 +1259,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://sandbox.cardsync.io/batch/{BATCH_ID}");
+URL obj = new URL("https://sandbox.cardsync.io/v2/batch?batch_id={BATCH_ID}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1289,7 +1291,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://sandbox.cardsync.io/batch/{BATCH_ID}", data)
+    req, err := http.NewRequest("GET", "https://sandbox.cardsync.io/v2/batch?batch_id={BATCH_ID}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1356,14 +1358,14 @@ Authorization
 
 ```shell
 # You can also use wget
-curl -X GET https://sandbox.cardsync.io/batch/{BATCH_ID}/results \
+curl -X GET https://sandbox.cardsync.io/v2/batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID} \
   -H 'Accept: application/json' \
   -H 'Authorization: API_KEY'
 
 ```
 
 ```http
-GET https://sandbox.cardsync.io/batch/{BATCH_ID}/results HTTP/1.1
+GET https://sandbox.cardsync.io/v2/batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID} HTTP/1.1
 Host: sandbox.cardsync.io
 Accept: application/json
 
@@ -1376,7 +1378,7 @@ const headers = {
   'Authorization':'API_KEY'
 };
 
-fetch('https://sandbox.cardsync.io/batch/{BATCH_ID}/results',
+fetch('https://sandbox.cardsync.io/v2/batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}',
 {
   method: 'GET',
 
@@ -1399,7 +1401,7 @@ headers = {
   'Authorization' => 'API_KEY'
 }
 
-result = RestClient.get 'https://sandbox.cardsync.io/batch/{BATCH_ID}/results',
+result = RestClient.get 'https://sandbox.cardsync.io/v2/batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}',
   params: {
   }, headers: headers
 
@@ -1414,7 +1416,7 @@ headers = {
   'Authorization': 'API_KEY'
 }
 
-r = requests.get('https://sandbox.cardsync.io/batch/{BATCH_ID}/results', headers = headers)
+r = requests.get('https://sandbox.cardsync.io/v2/batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}', headers = headers)
 
 print(r.json())
 
@@ -1436,7 +1438,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','https://sandbox.cardsync.io/batch/{BATCH_ID}/results', array(
+    $response = $client->request('GET','https://sandbox.cardsync.io/v2/batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -1453,7 +1455,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://sandbox.cardsync.io/batch/{BATCH_ID}/results");
+URL obj = new URL("https://sandbox.cardsync.io/v2/batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -1485,7 +1487,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://sandbox.cardsync.io/batch/{BATCH_ID}/results", data)
+    req, err := http.NewRequest("GET", "https://sandbox.cardsync.io/v2/batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -1504,6 +1506,7 @@ Retrieves a completed batch. Included with the batch results is the statistical 
 |Name|In|Type|Required|Description|
 |---|---|---|---|---|
 |BATCH_ID|path|string|true|none|
+|EVENT_ID|path|string|false|none|
 
 > Example responses
 > 200 Response
@@ -1624,7 +1627,7 @@ Webhooks
     "number_of_mastercard": 100,
     "number_of_discover": 100,
     "number_of_amex": 0,
-    "amex_se_number": "1234567890 <optional only used in Amem batch>",
+    "amex_se_number": "1234567890 <optional only used in Amex batch>",
     "delivery_frequency": "monthly",
     "mcc": "5968"
   }
@@ -1737,7 +1740,7 @@ User
   "number_of_mastercard": 100,
   "number_of_discover": 100,
   "number_of_amex": 0,
-  "amex_se_number": "1234567890 <optional only used in Amem batch>",
+  "amex_se_number": "1234567890 <optional only used in Amex batch>",
   "delivery_frequency": "monthly",
   "mcc": "5968"
 }
@@ -1770,7 +1773,7 @@ Card Info
 {
   "status": "success",
   "message": "success",
-  "id": "bqgbm86g10l2fm2bv7n0",
+  "merchant_id": "bqgbm86g10l2fm2bv7n0",
   "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP"
 }
 ```
@@ -1783,7 +1786,7 @@ Enroll Merchant Response
 |---|---|---|---|---|
 |status|string|true|none|none|
 |message|string|true|none|none|
-|id|string|true|none|none|
+|merchant_id|string|true|none|none|
 |api_key|string|true|none|none|
 
 <h2 id="tocS_GenericResponse">Generic Response</h2>
@@ -1864,7 +1867,7 @@ Billing Contact
 
 ```json
 {
-  "amex_se_number": "1234567890 <optional only used in Amem batch>",
+  "amex_se_number": "1234567890 <optional only used in Amex batch>",
   "cards": [
     {
       "id": "customer identifier",
@@ -2226,7 +2229,7 @@ Batch Results Data
 {
   "status": "success",
   "msg": "success",
-  "id": "bqgbm86g10l2fm2bv7n0"
+  "merchant_id": "bqgbm86g10l2fm2bv7n0"
 }
 ```
 
@@ -2238,7 +2241,7 @@ Enroll Merchant Webhook
 |---|---|---|---|---|
 |status|string|true|none|none|
 |message|string|true|none|none|
-|id|string|true|none|merchant id from the POST /v2/merchant call|
+|merchant_id|string|true|none|merchant id from the POST /v2/merchant call|
 
 <h2 id="tocS_BatchCompletionWebhook">Batch Completion Webhook</h2>
 <!-- backwards compatibility -->
