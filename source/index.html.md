@@ -722,7 +722,7 @@ To perform this operation, you must be authenticated by means of one of the foll
 Authorization
 </aside>
 
-<h1 id="cardsync-universal-account-updater-batch">Batch</h1>
+<h1 id="cardsync-universal-account-updater-batch">Batches</h1>
 
 A batch is a set of up to 10,000 credit card numbers and expiration dates being submitted for updates by the respective Card Issuers. If you need to send inquiries on more than 10,000 cards at once, you may submit multiple batches simultaneously.
 
