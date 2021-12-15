@@ -242,8 +242,23 @@ func main() {
     resp, err := client.Do(req)
     // ...
 }
-
 ```
+
+> Example responses
+> 200 Response
+
+```json
+{
+  "status": "success",
+  "msg": "success"
+}
+```
+
+<h3 id="webhook-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Generic Response](#schemagenericresponse)|
 
 # Merchants
 
@@ -522,7 +537,7 @@ This endpoint is used to enroll a Merchant on the platform. The fee_schedule_id 
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Merchant Response](#schemaaddanewmerchantresponse)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Merchant Response](#schemaenrollmerchantresponse)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -537,14 +552,14 @@ Authorization
 
 ```shell
 # You can also use wget
-curl -X GET https://sandbox.cardsync.io/merchant \
+curl -X GET https://sandbox.cardsync.io/merchant/{MERCHANT_ID} \
   -H 'Accept: application/json' \
   -H 'Authorization: API_KEY'
 
 ```
 
 ```http
-GET https://sandbox.cardsync.io/merchant HTTP/1.1
+GET https://sandbox.cardsync.io/merchant/{MERCHANT_ID} HTTP/1.1
 Host: sandbox.cardsync.io
 Accept: application/json
 
@@ -557,7 +572,7 @@ const headers = {
   'Authorization':'API_KEY'
 };
 
-fetch('https://sandbox.cardsync.io/merchant',
+fetch('https://sandbox.cardsync.io/merchant/{MERCHANT_ID}',
 {
   method: 'GET',
 
@@ -580,7 +595,7 @@ headers = {
   'Authorization' => 'API_KEY'
 }
 
-result = RestClient.get 'https://sandbox.cardsync.io/merchant',
+result = RestClient.get 'https://sandbox.cardsync.io/merchant/{MERCHANT_ID}',
   params: {
   }, headers: headers
 
@@ -595,7 +610,7 @@ headers = {
   'Authorization': 'API_KEY'
 }
 
-r = requests.get('https://sandbox.cardsync.io/merchant', headers = headers)
+r = requests.get('https://sandbox.cardsync.io/merchant/{MERCHANT_ID}', headers = headers)
 
 print(r.json())
 
@@ -617,7 +632,7 @@ $client = new \GuzzleHttp\Client();
 $request_body = array();
 
 try {
-    $response = $client->request('GET','https://sandbox.cardsync.io/merchant', array(
+    $response = $client->request('GET','https://sandbox.cardsync.io/merchant/{MERCHANT_ID}', array(
         'headers' => $headers,
         'json' => $request_body,
        )
@@ -634,7 +649,7 @@ try {
 ```
 
 ```java
-URL obj = new URL("https://sandbox.cardsync.io/merchant");
+URL obj = new URL("https://sandbox.cardsync.io/merchant/{MERCHANT_ID}");
 HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 con.setRequestMethod("GET");
 int responseCode = con.getResponseCode();
@@ -666,7 +681,7 @@ func main() {
     }
 
     data := bytes.NewBuffer([]byte{jsonReq})
-    req, err := http.NewRequest("GET", "https://sandbox.cardsync.io/merchant", data)
+    req, err := http.NewRequest("GET", "https://sandbox.cardsync.io/merchant/{MERCHANT_ID}", data)
     req.Header = headers
 
     client := &http.Client{}
@@ -676,7 +691,7 @@ func main() {
 
 ```
 
-`GET /merchant`
+`GET /merchant/{MERCHANT_ID}`
 
 Returns the current status of the Merchant's requested enrollment. This will let you know when you may start submitting card inquiries on their behalf.
 
@@ -686,12 +701,7 @@ Returns the current status of the Merchant's requested enrollment. This will let
 ```json
 {
   "status": "success",
-  "msg": "success",
-  "data": {
-    "id": "bqgbm86g10l2fm2bv7n0",
-    "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
-    "created_at": "2020-04-22T21:46:08.448148Z"
-  }
+  "msg": "success"
 }
 ```
 
@@ -699,7 +709,7 @@ Returns the current status of the Merchant's requested enrollment. This will let
 
 |Status|Meaning|Description|Schema|
 |---|---|---|---|
-|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Enrollment Status](#schemaretrievemerchantstatus)|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[Generic Response](#schemagenericresponse)|
 
 <aside class="warning">
 To perform this operation, you must be authenticated by means of one of the following methods:
@@ -1743,12 +1753,12 @@ Card Info
 |delivery_frequency|string|true|none|none|
 |mcc|string|true|none|none|
 
-<h2 id="tocS_Data">Enroll Merchant Response</h2>
+<h2 id="tocS_EnrollMerchantResponse">Enroll Merchant Response</h2>
 <!-- backwards compatibility -->
-<a id="schemadata"></a>
-<a id="schema_Data"></a>
-<a id="tocSdata"></a>
-<a id="tocsdata"></a>
+<a id="schemaenrollmerchantresponse"></a>
+<a id="schema_Enrollmerchantresponse"></a>
+<a id="tocSenrollmerchantresponse"></a>
+<a id="tocsenrollmerchantresponse"></a>
 
 ```json
 {
@@ -1770,12 +1780,12 @@ Enroll Merchant Response
 |id|string|true|none|none|
 |api_key|string|true|none|none|
 
-<h2 id="tocS_RetrieveEnrollmentStatusResponse">Retrieve Enrollment Status Response</h2>
+<h2 id="tocS_GenericResponse">Generic Response</h2>
 <!-- backwards compatibility -->
-<a id="schemaretrieveenrollmentstatusresponse"></a>
-<a id="schema_Retrieveenrollmentstatusresponse"></a>
-<a id="tocSretrieveenrollmentstatusresponse"></a>
-<a id="tocsretrieveenrollmentstatusresponse"></a>
+<a id="schemagenericresponse"></a>
+<a id="schema_genericresponse"></a>
+<a id="tocSgenericresponse"></a>
+<a id="tocsgenericresponse"></a>
 
 ```json
 {
@@ -1784,7 +1794,7 @@ Enroll Merchant Response
 }
 ```
 
-Retrieve Enrollment Status Response
+Generic Response
 
 ### Properties
 
@@ -2184,7 +2194,6 @@ Batch Results
     "updated_at": "2020-04-22T21:46:08.448148Z"
   }
 }
-
 ```
 
 Batch Results Data
@@ -2199,3 +2208,123 @@ Batch Results Data
 |stats|[Stats]|true|none|none|
 |created_at|string|true|none|none|
 |updated_at|string|true|none|none|
+
+<h2 id="tocS_EnrollMerchantWebhook">Enroll Merchant Webhook</h2>
+<!-- backwards compatibility -->
+<a id="schemaenrollmerchantwebhook"></a>
+<a id="schema_Enrollmerchantwebhook"></a>
+<a id="tocSenrollmerchantwebhook"></a>
+<a id="tocsenrollmerchantwebhook"></a>
+
+```json
+{
+  "status": "success",
+  "msg": "success",
+  "id": "bqgbm86g10l2fm2bv7n0"
+}
+```
+
+Enrollment Merchant Webhook
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|status|string|true|none|none|
+|message|string|true|none|none|
+|id|string|true|none|merchant id from the POST /merchant call|
+
+<h2 id="tocS_BatchCompletionWebhook">Batch Completion Webhook</h2>
+<!-- backwards compatibility -->
+<a id="schemabatchcompletionwebhook"></a>
+<a id="schema_Batchcompletionwebhook"></a>
+<a id="tocSbatchcompletionwebhook"></a>
+<a id="tocsbatchcompletionwebhook"></a>
+
+```json
+{
+	"batch_id": "b9ec0c1776655524350",
+	"card_stats": {
+		"visa": 0,
+		"mastercard": 8,
+		"discover": 0,
+		"american_express": 0
+	},
+	"stats": {
+		"updated_expiry": 1,
+		"updated_card": 1,
+		"no_change": 2,
+		"no_match": 3,
+		"valid": 0,
+		"contact": 0,
+		"closed": 0,
+		"number_submitted": 8,
+		"contact_closed": 1
+	},
+	"id": "60d7a065-1795-4e98-88af-a8b98db9ec0c",
+	"trigger_id": 20,
+	"trigger_date": "2021-12-08T21:39:00.349754Z",
+	"event_id": "c7a8da62-473d-4153-91d6-d6fddd3d7252",
+	"message": "",
+	"expires": "2021-12-09T21:39:00.349475Z"
+}
+```
+
+Batch Completion Webhook
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|batch_id|string|true|none|none|
+|card_stats|string|true|none|none|
+|stats|[Stats](#tocS_Stats)|true|none|none|
+|id|string|true|none|none|
+|trigger_id|string|true|none|none|
+|trigger_date|string|true|none|none|
+|event_id|string|true|none|none|
+|message|string|true|none|none|
+|expires|string|true|none|none|
+
+<h2 id="tocS_AmexUpdateWebhook">Amex Update Webhook</h2>
+<!-- backwards compatibility -->
+<a id="schemaamexupdatewebhook"></a>
+<a id="schema_Amexupdatewebhook"></a>
+<a id="tocSamexupdatewebhook"></a>
+<a id="tocsamexupdatewebhook"></a>
+
+```json
+{
+	"stats": {
+		"updated_expiry": 1,
+		"updated_card": 1,
+		"no_change": 2,
+		"no_match": 3,
+		"valid": 0,
+		"contact": 0,
+		"closed": 0,
+		"number_submitted": 8,
+		"contact_closed": 1
+	},
+	"id": "045b35f5-aed8-4c75-97f9-942de0fc0c32",
+	"trigger_id": 20,
+	"trigger_date": "2021-12-08T21:39:00.349754Z",
+	"event_id": "46d91344-cc41-4922-b00f-c40226b548a4",
+	"message": "",
+	"expires": "2021-12-09T21:39:00.349475Z"
+}
+```
+
+Amex Update Webhook
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|stats|[Stats](#tocS_Stats)|true|none|none|
+|id|string|true|none|none|
+|trigger_id|string|true|none|none|
+|trigger_date|string|true|none|none|
+|event_id|string|true|none|none|
+|message|string|true|none|none|
+|expires|string|true|none|none|
