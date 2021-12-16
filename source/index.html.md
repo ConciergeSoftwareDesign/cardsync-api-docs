@@ -41,7 +41,7 @@ Here are the set of steps needed to enroll a merchant and obtain card number upd
 
 Each batch may consist of up to 10,000 card numbers. There is no limit on the number of consecutive batch submissions. Inquiries may return one of six responses: updated_card, updated_expiry, no_match, valid, contact, or contact_closed. If the response is updated_card or updated_expiry, the updated card information is returned. Otherwise, one of the other four status types is returned. Some card inquiries do not result in any status type. This generally means the card is valid.
 
-Note: American Express cards must be submitted separately from all other card types. With those batches, the merchant's SE number must be provided. If a merchant has more than one SE number, please submit one batch per SE number. The reason American Express cards are submitted separately is that the American Express cards are enrolled in a subscription for future updates. Any time that an American Express card has an update, you will be notified via webhook to retrieve the new card information.
+Note: American Express cards must be submitted separately from all other card types. With those batches, the merchant's SE number must be provided. If a merchant has more than one SE number, please submit one batch per SE number. The reason American Express cards are submitted separately is that the American Express cards are enrolled in a subscription for future updates. Any time that an American Express card has an subscribed update under an merchant’s SE, you will be notified via webhook to retrieve the Amex update for said Merchant."
 
 For more information, visit <a href="https://cardsync.io">https://cardsync.io</a>.
 
