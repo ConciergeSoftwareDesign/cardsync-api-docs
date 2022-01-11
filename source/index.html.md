@@ -23,11 +23,13 @@ headingLevel: 2
 
 > Scroll down for code samples, example requests and responses. Select a language for code samples from the tabs above or the mobile navigation menu.
 
+# Introduction
+
 This is the API for the CardSync Universal Account service.
 
 After signing up as a CardSync Partner, you will be able to use this API in sandbox and production. You will be provided with an API key and a Partner Billing Identifier.
 
-This API allows Partners to enroll Merchants and submit inquiry batches of credit card numbers and expiration dates to obtain card status (including updates to card numbers and/or expiration dates) or status updates.
+This API allows Partners to enroll Merchants, submit inquiry batches of credit card numbers and expiration dates to obtain card status (including updates to card numbers and/or expiration dates) updates, and to enroll American Express cards in subscriptions for future updates.
 
 Here are the set of steps needed to enroll a merchant and obtain card number updates:
 
@@ -35,9 +37,20 @@ Here are the set of steps needed to enroll a merchant and obtain card number upd
 2. Enroll merchant with /v2/merchant POST.
 3. Retrieve and save provided "merchant_id" and "api_key".
 4. You may check on the status of the enrollment by calling GET /v2/merchant?merchant_id={MERCHANT_ID} or wait for the webhook to be called.
-5. After merchant enrollment is completed (up to five business days), batches can be submitted via the /v2/batch POST. Save the provided "batch_id".
-6. Check batch status with GET /batch?batch_id={BATCH_ID} or wait for the callback that the batch has been completed. The webhook call will provide an "event_id".
-7. When the batch status is complete, retrieve the results with GET /batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}. Batches take approximately 5 business days to complete. You may omit the "event_id" if you are polling for results and are calling this API after the batch status is completed.
+
+Once merchant enrollment is completed, you may submit batches and/or subscriptions.
+
+## Batches
+
+1. Submit a batch of Visa, Mastercard, and Discover cards via the /v2/batch POST. Save the provided "batch_id".
+2. Check batch status with GET /v2/batch?batch_id={BATCH_ID} or wait for the callback that the batch has been completed. The webhook call will provide an "event_id".
+3. When the batch status is complete, retrieve the results with GET /v2/batch/results?batch_id={BATCH_ID}&event_id={EVENT_ID}. Batches take approximately 5 business days to complete. You may omit the "event_id" if you are polling for results and are calling this API after the batch status is completed.
+
+## Subscriptions
+
+1. Submit a subscription request of American Express cards via the /v2/subscribe POST. 
+2. When an update for one or more of those cards is available, a webhook will be called with an "event_id".
+3. Retrieve the results via /v2/subscription/results?event_id={EVENT_ID}.
 
 Each batch may consist of up to 10,000 card numbers. There is no limit on the number of consecutive batch submissions. Inquiries may return one of six responses: updated_card, updated_expiry, no_match, valid, contact, or contact_closed. If the response is updated_card or updated_expiry, the updated card information is returned. Otherwise, one of the other four status types is returned. Some card inquiries do not result in any status type. This generally means the card is valid.
 
@@ -78,10 +91,24 @@ This endpoint is used to set up the webhooks that are called when various events
 
 ```json
 {
-  "merchant_enrollment_webhook": "URL to be invoked when a merchant enrollment has been completed",
-  "batch_completion_webhook": "URL to be invoked when a batch has been completed",
-  "batch_error_webhook": "URL to be invoked when a batch has an error",
-  "amex_update_webhook": "URL to be invoked when previously enrolled card(s) has/have an update"
+  "webhooks": [
+    {
+      "trigger_id": 20,   /* 20=Batch Available, 21=Enrollment Complete, 22=Batch Error, 23=Amex Update */
+      "url": "batch_available_url"
+    },
+    {
+      "trigger_id": 21,   /* 20=Batch Available, 21=Enrollment Complete, 22=Batch Error, 23=Amex Update */
+      "url": "enrollment_complete_url"
+    },
+    {
+      "trigger_id": 22,   /* 20=Batch Available, 21=Enrollment Complete, 22=Batch Error, 23=Amex Update */
+      "url": "batch_error_url"
+    },
+    {
+      "trigger_id": 23,   /* 20=Batch Available, 21=Enrollment Complete, 22=Batch Error, 23=Amex Update */
+      "url": "amex_update_url"
+    }
+  ]
 }
 ```
 
@@ -722,13 +749,28 @@ To perform this operation, you must be authenticated by means of one of the foll
 Authorization
 </aside>
 
-<h1 id="cardsync-universal-account-updater-batch">Batches</h1>
+# Card Updates
+
+Card updates can be requested via two mechanisms:
+
+1. batches
+2. subscriptions
+
+## Batches
+
+Batches apply to Visa, Mastercard, and Discover.
 
 A batch is a set of up to 10,000 credit card numbers and expiration dates being submitted for updates by the respective Card Issuers. If you need to send inquiries on more than 10,000 cards at once, you may submit multiple batches simultaneously.
 
 Best practice for recurring billing (e.g. subscriptions) is to submit on a daily or weekly basis any cards being billed in the next one to two weeks. For Merchants with payment data on file, we recommend submitting those based on your average time between transactions.
 
 Once submitted, the Card Issuers will start to return updates. In sandbox, all results (updates and/or status responses) are completed within one hour. In production, it will take 3-5 calendar days for a batch to complete.
+
+## Subscriptions
+
+Subscriptions apply to American Express.
+
+A subscription is a request for ongoing updates for an enrolled card. Once a card is enrolled for updates by submitting a card number, expiration date, and SE number, any future updates to that card will result in the American Express webhook being called.
 
 ## Create Card Batch
 
@@ -981,7 +1023,7 @@ func main() {
 
 This endpoint requests updates for card batches.
 
-## Test Data (Sandbox only)
+## Mastercard / Visa / Discover Test Data (Sandbox only)
 
 You can supply any Luhn10 valid card number, but to trigger specific responses, please use the following test card numbers in the sandbox environment.
 
@@ -994,11 +1036,11 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 4012000000000057 - contact  
 4012000000000065 - contact_closed  
 
-### MC Test Cards
+### Mastercard Test Cards
 
 5442980000000016 - updated_card  
 5442980000000024 - updated_expiry  
-5442980000000032 - no_match
+5442980000000032 - no_match  
 5442980000000040 - valid  
 5442980000000057 - contact  
 5442980000000065 - contact_closed  
@@ -1006,11 +1048,11 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 ### Discover Test Cards
 
 6011000000000012 - updated_card  
-6011000000000020 - updated_expiry
+6011000000000020 - updated_expiry  
 6011000000000038 - no_match  
 6011000000000046 - valid  
 6011000000000053 - contact  
-6011000000000061 - contact_closed
+6011000000000061 - contact_closed  
 
 > Body parameter
 
@@ -1125,7 +1167,6 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
   "status": "success",
   "msg": "success",
   "data": {
-    "batch_id": "bqgbm86g10l2fm2bv7n0",
     "status": "pending",
     "stats": {
       "number_submitted": 0,
@@ -1153,6 +1194,226 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 To perform this operation, you must be authenticated by means of one of the following methods:
 Authorization
 </aside>
+
+## Create American Express Card Subscription
+
+<a id="opIdCreatesbatchofcardsforsubscriptions"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X POST https://sandbox.cardsync.io/v2/subscribe \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: API_KEY'
+
+```
+
+```http
+POST https://sandbox.cardsync.io/v2/subscribe HTTP/1.1
+Host: sandbox.cardsync.io
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "cards": [
+    {
+      "se": "amex se number",
+      "id": "customer identifier",
+      "card": "342132335566772",
+      "exp": "12/24"
+    },
+    {
+      "se": "amex se number",
+      "id": "customer identifier",
+      "card": "376655111122997",
+      "exp": "12/24"
+    },
+    {
+      "se": "amex se number",
+      "id": "customer identifier",
+      "card": "349900006577234",
+      "exp": "12/24"
+    }
+  ]
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'Authorization':'API_KEY'
+};
+
+fetch('https://sandbox.cardsync.io/v2/subscribe',
+{
+  method: 'POST',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'Authorization' => 'API_KEY'
+}
+
+result = RestClient.post 'https://sandbox.cardsync.io/v2/subscribe',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'API_KEY'
+}
+
+r = requests.post('https://sandbox.cardsync.io/v2/subscribe', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+    'Authorization' => 'API_KEY',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('POST','https://sandbox.cardsync.io/v2/subscribe', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://sandbox.cardsync.io/v2/subscribe");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("POST");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+        "Authorization": []string{"API_KEY"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("POST", "https://sandbox.cardsync.io/v2/subscribe", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`POST /v2/subscribe`
+
+This endpoint creates subscriptions for batches of American Express cards.
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+Authorization
+</aside>
+
+## American Express Test Data (Sandbox only)
+
+You can supply any Luhn10 valid card number, but to trigger specific responses, please use the following test card numbers in the sandbox environment.
+
+### American Express Test Cards
+
+342132335566772 - updated_card  
+376655111122997 - updated_expiry  
+349900006577234 - contact_closed  
+
+> Body parameter
+
+```json
+{
+  "cards": [
+    {
+      "se": "1234567890",
+      "id": "customer identifier",
+      "card": "342132335566772",
+      "exp": "12/24"
+    },
+    {
+      "se": "1234567890",
+      "id": "customer identifier",
+      "card": "376655111122997",
+      "exp": "12/24"
+    },
+    {
+      "se": "1234567890",
+      "id": "customer identifier",
+      "card": "349900006577234",
+      "exp": "12/24"
+    }
+  ]
+}
 
 ## Retrieve Batch Status
 
@@ -1319,7 +1580,6 @@ Retrieve the status of a batch. Batches in the sandbox will be completed within 
   "status": "success",
   "msg": "success",
   "data": {
-    "batch_id": "bqgbm86g10l2fm2bv7n1",
     "status": "completed",
     "stats": {
       "number_submitted": 1,
@@ -1516,7 +1776,6 @@ Retrieves a completed batch. Included with the batch results is the statistical 
   "status": "success",
   "msg": "success",
   "data": {
-    "batch_id": "bqgbm86g10l2fm2bv7n1",
     "status": "completed",
     "cards": [
       {
@@ -1553,6 +1812,208 @@ To perform this operation, you must be authenticated by means of one of the foll
 Authorization
 </aside>
 
+## Retrieve Subscription Results
+
+<a id="opIdRetrievesubscriptionresults"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X GET https://sandbox.cardsync.io/v2/subscription/results?event_id={EVENT_ID} \
+  -H 'Accept: application/json' \
+  -H 'Authorization: API_KEY'
+
+```
+
+```http
+GET https://sandbox.cardsync.io/v2/subscription/results?event_id={EVENT_ID} HTTP/1.1
+Host: sandbox.cardsync.io
+Accept: application/json
+
+```
+
+```javascript
+
+const headers = {
+  'Accept':'application/json',
+  'Authorization':'API_KEY'
+};
+
+fetch('https://sandbox.cardsync.io/v2/subscription/results?event_id={EVENT_ID}',
+{
+  method: 'GET',
+
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Accept' => 'application/json',
+  'Authorization' => 'API_KEY'
+}
+
+result = RestClient.get 'https://sandbox.cardsync.io/v2/subscription/results?event_id={EVENT_ID}',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Accept': 'application/json',
+  'Authorization': 'API_KEY'
+}
+
+r = requests.get('https://sandbox.cardsync.io/v2/subscription/results?event_id={EVENT_ID}', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Accept' => 'application/json',
+    'Authorization' => 'API_KEY',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('GET','https://sandbox.cardsync.io/v2/subscription/results?event_id={EVENT_ID}', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://sandbox.cardsync.io/v2/subscription/results?event_id={EVENT_ID}");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("GET");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Accept": []string{"application/json"},
+        "Authorization": []string{"API_KEY"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("GET", "https://sandbox.cardsync.io/v2/subscription/results?event_id={EVENT_ID}", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`GET /v2/subscription/results?event_id={EVENT_ID}`
+
+Retrieves a subscription update. Included with the results is the statistical breakdown of each update and/or response that was received. Results will include status updates as well as updated card information. The total number of results will vary based on the subscription results available at a particular time. Results will remain available for 10 calendar days after the webhook is called, after which they are purged from the platform.
+
+<h3 id="retrieve-subscription-results-parameters">Parameters</h3>
+
+|Name|In|Type|Required|Description|
+|---|---|---|---|---|
+|EVENT_ID|path|string|false|none|
+
+> Example responses
+> 200 Response
+
+```json
+{
+  "status": "success",
+  "msg": "success",
+  "data": {
+    "status": "completed",
+    "cards": [
+      {
+        "id": "aaaaaaaaaa",
+        "card": "4111111111111111",
+        "exp": "12/24",
+        "status": "updated_card"
+      }
+    ],
+    "stats": {
+      "number_submitted": 1,
+      "no_change": 0,
+      "updated_card": 1,
+      "updated_expiry": 0,
+      "no_match": 0,
+      "valid": 0,
+      "contact": 0,
+      "contact_closed": 0
+    },
+    "created_at": "2020-04-22T21:46:08.448148Z",
+    "updated_at": "2020-04-22T21:46:08.448148Z"
+  }
+}
+```
+
+<h3 id="retrieve-subscription-results-responses">Responses</h3>
+
+|Status|Meaning|Description|Schema|
+|---|---|---|---|
+|200|[OK](https://tools.ietf.org/html/rfc7231#section-6.3.1)|OK|[subscription Results](#schemaretrievesubscriptionresults-200ok)|
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+Authorization
+</aside>
+
+
 # Schemas
 
 <h2 id="tocS_Addwebhooks">Webhooks</h2>
@@ -1564,10 +2025,24 @@ Authorization
 
 ```json
 {
-  "merchant_enrollment_webhook": "URL to be invoked when a merchant enrollment has been completed",
-  "batch_completion_webhook": "URL to be invoked when a batch has been completed",
-  "batch_error_webhook": "URL to be invoked when a batch has an error",
-  "amex_update_webhook": "URL to be invoked when previously enrolled card(s) has/have an update"
+  "webhooks": [
+    {
+      "trigger_id": 20,   /* 20=Batch Available, 21=Enrollment Complete, 22=Batch Error, 23=Amex Update */
+      "url": "batch_available_url"
+    },
+    {
+      "trigger_id": 21,   /* 20=Batch Available, 21=Enrollment Complete, 22=Batch Error, 23=Amex Update */
+      "url": "enrollment_complete_url"
+    },
+    {
+      "trigger_id": 22,   /* 20=Batch Available, 21=Enrollment Complete, 22=Batch Error, 23=Amex Update */
+      "url": "batch_error_url"
+    },
+    {
+      "trigger_id": 23,   /* 20=Batch Available, 21=Enrollment Complete, 22=Batch Error, 23=Amex Update */
+      "url": "amex_update_url"
+    }
+  ]
 }
 ```
 
@@ -1627,7 +2102,7 @@ Webhooks
     "number_of_mastercard": 100,
     "number_of_discover": 100,
     "number_of_amex": 0,
-    "amex_se_number": "1234567890 <optional only used in Amex batch>",
+    "amex_se_number": "1234567890 <optional needed only in Amex batch>",
     "delivery_frequency": "monthly",
     "mcc": "5968"
   }
@@ -2035,7 +2510,7 @@ Stats
 |contact|integer(int32)|true|none|none|
 |contact_closed|integer(int32)|true|none|none|
 
-<h2 id="tocS_Retrievesthestatusofabatch-200OK">Batch Status</h2>
+<h2 id="tocS_Retrievesthestatusofabatch-200OK">Batch Results Status</h2>
 <!-- backwards compatibility -->
 <a id="schemaretrievesthestatusofabatch-200ok"></a>
 <a id="schema_Retrievesthestatusofabatch-200OK"></a>
@@ -2117,19 +2592,20 @@ Batch Status Data
 |msg|string|true|none|none|
 |data|[Data](#schemadata4)|true|none|none|
 
-<h2 id="tocS_Retrievebatchresults-200OK">Batch Results</h2>
+<h2 id="tocS_Retrievebatchresults-200OK">Batch / Subscription Results</h2>
 <!-- backwards compatibility -->
 <a id="schemaretrievebatchresults-200ok"></a>
 <a id="schema_Retrievebatchresults-200OK"></a>
 <a id="tocSretrievebatchresults-200ok"></a>
 <a id="tocsretrievebatchresults-200ok"></a>
 
+The data structure returned for a card batch and a subscription result is identical except that American Express updates also contain the SE number.
+
 ```json
 {
   "status": "success",
   "msg": "success",
   "data": {
-    "batch_id": "bqgbm86g10l2fm2bv7n1",
     "status": "completed",
     "cards": [
       {
@@ -2179,7 +2655,6 @@ Batch Results
   "status": "success",
   "msg": "success",
   "data": {
-    "batch_id": "bqgbm86g10l2fm2bv7n1",
     "status": "completed",
     "cards": [
       {
@@ -2316,7 +2791,7 @@ Batch Completion Webhook
     "contact_closed": 1
   },
   "id": "045b35f5-aed8-4c75-97f9-942de0fc0c32",
-  "trigger_id": 20,
+  "trigger_id": 23,
   "trigger_date": "2021-12-08T21:39:00.349754Z",
   "event_id": "46d91344-cc41-4922-b00f-c40226b548a4",
   "message": "",
@@ -2324,7 +2799,7 @@ Batch Completion Webhook
 }
 ```
 
-Amex Update Webhook
+American Express Update Webhook
 
 ### Properties
 
@@ -2349,7 +2824,7 @@ Amex Update Webhook
 {
   "batch_id": "b9ec0c1776655524350",  
   "id": "60d7a065-1795-4e98-88af-a8b98db9ec0c",
-  "trigger_id": 20,
+  "trigger_id": 22,
   "trigger_date": "2021-12-08T21:39:00.349754Z",
   "event_id": "c7a8da62-473d-4153-91d6-d6fddd3d7252",
   "source": "Validation",
