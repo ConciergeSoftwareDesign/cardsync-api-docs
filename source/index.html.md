@@ -2610,6 +2610,7 @@ The data structure returned for a card batch and a subscription result is identi
     "cards": [
       {
         "id": "aaaaaaaaaa",
+        "se": "12334567890 <present only for American Express>",
         "card": "4111111111111111",
         "exp": "12/24",
         "status": "updated_card"
