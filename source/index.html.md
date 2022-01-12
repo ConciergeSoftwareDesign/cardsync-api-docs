@@ -1222,19 +1222,19 @@ Accept: application/json
 const inputBody = '{
   "cards": [
     {
-      "se": "amex se number",
+      "se_number": "amex se number",
       "id": "customer identifier",
       "card": "342132335566772",
       "exp": "12/24"
     },
     {
-      "se": "amex se number",
+      "se_number": "amex se number",
       "id": "customer identifier",
       "card": "376655111122997",
       "exp": "12/24"
     },
     {
-      "se": "amex se number",
+      "se_number": "amex se number",
       "id": "customer identifier",
       "card": "349900006577234",
       "exp": "12/24"
@@ -1395,19 +1395,19 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 {
   "cards": [
     {
-      "se": "1234567890",
+      "se_number": "1234567890",
       "id": "customer identifier",
       "card": "342132335566772",
       "exp": "12/24"
     },
     {
-      "se": "1234567890",
+      "se_number": "1234567890",
       "id": "customer identifier",
       "card": "376655111122997",
       "exp": "12/24"
     },
     {
-      "se": "1234567890",
+      "se_number": "1234567890",
       "id": "customer identifier",
       "card": "349900006577234",
       "exp": "12/24"
@@ -2013,6 +2013,189 @@ To perform this operation, you must be authenticated by means of one of the foll
 Authorization
 </aside>
 
+## Delete American Express Card Subscription
+
+<a id="opIdDeletesbatchofcardsforsubscriptions"></a>
+
+> Code samples
+
+```shell
+# You can also use wget
+curl -X DELETE https://sandbox.cardsync.io/v2/subscribe \
+  -H 'Content-Type: application/json' \
+  -H 'Accept: application/json' \
+  -H 'Authorization: API_KEY'
+
+```
+
+```http
+DELETE https://sandbox.cardsync.io/v2/subscribe HTTP/1.1
+Host: sandbox.cardsync.io
+Content-Type: application/json
+Accept: application/json
+
+```
+
+```javascript
+const inputBody = '{
+  "cards": [
+    {
+      "se_number": "amex se number",
+      "id": "customer identifier",
+      "card": "342132335566772",
+      "exp": "12/24"
+    },
+    {
+      "se_number": "amex se number",
+      "id": "customer identifier",
+      "card": "376655111122997",
+      "exp": "12/24"
+    },
+    {
+      "se_number": "amex se number",
+      "id": "customer identifier",
+      "card": "349900006577234",
+      "exp": "12/24"
+    }
+  ]
+}';
+const headers = {
+  'Content-Type':'application/json',
+  'Accept':'application/json',
+  'Authorization':'API_KEY'
+};
+
+fetch('https://sandbox.cardsync.io/v2/subscribe',
+{
+  method: 'DELETE',
+  body: inputBody,
+  headers: headers
+})
+.then(function(res) {
+    return res.json();
+}).then(function(body) {
+    console.log(body);
+});
+
+```
+
+```ruby
+require 'rest-client'
+require 'json'
+
+headers = {
+  'Content-Type' => 'application/json',
+  'Accept' => 'application/json',
+  'Authorization' => 'API_KEY'
+}
+
+result = RestClient.delete 'https://sandbox.cardsync.io/v2/subscribe',
+  params: {
+  }, headers: headers
+
+p JSON.parse(result)
+
+```
+
+```python
+import requests
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'API_KEY'
+}
+
+r = requests.delete('https://sandbox.cardsync.io/v2/subscribe', headers = headers)
+
+print(r.json())
+
+```
+
+```php
+<?php
+
+require 'vendor/autoload.php';
+
+$headers = array(
+    'Content-Type' => 'application/json',
+    'Accept' => 'application/json',
+    'Authorization' => 'API_KEY',
+);
+
+$client = new \GuzzleHttp\Client();
+
+// Define array of request body.
+$request_body = array();
+
+try {
+    $response = $client->request('DELETE','https://sandbox.cardsync.io/v2/subscribe', array(
+        'headers' => $headers,
+        'json' => $request_body,
+       )
+    );
+    print_r($response->getBody()->getContents());
+ }
+ catch (\GuzzleHttp\Exception\BadResponseException $e) {
+    // handle exception or api errors.
+    print_r($e->getMessage());
+ }
+
+ // ...
+
+```
+
+```java
+URL obj = new URL("https://sandbox.cardsync.io/v2/subscribe");
+HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+con.setRequestMethod("DELETE");
+int responseCode = con.getResponseCode();
+BufferedReader in = new BufferedReader(
+    new InputStreamReader(con.getInputStream()));
+String inputLine;
+StringBuffer response = new StringBuffer();
+while ((inputLine = in.readLine()) != null) {
+    response.append(inputLine);
+}
+in.close();
+System.out.println(response.toString());
+
+```
+
+```go
+package main
+
+import (
+       "bytes"
+       "net/http"
+)
+
+func main() {
+
+    headers := map[string][]string{
+        "Content-Type": []string{"application/json"},
+        "Accept": []string{"application/json"},
+        "Authorization": []string{"API_KEY"},
+    }
+
+    data := bytes.NewBuffer([]byte{jsonReq})
+    req, err := http.NewRequest("DELETE", "https://sandbox.cardsync.io/v2/subscribe", data)
+    req.Header = headers
+
+    client := &http.Client{}
+    resp, err := client.Do(req)
+    // ...
+}
+
+```
+
+`DELETE /v2/subscribe`
+
+This endpoint deletes previously created subscriptions for batches of American Express cards. If you no longer wish to receive updates for a particular card / SE pair, you must send a delete. Otherwise, you will continue to be charged for updates. If you submitted more than one SE number for a card, you must delete each card / SE pair submitted.
+
+<aside class="warning">
+To perform this operation, you must be authenticated by means of one of the following methods:
+Authorization
+</aside>
 
 # Schemas
 
@@ -2046,16 +2229,16 @@ Authorization
 }
 ```
 
-Webhooks
+Webhook Array
 
 ### Properties
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|merchant_enrollment_webhook|string|true|none|none|
-|batch_completion_webhook|string|true|none|none|
-|batch_error_webhook|string|true|none|none|
-|amex_update_webhook|string|true|empty string if no amex|none|
+|batch_completion_webhook|string|false|trigger_id = 20|none|
+|merchant_enrollment_webhook|string|false|trigger_id = 21|none|
+|batch_error_webhook|string|false|trigger_id = 22|none|
+|amex_update_webhook|string|false|trigger_id = 23|none|
 
 <h2 id="tocS_AddanewmerchantRequest">Merchant</h2>
 <!-- backwards compatibility -->
@@ -2610,7 +2793,7 @@ The data structure returned for a card batch and a subscription result is identi
     "cards": [
       {
         "id": "aaaaaaaaaa",
-        "se": "12334567890 <present only for American Express>",
+        "se_number": "12334567890 <present only for American Express>",
         "card": "4111111111111111",
         "exp": "12/24",
         "status": "updated_card"
