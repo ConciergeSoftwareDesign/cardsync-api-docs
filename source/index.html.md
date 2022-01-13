@@ -879,7 +879,6 @@ Authorization
   "card": "4012000000000016",
   "exp": "12/24"
 }
-
 ```
 
 Card
@@ -911,7 +910,6 @@ Card
   "contact": 0,
   "contact_closed": 0
 }
-
 ```
 
 Stats
@@ -928,6 +926,47 @@ Stats
 |valid|integer(int32)|true|none|none|
 |contact|integer(int32)|true|none|none|
 |contact_closed|integer(int32)|true|none|none|
+
+<h2 id="tocS_Retrievesthestatusofabatchdata-200OK">Data</h2>
+<!-- backwards compatibility -->
+<a id="schemaretrievesthestatusofabatchdata-200ok"></a>
+<a id="schema_Retrievesthestatusofabatchdata-200OK"></a>
+<a id="tocSretrievesthestatusofabatchdata-200ok"></a>
+<a id="tocsretrievesthestatusofabatchdata-200ok"></a>
+
+```json
+{
+  "status": "success",
+  "msg": "success",
+  "data": {
+    "status": "completed",
+    "stats": {
+      "number_submitted": 1,
+      "no_change": 0,
+      "updated_card": 1,
+      "updated_expiry": 0,
+      "no_match": 0,
+      "valid": 0,
+      "contact": 0,
+      "contact_closed": 0
+    },
+    "created_at": "2020-04-22T21:46:08.448148Z",
+    "updated_at": "2020-04-22T21:46:08.448148Z"
+  }
+}
+```
+
+Data
+
+### Properties
+
+|Name|Type|Required|Restrictions|Description|
+|---|---|---|---|---|
+|status|string|true|none|none|
+|cards|[Card](#tocS_Card)|true|none|none|
+|stats|[Stats](#tocS_Stats)|true|none|none|
+|created_at|string|true|none|none|
+|updated_at|string|true|none|none|
 
 <h2 id="tocS_Retrievesubscriptionresults-200OK">Subscription Results</h2>
 <!-- backwards compatibility -->
@@ -967,10 +1006,9 @@ The data structure returned for a card batch and a subscription result is identi
     "updated_at": "2020-04-22T21:46:08.448148Z"
   }
 }
-
 ```
 
-Batch Results
+Subscription Results
 
 ### Properties
 
@@ -980,16 +1018,6 @@ Batch Results
 |msg|string|true|none|none|
 |data|[Data](#tocS_Data)|true|none|none|
 |stats|[Stats](#tocS_Stats)|true|none|none|
-
-### Properties
-
-|Name|Type|Required|Restrictions|Description|
-|---|---|---|---|---|
-|status|string|true|none|none|
-|cards|[Card]|true|none|none|
-|stats|[Stats]|true|none|none|
-|created_at|string|true|none|none|
-|updated_at|string|true|none|none|
 
 <h2 id="tocS_AmexUpdateWebhook">American Express Update Webhook</h2>
 <!-- backwards compatibility -->
