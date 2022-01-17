@@ -284,20 +284,20 @@ Accept: application/json
 const inputBody = '{
   "cards": [
     {
-      "se_number": "amex se number",
-      "id": "customer identifier",
+      "se_number": "1234567890",
+      "id": "unique identifier",
       "card": "342132335566772",
       "exp": "12/24"
     },
     {
-      "se_number": "amex se number",
-      "id": "customer identifier",
+      "se_number": "1234567890",
+      "id": "unique identifier",
       "card": "376655111122997",
       "exp": "12/24"
     },
     {
-      "se_number": "amex se number",
-      "id": "customer identifier",
+      "se_number": "1234567890",
+      "id": "unique identifier",
       "card": "349900006577234",
       "exp": "12/24"
     }
@@ -458,19 +458,19 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
   "cards": [
     {
       "se_number": "1234567890",
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "342132335566772",
       "exp": "12/24"
     },
     {
       "se_number": "1234567890",
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "376655111122997",
       "exp": "12/24"
     },
     {
       "se_number": "1234567890",
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "349900006577234",
       "exp": "12/24"
     }
@@ -646,8 +646,8 @@ Retrieves a subscription update. Included with the results is the statistical br
     "status": "completed",
     "cards": [
       {
-        "id": "aaaaaaaaaa",
-        "card": "4111111111111111",
+        "id": "unique identifier",
+        "card": "342132335566772",
         "exp": "12/24",
         "status": "updated_card"
       }
@@ -707,19 +707,19 @@ const inputBody = '{
   "cards": [
     {
       "se_number": "amex se number",
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "342132335566772",
       "exp": "12/24"
     },
     {
       "se_number": "amex se number",
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "376655111122997",
       "exp": "12/24"
     },
     {
       "se_number": "amex se number",
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "349900006577234",
       "exp": "12/24"
     }
@@ -875,8 +875,8 @@ Authorization
 ```json
 {
   "se_number": "1234567890",
-  "id": "customer identifier",
-  "card": "4012000000000016",
+  "id": "unique identifier",
+  "card": "342132335566772",
   "exp": "12/24"
 }
 ```
@@ -888,7 +888,7 @@ Card
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
 |se_number|string|true|none|none|
-|id|string|true|none|none|
+|id|string|true|none|unique identifier|
 |card|string|true|none|none|
 |exp|string|true|none|none|
 
@@ -985,9 +985,9 @@ The data structure returned for a card batch and a subscription result is identi
     "status": "completed",
     "cards": [
       {
-        "id": "aaaaaaaaaa",
+        "id": "unique identifier",
         "se_number": "12334567890",
-        "card": "311111111111111",
+        "card": "345566776611224",
         "exp": "12/24",
         "status": "updated_card"
       }
