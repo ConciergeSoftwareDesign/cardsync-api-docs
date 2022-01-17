@@ -799,92 +799,92 @@ Accept: application/json
 const inputBody = '{
   "cards": [
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000016",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000024",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000032",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000040",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000057",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000065",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000016",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000024",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000032",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000040",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000057",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000065",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000012",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000020",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000038",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000046",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000053",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000061",
       "exp": "12/24"
     }
@@ -1060,92 +1060,92 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 {
   "cards": [
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000016",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000024",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000032",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000040",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000057",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000065",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000016",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000024",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000032",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000040",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000057",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000065",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000012",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000020",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000038",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000046",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000053",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000061",
       "exp": "12/24"
     }
@@ -1222,20 +1222,20 @@ Accept: application/json
 const inputBody = '{
   "cards": [
     {
-      "se_number": "amex se number",
-      "id": "customer identifier",
+      "se_number": "1234567890",
+      "id": "unique identifier",
       "card": "342132335566772",
       "exp": "12/24"
     },
     {
-      "se_number": "amex se number",
-      "id": "customer identifier",
+      "se_number": "1234567890",
+      "id": "unique identifier",
       "card": "376655111122997",
       "exp": "12/24"
     },
     {
-      "se_number": "amex se number",
-      "id": "customer identifier",
+      "se_number": "1234567890",
+      "id": "unique identifier",
       "card": "349900006577234",
       "exp": "12/24"
     }
@@ -1396,19 +1396,19 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
   "cards": [
     {
       "se_number": "1234567890",
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "342132335566772",
       "exp": "12/24"
     },
     {
       "se_number": "1234567890",
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "376655111122997",
       "exp": "12/24"
     },
     {
       "se_number": "1234567890",
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "349900006577234",
       "exp": "12/24"
     }
@@ -2040,20 +2040,20 @@ Accept: application/json
 const inputBody = '{
   "cards": [
     {
-      "se_number": "amex se number",
-      "id": "customer identifier",
+      "se_number": "1234567890",
+      "id": "unique identifier",
       "card": "342132335566772",
       "exp": "12/24"
     },
     {
-      "se_number": "amex se number",
-      "id": "customer identifier",
+      "se_number": "1234567890",
+      "id": "unique identifier",
       "card": "376655111122997",
       "exp": "12/24"
     },
     {
-      "se_number": "amex se number",
-      "id": "customer identifier",
+      "se_number": "1234567890",
+      "id": "unique identifier",
       "card": "349900006577234",
       "exp": "12/24"
     }
@@ -2235,10 +2235,10 @@ Webhook Array
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|batch_completion_webhook|string|false|trigger_id = 20|none|
-|merchant_enrollment_webhook|string|false|trigger_id = 21|none|
-|batch_error_webhook|string|false|trigger_id = 22|none|
-|amex_update_webhook|string|false|trigger_id = 23|none|
+|batch_completion_webhook|string|false|none|trigger_id = 20|
+|merchant_enrollment_webhook|string|false|none|trigger_id = 21|
+|batch_error_webhook|string|false|none|trigger_id = 22|
+|amex_update_webhook|string|false|none|trigger_id = 23|
 
 <h2 id="tocS_AddanewmerchantRequest">Merchant</h2>
 <!-- backwards compatibility -->
@@ -2298,7 +2298,7 @@ Merchant
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|legal_business_name|string|true|none|none|
+|legal_business_name|string|true|none|must be unique|
 |name|string|true|none|none|
 |description|string|true|none|none|
 |website|string|true|none|none|
@@ -2377,7 +2377,7 @@ User
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|username|string|true|none|none|
+|username|string|true|none|must be unique|
 |email|string|true|none|none|
 |status|string|true|none|none|
 |role|string|true|none|none|
@@ -2525,95 +2525,95 @@ Billing Contact
 
 ```json
 {
-  "amex_se_number": "1234567890 <optional only used in Amex batch>",
   "cards": [
     {
-      "id": "customer identifier",
+      "se": "1234567890 <American Express subscriptions only>",
+      "id": "unique identifier",
       "card": "4012000000000016",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000024",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000032",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000040",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000057",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "4012000000000065",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000016",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000024",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000032",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000040",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000057",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "5442980000000065",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000012",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000020",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000038",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000046",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000053",
       "exp": "12/24"
     },
     {
-      "id": "customer identifier",
+      "id": "unique identifier",
       "card": "6011000000000061",
       "exp": "12/24"
     }
@@ -2628,7 +2628,7 @@ Card Batch
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|amex_se_number|string|false|none|none|
+|se_number|string|false|none|American Express subscriptions only|
 |cards|[[Card](#schemacard)]|true|none|none|
 
 <h2 id="tocS_Card">Card</h2>
@@ -2640,7 +2640,8 @@ Card Batch
 
 ```json
 {
-  "id": "customer identifier",
+  "se": "1234567890 <American Express subscriptions only>",
+  "id": "unique identifier",
   "card": "4012000000000016",
   "exp": "12/24"
 }
@@ -2653,6 +2654,7 @@ Card
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
+|se_number|string|false|none|American Express subscriptions only|
 |id|string|true|none|none|
 |card|string|true|none|none|
 |exp|string|true|none|none|
@@ -2842,7 +2844,7 @@ Batch Results
     "status": "completed",
     "cards": [
       {
-        "id": "aaaaaaaaaa",
+        "id": "unique identifier",
         "card": "4111111111111111",
         "exp": "12/24",
         "status": "updated_card"
@@ -2870,7 +2872,7 @@ Batch Results Data
 
 |Name|Type|Required|Restrictions|Description|
 |---|---|---|---|---|
-|batch_id|string|true|none|none|
+|batch_id|string|true|none|Visa/MasterCard/Discover only|
 |status|string|true|none|none|
 |cards|[Card]|true|none|none|
 |stats|[Stats]|true|none|none|
