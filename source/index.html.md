@@ -2303,7 +2303,7 @@ Merchant
 |description|string|true|none|none|
 |website|string|true|none|none|
 |phone|string|true|none|none|
-|phone_ext|string|true|none|none|
+|phone_ext|string|false|none|none|
 |receipt_email|string|true|none|none|
 |timezone|string|true|none|none|
 |fee_schedule_id|string|true|none|none|
@@ -2417,7 +2417,7 @@ Card Info
 |number_of_discover|integer(int32)|true|none|none|
 |number_of_amex|integer(int32)|true|none|none|
 |amex_se_number|string|false|none|none|
-|delivery_frequency|string|true|none|none|
+|delivery_frequency|string|true|daily, weekly, monthly|none|
 |mcc|string|true|none|none|
 
 <h2 id="tocS_EnrollMerchantResponse">Enroll Merchant Response</h2>
@@ -2430,9 +2430,12 @@ Card Info
 ```json
 {
   "status": "success",
-  "message": "success",
-  "merchant_id": "bqgbm86g10l2fm2bv7n0",
-  "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP"
+  "msg": "success",
+  "data": {
+    "merchant_id": "bqgbm86g10l2fm2bv7n0",
+    "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
+    "created_at": "2020-04-22T21:46:08.448148Z"
+  }
 }
 ```
 
@@ -2444,8 +2447,9 @@ Enroll Merchant Response
 |---|---|---|---|---|
 |status|string|true|none|none|
 |message|string|true|none|none|
-|merchant_id|string|true|none|none|
-|api_key|string|true|none|none|
+|merchant_id|string|true|none|inside data object|
+|api_key|string|true|none|inside data object|
+|created_at|string|true|none|inside data object|
 
 <h2 id="tocS_GenericResponse">Generic Response</h2>
 <!-- backwards compatibility -->
@@ -2489,7 +2493,7 @@ Generic Response
   "postal_code": "31018",
   "country": "US",
   "phone": "7177546366",
-  "phone_ext": "",
+  "phone_ext": "1234",
   "fax": "",
   "email": "test@example.com"
 }
@@ -2512,7 +2516,7 @@ Billing Contact
 |postal_code|string|true|none|none|
 |country|string|true|none|none|
 |phone|string|true|none|none|
-|phone_ext|string|true|none|none|
+|phone_ext|string|false|none|none|
 |fax|string|true|none|none|
 |email|string|true|none|none|
 
