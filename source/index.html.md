@@ -284,7 +284,7 @@ func main() {
 ```json
 {
   "status": "success",
-  "msg": "success"
+  "message": "success"
 }
 ```
 
@@ -557,7 +557,7 @@ This endpoint is used to enroll a Merchant on the platform. The fee_schedule_id 
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "data": {
     "merchant_id": "bqgbm86g10l2fm2bv7n0",
     "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
@@ -734,7 +734,7 @@ Returns the current status of the Merchant's requested enrollment. This will let
 ```json
 {
   "status": "success",
-  "msg": "success"
+  "message": "success"
 }
 ```
 
@@ -1165,7 +1165,7 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "data": {
     "status": "pending",
     "stats": {
@@ -1578,7 +1578,7 @@ Retrieve the status of a batch. Batches in the sandbox will be completed within 
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "data": {
     "status": "completed",
     "stats": {
@@ -1774,7 +1774,7 @@ Retrieves a completed batch. Included with the batch results is the statistical 
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "data": {
     "status": "completed",
     "cards": [
@@ -1975,7 +1975,7 @@ Retrieves a subscription update. Included with the results is the statistical br
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "data": {
     "status": "completed",
     "cards": [
@@ -2430,7 +2430,7 @@ Card Info
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "data": {
     "merchant_id": "bqgbm86g10l2fm2bv7n0",
     "api_key": "api_1auidmDFdMslUz2R5PSwVFSEfmP",
@@ -2709,7 +2709,7 @@ Stats
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "data": {
     "batch_id": "bqgbm86g10l2fm2bv7n1",
     "status": "completed",
@@ -2750,7 +2750,7 @@ Retrieve Batch Status
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "data": {
     "batch_id": "bqgbm86g10l2fm2bv7n1",
     "status": "completed",
@@ -2793,7 +2793,7 @@ The data structure returned for a card batch and a subscription result is identi
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "data": {
     "status": "completed",
     "cards": [
@@ -2843,7 +2843,7 @@ Batch Results
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "data": {
     "status": "completed",
     "cards": [
@@ -2893,7 +2893,7 @@ Batch Results Data
 ```json
 {
   "status": "success",
-  "msg": "success",
+  "message": "success",
   "merchant_id": "bqgbm86g10l2fm2bv7n0"
 }
 ```
