@@ -52,7 +52,7 @@ Once merchant enrollment is completed, you may submit batches and/or subscriptio
 2. When an update for one or more of those cards is available, a webhook will be called with an "event_id".
 3. Retrieve the results via /v2/subscription/results?event_id={EVENT_ID}.
 
-Each batch may consist of up to 10,000 card numbers. There is no limit on the number of consecutive batch submissions. Inquiries may return one of six responses: updated_card, updated_expiry, no_match, valid, contact, or contact_closed. If the response is updated_card or updated_expiry, the updated card information is returned. Otherwise, one of the other four status types is returned. Some card inquiries do not result in any status type. This generally means the card is valid.
+Each batch may consist of up to 10,000 card numbers. There is no limit on the number of consecutive batch submissions. Inquiries may return one of six responses: updated_card, updated_expiry, no_match, valid, contact, or closed. If the response is updated_card or updated_expiry, the updated card information is returned. Otherwise, one of the other four status types is returned. Some card inquiries do not result in any status type. This generally means the card is valid.
 
 Note: American Express cards must be submitted separately from all other card types. With those batches, the merchant's SE number must be provided. If a merchant has more than one SE number, please submit one batch per SE number. The reason American Express cards are submitted separately is that the American Express cards are enrolled in a subscription for future updates. Any time that an American Express card has an subscribed update under an merchant’s SE, you will be notified via webhook to retrieve the Amex update for said Merchant."
 
@@ -1034,7 +1034,7 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 4012000000000032 - no_match  
 4012000000000040 - valid  
 4012000000000057 - contact  
-4012000000000065 - contact_closed  
+4012000000000065 - closed  
 
 ### Mastercard Test Cards
 
@@ -1043,7 +1043,7 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 5442980000000032 - no_match  
 5442980000000040 - valid  
 5442980000000057 - contact  
-5442980000000065 - contact_closed  
+5442980000000065 - closed  
 
 ### Discover Test Cards
 
@@ -1052,7 +1052,7 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 6011000000000038 - no_match  
 6011000000000046 - valid  
 6011000000000053 - contact  
-6011000000000061 - contact_closed  
+6011000000000061 - closed  
 
 > Body parameter
 
@@ -1176,7 +1176,7 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
       "no_match": 0,
       "valid": 0,
       "contact": 0,
-      "contact_closed": 0
+      "closed": 0
     },
     "created_at": "2020-04-22T21:46:08.448148Z",
     "updated_at": "2020-04-22T21:46:08.448148Z"
@@ -1387,7 +1387,7 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 
 342132335566772 - updated_card  
 376655111122997 - updated_expiry  
-349900006577234 - contact_closed  
+349900006577234 - closed  
 
 > Body parameter
 
@@ -1589,7 +1589,7 @@ Retrieve the status of a batch. Batches in the sandbox will be completed within 
       "no_match": 0,
       "valid": 0,
       "contact": 0,
-      "contact_closed": 0
+      "closed": 0
     },
     "created_at": "2020-04-22T21:46:08.448148Z",
     "updated_at": "2020-04-22T21:46:08.448148Z"
@@ -1793,7 +1793,7 @@ Retrieves a completed batch. Included with the batch results is the statistical 
       "no_match": 0,
       "valid": 0,
       "contact": 0,
-      "contact_closed": 0
+      "closed": 0
     },
     "created_at": "2020-04-22T21:46:08.448148Z",
     "updated_at": "2020-04-22T21:46:08.448148Z"
@@ -1994,7 +1994,7 @@ Retrieves a subscription update. Included with the results is the statistical br
       "no_match": 0,
       "valid": 0,
       "contact": 0,
-      "contact_closed": 0
+      "closed": 0
     },
     "created_at": "2020-04-22T21:46:08.448148Z",
     "updated_at": "2020-04-22T21:46:08.448148Z"
@@ -2679,7 +2679,7 @@ Card
   "no_match": 0,
   "valid": 0,
   "contact": 0,
-  "contact_closed": 0
+  "closed": 0
 }
 
 ```
@@ -2697,7 +2697,7 @@ Stats
 |no_match|integer(int32)|true|none|none|
 |valid|integer(int32)|true|none|none|
 |contact|integer(int32)|true|none|none|
-|contact_closed|integer(int32)|true|none|none|
+|closed|integer(int32)|true|none|none|
 
 <h2 id="tocS_Retrievesthestatusofabatch-200OK">Batch Results Status</h2>
 <!-- backwards compatibility -->
@@ -2721,7 +2721,7 @@ Stats
       "no_match": 0,
       "valid": 0,
       "contact": 0,
-      "contact_closed": 0
+      "closed": 0
     },
     "created_at": "2020-04-22T21:46:08.448148Z",
     "updated_at": "2020-04-22T21:46:08.448148Z"
@@ -2762,7 +2762,7 @@ Retrieve Batch Status
       "no_match": 0,
       "valid": 0,
       "contact": 0,
-      "contact_closed": 0
+      "closed": 0
     },
     "created_at": "2020-04-22T21:46:08.448148Z",
     "updated_at": "2020-04-22T21:46:08.448148Z"
@@ -2813,7 +2813,7 @@ The data structure returned for a card batch and a subscription result is identi
       "no_match": 0,
       "valid": 0,
       "contact": 0,
-      "contact_closed": 0
+      "closed": 0
     },
     "created_at": "2020-04-22T21:46:08.448148Z",
     "updated_at": "2020-04-22T21:46:08.448148Z"
@@ -2862,7 +2862,7 @@ Batch Results
       "no_match": 0,
       "valid": 0,
       "contact": 0,
-      "contact_closed": 0
+      "closed": 0
     },
     "created_at": "2020-04-22T21:46:08.448148Z",
     "updated_at": "2020-04-22T21:46:08.448148Z"
@@ -2933,7 +2933,7 @@ Enroll Merchant Webhook
     "contact": 0,
     "closed": 0,
     "number_submitted": 8,
-    "contact_closed": 1
+    "closed": 1
   },
   "id": "60d7a065-1795-4e98-88af-a8b98db9ec0c",
   "trigger_id": 20,
@@ -2978,7 +2978,7 @@ Batch Completion Webhook
     "contact": 0,
     "closed": 0,
     "number_submitted": 8,
-    "contact_closed": 1
+    "closed": 1
   },
   "id": "045b35f5-aed8-4c75-97f9-942de0fc0c32",
   "trigger_id": 23,
