@@ -1019,28 +1019,28 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 
 ### Visa Test Cards
 
-4457010000000009 / 01/50 - updated_card  
-4457000300000007 / 01/50 - updated_expiry  
-4457010200000247 / 08/50 - no_match  
-4100200300011001 / 05/50 - valid  
-4457010140000141 / 09/50 - contact  
-4457000900000001 / 08/50 - closed  
+- 4457010000000009 / 01/50 - updated_card  
+- 4457000300000007 / 01/50 - updated_expiry  
+- 4457010200000247 / 08/50 - no_match  
+- 4100200300011001 / 05/50 - valid  
+- 4457010140000141 / 09/50 - contact  
+- 4457000900000001 / 08/50 - closed  
 
 ### Mastercard Test Cards
 
-5194560012341234 / 12/50 - updated_card  
-5112010000000003 / 02/50 - updated_expiry  
-5112000200000002 / 11/50 - no_match 
-5112002200000008 / 11/50 - valid
-5435101234510196 / 07/50 - closed
+- 5194560012341234 / 12/50 - updated_card  
+- 5112010000000003 / 02/50 - updated_expiry  
+- 5112000200000002 / 11/50 - no_match
+- 5112002200000008 / 11/50 - valid
+- 5435101234510196 / 07/50 - closed
 
 ### Discover Test Cards
 
-6011010000000003 / 03/50 - updated_card
-6011010140000004 / 08/50 - updated_expiry
-6500102012345662 / 01/50 - valid
-6011102087026223 / 01/50 - contact
-6011010100000002 / 08/50 - closed
+- 6011010000000003 / 03/50 - updated_card
+- 6011010140000004 / 08/50 - updated_expiry
+- 6500102012345662 / 01/50 - valid
+- 6011102087026223 / 01/50 - contact
+- 6011010100000002 / 08/50 - closed
 
 > Body parameter
 
