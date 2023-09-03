@@ -799,94 +799,84 @@ Accept: application/json
 const inputBody = '{
   "cards": [
     {
-      "id": "unique identifier",
-      "card": "4012000000000016",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457010000000009",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000024",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457000300000007",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000032",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457010200000247",
+      "exp": "08/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000040",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4100200300011001",
+      "exp": "05/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000057",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457010140000141",
+      "exp": "09/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000065",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457000900000001",
+      "exp": "08/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000016",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5194560012341234",
+      "exp": "12/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000024",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5112010000000003",
+      "exp": "02/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000032",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5112000200000002",
+      "exp": "11/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000040",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5112002200000008",
+      "exp": "11/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000057",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5435101234510196",
+      "exp": "07/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000065",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011010000000003",
+      "exp": "03/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000012",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011010140000004",
+      "exp": "08/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000020",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6500102012345662",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000038",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011102087026223",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000046",
-      "exp": "12/24"
-    },
-    {
-      "id": "unique identifier",
-      "card": "6011000000000053",
-      "exp": "12/24"
-    },
-    {
-      "id": "unique identifier",
-      "card": "6011000000000061",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011010100000002",
+      "exp": "08/50"
     }
   ]
 }';
@@ -1029,30 +1019,28 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 
 ### Visa Test Cards
 
-4012000000000016 - updated_card  
-4012000000000024 - updated_expiry  
-4012000000000032 - no_match  
-4012000000000040 - valid  
-4012000000000057 - contact  
-4012000000000065 - closed  
+4457010000000009 / 01/50 - updated_card  
+4457000300000007 / 01/50 - updated_expiry  
+4457010200000247 / 08/50 - no_match  
+4100200300011001 / 05/50 - valid  
+4457010140000141 / 09/50 - contact  
+4457000900000001 / 08/50 - closed  
 
 ### Mastercard Test Cards
 
-5442980000000016 - updated_card  
-5442980000000024 - updated_expiry  
-5442980000000032 - no_match  
-5442980000000040 - valid  
-5442980000000057 - contact  
-5442980000000065 - closed  
+5194560012341234 / 12/50 - updated_card  
+5112010000000003 / 02/50 - updated_expiry  
+5112000200000002 / 11/50 - no_match 
+5112002200000008 / 11/50 - valid
+5435101234510196 / 07/50 - closed
 
 ### Discover Test Cards
 
-6011000000000012 - updated_card  
-6011000000000020 - updated_expiry  
-6011000000000038 - no_match  
-6011000000000046 - valid  
-6011000000000053 - contact  
-6011000000000061 - closed  
+6011010000000003 / 03/50 - updated_card
+6011010140000004 / 08/50 - updated_expiry
+6500102012345662 / 01/50 - valid
+6011102087026223 / 01/50 - contact
+6011010100000002 / 08/50 - closed
 
 > Body parameter
 
@@ -1060,94 +1048,84 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
 {
   "cards": [
     {
-      "id": "unique identifier",
-      "card": "4012000000000016",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457010000000009",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000024",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457000300000007",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000032",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457010200000247",
+      "exp": "08/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000040",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4100200300011001",
+      "exp": "05/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000057",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457010140000141",
+      "exp": "09/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000065",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457000900000001",
+      "exp": "08/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000016",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5194560012341234",
+      "exp": "12/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000024",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5112010000000003",
+      "exp": "02/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000032",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5112000200000002",
+      "exp": "11/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000040",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5112002200000008",
+      "exp": "11/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000057",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5435101234510196",
+      "exp": "07/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000065",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011010000000003",
+      "exp": "03/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000012",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011010140000004",
+      "exp": "08/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000020",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6500102012345662",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000038",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011102087026223",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000046",
-      "exp": "12/24"
-    },
-    {
-      "id": "unique identifier",
-      "card": "6011000000000053",
-      "exp": "12/24"
-    },
-    {
-      "id": "unique identifier",
-      "card": "6011000000000061",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011010100000002",
+      "exp": "08/50"
     }
   ]
 }
@@ -1223,21 +1201,21 @@ const inputBody = '{
   "cards": [
     {
       "se_number": "1234567890",
-      "id": "unique identifier",
+      "id": "<unique identifier>",
       "card": "342132335566772",
-      "exp": "12/24"
+      "exp": "12/28"
     },
     {
       "se_number": "1234567890",
-      "id": "unique identifier",
+      "id": "<unique identifier>",
       "card": "376655111122997",
-      "exp": "12/24"
+      "exp": "12/28"
     },
     {
       "se_number": "1234567890",
-      "id": "unique identifier",
+      "id": "<unique identifier>",
       "card": "349900006577234",
-      "exp": "12/24"
+      "exp": "12/28"
     }
   ]
 }';
@@ -1396,21 +1374,21 @@ You can supply any Luhn10 valid card number, but to trigger specific responses, 
   "cards": [
     {
       "se_number": "1234567890",
-      "id": "unique identifier",
+      "id": "<unique identifier>",
       "card": "342132335566772",
-      "exp": "12/24"
+      "exp": "12/28"
     },
     {
       "se_number": "1234567890",
-      "id": "unique identifier",
+      "id": "<unique identifier>",
       "card": "376655111122997",
-      "exp": "12/24"
+      "exp": "12/28"
     },
     {
       "se_number": "1234567890",
-      "id": "unique identifier",
+      "id": "<unique identifier>",
       "card": "349900006577234",
-      "exp": "12/24"
+      "exp": "12/28"
     }
   ]
 }
@@ -1781,7 +1759,7 @@ Retrieves a completed batch. Included with the batch results is the statistical 
       {
         "id": "aaaaaaaaaa",
         "card": "4111111111111111",
-        "exp": "12/24",
+        "exp": "12/28",
         "status": "updated_card"
       }
     ],
@@ -1982,7 +1960,7 @@ Retrieves a subscription update. Included with the results is the statistical br
       {
         "id": "aaaaaaaaaa",
         "card": "4111111111111111",
-        "exp": "12/24",
+        "exp": "12/28",
         "status": "updated_card"
       }
     ],
@@ -2041,21 +2019,21 @@ const inputBody = '{
   "cards": [
     {
       "se_number": "1234567890",
-      "id": "unique identifier",
+      "id": "<unique identifier>",
       "card": "342132335566772",
-      "exp": "12/24"
+      "exp": "12/28"
     },
     {
       "se_number": "1234567890",
-      "id": "unique identifier",
+      "id": "<unique identifier>",
       "card": "376655111122997",
-      "exp": "12/24"
+      "exp": "12/28"
     },
     {
       "se_number": "1234567890",
-      "id": "unique identifier",
+      "id": "<unique identifier>",
       "card": "349900006577234",
-      "exp": "12/24"
+      "exp": "12/28"
     }
   ]
 }';
@@ -2532,94 +2510,84 @@ Billing Contact
   "cards": [
     {
       "se": "1234567890 <American Express subscriptions only>",
-      "id": "unique identifier",
-      "card": "4012000000000016",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457010000000009",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000024",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457000300000007",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000032",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457010200000247",
+      "exp": "08/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000040",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4100200300011001",
+      "exp": "05/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000057",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457010140000141",
+      "exp": "09/50"
     },
     {
-      "id": "unique identifier",
-      "card": "4012000000000065",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "4457000900000001",
+      "exp": "08/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000016",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5194560012341234",
+      "exp": "12/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000024",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5112010000000003",
+      "exp": "02/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000032",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5112000200000002",
+      "exp": "11/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000040",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5112002200000008",
+      "exp": "11/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000057",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "5435101234510196",
+      "exp": "07/50"
     },
     {
-      "id": "unique identifier",
-      "card": "5442980000000065",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011010000000003",
+      "exp": "03/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000012",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011010140000004",
+      "exp": "08/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000020",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6500102012345662",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000038",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011102087026223",
+      "exp": "01/50"
     },
     {
-      "id": "unique identifier",
-      "card": "6011000000000046",
-      "exp": "12/24"
-    },
-    {
-      "id": "unique identifier",
-      "card": "6011000000000053",
-      "exp": "12/24"
-    },
-    {
-      "id": "unique identifier",
-      "card": "6011000000000061",
-      "exp": "12/24"
+      "id": "<unique identifier>",
+      "card": "6011010100000002",
+      "exp": "08/50"
     }
   ]
 }
@@ -2645,9 +2613,9 @@ Card Batch
 ```json
 {
   "se": "1234567890 <American Express subscriptions only>",
-  "id": "unique identifier",
-  "card": "4012000000000016",
-  "exp": "12/24"
+  "id": "<unique identifier>",
+  "card": "4457010000000009",
+  "exp": "01/50"
 }
 
 ```
@@ -2800,8 +2768,8 @@ The data structure returned for a card batch and a subscription result is identi
       {
         "id": "aaaaaaaaaa",
         "se_number": "12334567890 <present only for American Express>",
-        "card": "4111111111111111",
-        "exp": "12/24",
+        "card": "378282246310005",
+        "exp": "12/28",
         "status": "updated_card"
       }
     ],
@@ -2848,9 +2816,9 @@ Batch Results
     "status": "completed",
     "cards": [
       {
-        "id": "unique identifier",
+        "id": "<unique identifier>",
         "card": "4111111111111111",
-        "exp": "12/24",
+        "exp": "12/28",
         "status": "updated_card"
       }
     ],
